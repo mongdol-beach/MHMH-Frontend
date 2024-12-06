@@ -2,6 +2,7 @@ import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
+import GlobalStyle from "./styles/global";
 
 function App() {
   const [queryClient] = useState(
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
       </Routes>
+      <GlobalStyle />
     </QueryClientProvider>
   );
 }

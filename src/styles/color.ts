@@ -1,5 +1,3 @@
-export const MOBILE_MEDIA_QUERY = `@media screen and (max-width: 768px)`;
-
 export const COLORS = {
   "--card-color-blue": "#5881f3",
   "--card-color-sky_b": "#97b2ff",

@@ -6,6 +6,7 @@ import GlobalStyle from "./styles/global";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import PAGE_PATH from "./constants/path";
+import AppLayout from "./components/Layout";
 
 function App() {
   const [queryClient] = useState(
@@ -22,10 +23,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <Routes>
-          <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
-        </Routes>
-        <GlobalStyle />
+        <AppLayout>
+          <Routes>
+            <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
+          </Routes>
+          <GlobalStyle />
+        </AppLayout>
       </ThemeProvider>
     </QueryClientProvider>
   );

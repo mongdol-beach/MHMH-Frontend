@@ -1,30 +1,24 @@
 import styled from "styled-components";
-import { MOBILE_MEDIA_QUERY } from "../../styles/constants";
 
 export const Container = styled.main`
-  ${MOBILE_MEDIA_QUERY} {
-    width: 100%;
-  }
+  width: 100%;
 `;
 
 export const TitleBox = styled.div`
-  ${MOBILE_MEDIA_QUERY} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1.12rem auto 0.31rem;
-    position: relative;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4rem;
+  margin: 0 auto 0.31rem;
+  position: relative;
 `;
 
 export const SubTitle = styled.p`
-  ${MOBILE_MEDIA_QUERY} {
-    color: ${(props) => props.theme.colors["-grayscale-800"]};
-    text-align: center;
-    font-weight: 500;
-    line-height: 150%;
-    letter-spacing: -0.011rem;
-  }
+  color: ${(props) => props.theme.colors["-grayscale-800"]};
+  text-align: center;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.011rem;
 `;
 
 export const Title = styled.span`

@@ -1,5 +1,5 @@
 import { DefaultTheme } from "styled-components";
-import { COLORS } from "./constants";
+import { COLORS } from "./color";
 
 export const theme: DefaultTheme = {
   colors: COLORS,

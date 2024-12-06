@@ -5,6 +5,7 @@ import MainPage from "./pages/MainPage";
 import GlobalStyle from "./styles/global";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
+import PAGE_PATH from "./constants/path";
 
 function App() {
   const [queryClient] = useState(
@@ -22,7 +23,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
         </Routes>
         <GlobalStyle />
       </ThemeProvider>

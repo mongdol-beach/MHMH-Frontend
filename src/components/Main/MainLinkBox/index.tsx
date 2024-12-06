@@ -1,9 +1,10 @@
 import * as S from "./styled";
 import MainLink from "./MainLink";
+import PAGE_PATH from "../../../constants/path";
 
 const TOPICS = [
   {
-    href: "랜덤토픽", // 수정 예정
+    href: PAGE_PATH["RANDOM-TOPIC"],
     title: "랜덤 토픽",
     lineBreakTitle: "추천",
     width: "10.25",
@@ -11,7 +12,7 @@ const TOPICS = [
     text: "예측할 수 없는 다양한 주제로 색다른 대화 만들기",
   },
   {
-    href: "상황별토픽", // 수정 예정
+    href: PAGE_PATH.TOPIC,
     title: "상황별 토픽",
     lineBreakTitle: "추천",
     width: "10.25",
@@ -19,7 +20,7 @@ const TOPICS = [
     text: "상황에 딱 맞는 맞춤 토픽으로 자연스러운 대화 만들기",
   },
   {
-    href: "밸런스게임", // 수정 예정
+    href: PAGE_PATH["BALANCE-GAME"],
     title: "밸런스 게임",
     width: "21.4375",
     height: "7.875",

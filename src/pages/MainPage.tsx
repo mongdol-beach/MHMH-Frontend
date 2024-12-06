@@ -1,12 +1,7 @@
-import styled from "styled-components";
-
-const Test = styled.a`
-  color: blue;
-  font-size: 1rem;
-`;
+import Main from "../components/Main";
 
 const MainPage = () => {
-  return <Test href="/">메인 페이지 스타일 테스트</Test>;
+  return <Main />;
 };
 
 export default MainPage;

@@ -14,6 +14,7 @@ export default defineConfig({
         replacement: resolve(__dirname, "src/components"),
       },
       { find: "@assets", replacement: resolve(__dirname, "src/assets") },
+      { find: "@constants", replacement: resolve(__dirname, "src/constants") },
     ],
   },
 });

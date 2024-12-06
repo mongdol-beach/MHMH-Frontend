@@ -31,7 +31,7 @@ jobs:
           destination-repository-name: MHMH-Frontend-Fork # 본인이 fork한 레포지토리 이름
           user-email: ${{ secrets.EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
-          target-branch: main
+          target-branch: develop
 
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY

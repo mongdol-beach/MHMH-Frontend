@@ -1,3 +1,4 @@
+import { SITUATIONS } from "./data";
 import Header from "./Header";
 import * as S from "./styled";
 
@@ -13,6 +14,11 @@ const Situation = () => {
             상황을 선택 해주세요
           </S.Description>
         </S.DescriptionBox>
+        <S.SituationBox>
+          {SITUATIONS.map((situation) => (
+            <S.SituationItem key={situation}>{situation}</S.SituationItem>
+          ))}
+        </S.SituationBox>
       </S.Main>
     </>
   );

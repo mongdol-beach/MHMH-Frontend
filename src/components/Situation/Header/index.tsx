@@ -13,10 +13,15 @@ const Header = () => {
 
   return (
     <S.Container>
-      <S.Icon src={IconArrow} onClick={handleClickBackButton} clickable />
+      <S.Icon
+        src={IconArrow}
+        onClick={handleClickBackButton}
+        clickable
+        alt="이전 페이지로 돌아가기"
+      />
       <S.Title>상황별 토픽</S.Title>
       <Link to={PAGE_PATH.MAIN}>
-        <S.Icon src={IconHome} />
+        <S.Icon src={IconHome} alt="메인 페이지로 이동하기" />
       </Link>
     </S.Container>
   );

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const AppContainer = styled.div`
   max-width: 375px;
+  width: 100%;
   height: 812px;
   position: absolute;
   top: 50%;

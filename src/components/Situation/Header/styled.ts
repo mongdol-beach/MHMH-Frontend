@@ -13,7 +13,6 @@ export const Title = styled.h1`
   font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.011rem;
-  color: ${(props) => props.theme.colors["-grayscale-800"]};
 `;
 
 export const Icon = styled.img``;

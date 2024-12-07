@@ -14,7 +14,6 @@ export const TitleBox = styled.div`
 `;
 
 export const SubTitle = styled.p`
-  color: ${(props) => props.theme.colors["-grayscale-800"]};
   text-align: center;
   font-weight: 500;
   line-height: 150%;
@@ -25,7 +24,6 @@ export const Title = styled.span`
   border-radius: 4.5625rem;
   padding: 0.25rem 0.75rem;
   background: ${(props) => props.theme.colors["--card-color-beige"]};
-  color: ${(props) => props.theme.colors["-grayscale-800"]};
   text-align: center;
   font-family: "esamanru OTF";
   font-weight: 300;

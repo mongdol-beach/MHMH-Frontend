@@ -57,6 +57,7 @@ html {
   font-size: 16px;
   font-family: "Pretendard";
   font-display: swap;
+  color: ${(props) => props.theme.colors["-grayscale-800"]};
 }
 *,
 *::before,

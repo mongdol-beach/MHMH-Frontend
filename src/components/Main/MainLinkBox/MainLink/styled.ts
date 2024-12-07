@@ -14,7 +14,6 @@ export const Topic = styled.a<{ $width: string; $height: string }>`
 `;
 
 export const Title = styled.p`
-  color: ${(props) => props.theme.colors["-grayscale-800"]};
   font-family: "esamanru OTF";
   font-size: 1.25rem;
   font-weight: 300;

@@ -1,5 +1,13 @@
+import Header from "./Header";
+import * as S from "./styled";
+
 const Situation = () => {
-  return <div>Situation</div>;
+  return (
+    <>
+      <Header />
+      <S.Main>메인</S.Main>
+    </>
+  );
 };
 
 export default Situation;

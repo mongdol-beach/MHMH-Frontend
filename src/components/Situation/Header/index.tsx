@@ -7,17 +7,13 @@ import PAGE_PATH from "../../../constants/path";
 const Header = () => {
   const navigate = useNavigate();
 
-  const handleClickArrowIcon = () => {
-    handleGoBack();
-  };
-
-  const handleGoBack = () => {
+  const handleClickBackButton = () => {
     navigate(-1);
   };
 
   return (
     <S.Container>
-      <S.Icon src={IconArrow} onClick={handleClickArrowIcon} clickable />
+      <S.Icon src={IconArrow} onClick={handleClickBackButton} clickable />
       <S.Title>상황별 토픽</S.Title>
       <Link to={PAGE_PATH.MAIN}>
         <S.Icon src={IconHome} />

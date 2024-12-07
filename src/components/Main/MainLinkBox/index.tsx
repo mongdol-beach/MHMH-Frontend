@@ -4,7 +4,7 @@ import PAGE_PATH from "../../../constants/path";
 
 const TOPICS = [
   {
-    href: PAGE_PATH["RANDOM-TOPIC"],
+    to: PAGE_PATH["RANDOM-TOPIC"],
     title: "랜덤 토픽",
     lineBreakTitle: "추천",
     width: "10.25",
@@ -12,7 +12,7 @@ const TOPICS = [
     text: "예측할 수 없는 다양한 주제로 색다른 대화 만들기",
   },
   {
-    href: PAGE_PATH.SITUATION,
+    to: PAGE_PATH.SITUATION,
     title: "상황별 토픽",
     lineBreakTitle: "추천",
     width: "10.25",
@@ -20,7 +20,7 @@ const TOPICS = [
     text: "상황에 딱 맞는 맞춤 토픽으로 자연스러운 대화 만들기",
   },
   {
-    href: PAGE_PATH["BALANCE-GAME"],
+    to: PAGE_PATH["BALANCE-GAME"],
     title: "밸런스 게임",
     width: "21.4375",
     height: "7.875",
@@ -32,11 +32,11 @@ const MainLinkBox = () => {
   return (
     <S.LinkBox>
       {TOPICS.map((topic, idx) => {
-        const { href, title, lineBreakTitle, text, width, height } = topic;
+        const { to, title, lineBreakTitle, text, width, height } = topic;
         return (
           <MainLink
             key={idx}
-            href={href}
+            to={to}
             title={title}
             lineBreakTitle={lineBreakTitle}
             width={width}

@@ -1,6 +1,6 @@
 import * as S from "./styled";
-import IconArrow from "@assets/icons/icon-arrow.svg";
-import IconHome from "@assets/icons/icon-home.svg";
+import IconArrow from "@assets/icons/left-arrow.svg";
+import IconHome from "@assets/icons/home.svg";
 import { Link, useNavigate } from "react-router-dom";
 import PAGE_PATH from "../../../constants/path";
 

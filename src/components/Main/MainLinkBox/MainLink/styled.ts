@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Link as RouterLink } from "react-router-dom";
 
-export const Topic = styled.a<{ $width: string; $height: string }>`
+export const Link = styled(RouterLink)<{ $width: string; $height: string }>`
   display: flex;
   width: ${(props) => `${props.$width}rem`};
   height: ${(props) => `${props.$height}rem`};

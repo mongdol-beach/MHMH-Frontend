@@ -1,7 +1,7 @@
-import { AnchorHTMLAttributes } from "react";
+import { LinkProps } from "react-router-dom";
 import * as S from "./styled";
 
-interface MainLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface MainLinkProps extends LinkProps {
   title: string;
   text: string;
   lineBreakTitle?: string;
@@ -10,22 +10,22 @@ interface MainLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 
 const MainLink = ({
+  to,
   title,
   lineBreakTitle,
   text,
   width,
   height,
-  ...rest
 }: MainLinkProps) => {
   return (
-    <S.Topic $width={width} $height={height} {...rest}>
+    <S.Link $width={width} $height={height} to={to}>
       <S.Title>
         {title}
         <br />
         {lineBreakTitle}
       </S.Title>
       <S.Text>{text}</S.Text>
-    </S.Topic>
+    </S.Link>
   );
 };
 

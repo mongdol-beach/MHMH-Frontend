@@ -15,6 +15,11 @@ export const Description = styled.p`
   font-weight: 500;
   line-height: 150%; /* 1.5rem */
   letter-spacing: -0.02rem;
+  text-align: center;
+`;
+
+export const DescriptionBold = styled.span`
+  font-weight: 800;
 `;
 
 export const SituationBox = styled.ul`

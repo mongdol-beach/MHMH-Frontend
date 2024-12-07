@@ -15,8 +15,12 @@ const Situation = () => {
           </S.Description>
         </S.DescriptionBox>
         <S.SituationBox>
-          {SITUATIONS.map((situation) => (
-            <S.SituationItem key={situation}>{situation}</S.SituationItem>
+          {SITUATIONS.map((situation, idx) => (
+            <S.SituationItem key={idx}>
+              <S.SituationLink to={situation.to}>
+                {situation.text}
+              </S.SituationLink>
+            </S.SituationItem>
           ))}
         </S.SituationBox>
       </S.Main>

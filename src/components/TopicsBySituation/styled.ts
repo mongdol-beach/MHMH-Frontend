@@ -24,3 +24,27 @@ export const ViewAllTopicsButton = styled.button`
   font-weight: ${WEIGHT["--font-weight-bold"]};
   margin-top: 0.69rem;
 `;
+
+export const CardStackContainer = styled.div`
+  padding: 0 1.5rem;
+  margin-top: 1.19rem;
+`;
+
+export const CardStack = styled.div`
+  position: relative;
+  width: 100%;
+  height: 29.86rem;
+`;
+
+export const Card = styled.div<{ order: number }>`
+  position: absolute;
+  bottom: ${({ order }) => order * 1.19}rem;
+  opacity: ${({ order }) => 1 - order * 0.2};
+  width: 100%;
+  height: 27.3rem;
+  background: #ffc0cb;
+  border-radius: 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transform: scale(${({ order }) => 1 - order * 0.05});
+  z-index: ${({ order }) => 5 - order};
+`;

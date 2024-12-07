@@ -1,6 +1,7 @@
 import { SITUATIONS } from "./data";
 import Header from "../Header";
 import * as S from "./styled";
+import PAGE_PATH from "../../constants/path";
 
 const Situation = () => {
   return (
@@ -15,10 +16,12 @@ const Situation = () => {
           </S.Description>
         </S.DescriptionBox>
         <S.SituationBox>
-          {SITUATIONS.map((situation, idx) => (
-            <S.SituationItem key={idx}>
-              <S.SituationLink to={situation.to}>
-                {situation.text}
+          {SITUATIONS.map((situation) => (
+            <S.SituationItem key={`${situation.id}`}>
+              <S.SituationLink
+                to={`${PAGE_PATH.SITUATION}/${situation.id}/topics`}
+              >
+                {situation.title}
               </S.SituationLink>
             </S.SituationItem>
           ))}

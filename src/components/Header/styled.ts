@@ -15,6 +15,6 @@ export const Title = styled.h1`
   letter-spacing: -0.011rem;
 `;
 
-export const Icon = styled.img<{ clickable?: boolean }>`
-  ${(props) => props.clickable && `cursor: pointer;`}
-`;
+export const Icon = styled.img``;
+
+export const NavigateBackButton = styled.button``;

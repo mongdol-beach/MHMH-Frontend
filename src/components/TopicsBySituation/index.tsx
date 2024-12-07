@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import * as S from "./styled";
 
-import Header from "../Situation/Header";
 import { topics } from "./data";
+import Header from "../Header";
 
 const TopicBySituation = () => {
   const topicsLengthToShow = 3;
@@ -22,7 +22,7 @@ const TopicBySituation = () => {
 
   return (
     <>
-      <Header />
+      <Header title="소개팅 토픽" />
       <S.Main>
         <S.SituationBox>
           <S.Situation>#소개팅</S.Situation>

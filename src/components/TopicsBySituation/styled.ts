@@ -38,13 +38,41 @@ export const CardStack = styled.div`
 
 export const Card = styled.div<{ order: number }>`
   position: absolute;
-  bottom: ${({ order }) => order * 1.19}rem;
-  opacity: ${({ order }) => 1 - order * 0.2};
   width: 100%;
   height: 27.3rem;
-  background: #ffc0cb;
+  background: ${(props) => props.theme.colors["--card-color-blue"]};
   border-radius: 16px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transform: scale(${({ order }) => 1 - order * 0.05});
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const styleByOrder: Record<
+  1 | 2 | 3,
+  { bottom: string; opacity: number; scaleX: number }
+> = {
+  1: {
+    bottom: "0rem",
+    opacity: 1,
+    scaleX: 1,
+  },
+  2: {
+    bottom: "1.38rem",
+    opacity: 0.4,
+    scaleX: 0.94,
+  },
+  3: {
+    bottom: "2.63rem",
+    opacity: 0.2,
+    scaleX: 0.88,
+  },
+};
+
+export const StackedCard = styled(Card)<{ order: 1 | 2 | 3 }>`
+  position: absolute;
+  bottom: ${({ order }) => styleByOrder[order].bottom};
+  // TODO: opacity값을 쓸 게 아니라 opacity가 적용된 색상값을 return해야 함.
+  opacity: ${({ order }) => styleByOrder[order].opacity};
+  transform: scaleX(${({ order }) => styleByOrder[order].scaleX});
   z-index: ${({ order }) => 5 - order};
 `;

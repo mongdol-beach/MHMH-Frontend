@@ -1,9 +1,24 @@
+import { useState } from "react";
+
 import * as S from "./styled";
 
 import Header from "../Situation/Header";
+import { topics } from "./data";
 
 const TopicBySituation = () => {
-  const cards = Array(5).fill(null);
+  const topicsLengthToShow = 3;
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const topicsToShow = topics.slice(
+    currentIndex,
+    currentIndex + topicsLengthToShow,
+  );
+
+  const handleNextCard = () => {
+    if (currentIndex < topics.length - topicsLengthToShow) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
 
   return (
     <>
@@ -13,10 +28,15 @@ const TopicBySituation = () => {
           <S.Situation>#소개팅</S.Situation>
           <S.ViewAllTopicsButton>전체 토픽 둘러보기 &gt;</S.ViewAllTopicsButton>
         </S.SituationBox>
-        <S.CardStackContainer>
+        <S.CardStackContainer onClick={handleNextCard}>
           <S.CardStack>
-            {cards.map((_, index) => (
-              <S.Card key={index} order={index} />
+            {topicsToShow.map((topic, index) => (
+              <S.StackedCard
+                key={`${topic}-${index}`}
+                order={(index + 1) as 1 | 2 | 3}
+              >
+                {topic}
+              </S.StackedCard>
             ))}
           </S.CardStack>
         </S.CardStackContainer>

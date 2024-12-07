@@ -28,6 +28,19 @@ export const ViewAllTopicsButton = styled.button`
 export const CardStackContainer = styled.div`
   padding: 0 1.5rem;
   margin-top: 1.19rem;
+
+  .stacked-card-swiper {
+    .swiper-slide {
+      transition: all 0.3s ease;
+      opacity: 0;
+
+      &.swiper-slide-active,
+      &.swiper-slide-next,
+      &.swiper-slide-next + .swiper-slide {
+        opacity: 1;
+      }
+    }
+  }
 `;
 
 export const CardStack = styled.div`

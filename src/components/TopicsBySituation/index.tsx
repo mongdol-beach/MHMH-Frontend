@@ -1,9 +1,13 @@
 import { useState } from "react";
+import "swiper/css";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCards } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 
 import * as S from "./styled";
-
-import { topics } from "./data";
 import Header from "../Header";
+import { topics } from "./data";
 
 const TopicBySituation = () => {
   const topicsLengthToShow = 3;
@@ -14,10 +18,8 @@ const TopicBySituation = () => {
     currentIndex + topicsLengthToShow,
   );
 
-  const handleNextCard = () => {
-    if (currentIndex < topics.length - topicsLengthToShow) {
-      setCurrentIndex(currentIndex + 1);
-    }
+  const handleSlideChange = (swiper: SwiperType) => {
+    setCurrentIndex(swiper.activeIndex);
   };
 
   return (
@@ -28,17 +30,32 @@ const TopicBySituation = () => {
           <S.Situation>#소개팅</S.Situation>
           <S.ViewAllTopicsButton>전체 토픽 둘러보기 &gt;</S.ViewAllTopicsButton>
         </S.SituationBox>
-        <S.CardStackContainer onClick={handleNextCard}>
-          <S.CardStack>
-            {topicsToShow.map((topic, index) => (
-              <S.StackedCard
-                key={`${topic}-${index}`}
-                order={(index + 1) as 1 | 2 | 3}
-              >
-                {topic}
-              </S.StackedCard>
-            ))}
-          </S.CardStack>
+        <S.CardStackContainer>
+          <Swiper
+            slidesPerView={1}
+            effect="cards"
+            modules={[EffectCards]}
+            onSlideChange={handleSlideChange}
+            className="stacked-card-swiper"
+            style={{ height: "29.86rem" }}
+            cardsEffect={{
+              perSlideOffset: 0,
+              perSlideRotate: 0,
+              rotate: false,
+              slideShadows: false,
+            }}
+            direction="horizontal"
+          >
+            <S.CardStack>
+              {topicsToShow.map((topic, index) => (
+                <SwiperSlide key={`${topic}-${index}`}>
+                  <S.StackedCard order={(index + 1) as 1 | 2 | 3}>
+                    {topic}
+                  </S.StackedCard>
+                </SwiperSlide>
+              ))}
+            </S.CardStack>
+          </Swiper>
         </S.CardStackContainer>
       </S.Main>
     </>

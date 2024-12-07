@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import PAGE_PATH from "./constants/path";
 import AppLayout from "./components/Layout";
+import SituationPage from "./pages/SituationPage";
 
 function App() {
   const [queryClient] = useState(
@@ -26,6 +27,7 @@ function App() {
         <AppLayout>
           <Routes>
             <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
+            <Route path={PAGE_PATH.SITUATION} element={<SituationPage />} />
           </Routes>
           <GlobalStyle />
         </AppLayout>

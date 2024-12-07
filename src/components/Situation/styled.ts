@@ -16,14 +16,14 @@ export const Description = styled.p`
   letter-spacing: -0.02rem;
 `;
 
-export const SituationBox = styled.div`
+export const SituationBox = styled.ul`
   padding: 0 2.5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem 0.94rem;
 `;
 
-export const SituationItem = styled.div`
+export const SituationItem = styled.li`
   border-radius: 0.5rem;
   border: 1px solid ${(props) => props.theme.colors["-grayscale-200"]};
   background-color: white;

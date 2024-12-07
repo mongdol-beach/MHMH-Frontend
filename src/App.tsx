@@ -3,6 +3,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import GlobalStyle from "./styles/global";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/theme";
+import PAGE_PATH from "./constants/path";
+import AppLayout from "./components/Layout";
 
 function App() {
   const [queryClient] = useState(
@@ -18,10 +22,14 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-      </Routes>
-      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <AppLayout>
+          <Routes>
+            <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
+          </Routes>
+          <GlobalStyle />
+        </AppLayout>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

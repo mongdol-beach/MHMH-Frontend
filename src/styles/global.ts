@@ -1,7 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  @import url("https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css");
+  @font-face {
+    font-family: 'esamanru OTF';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
 
 html,
 body,
@@ -81,7 +86,6 @@ a {
 }
 
 button {
-  font-family: "Pretendard";
   background-color: transparent;
   border: none;
   cursor: pointer;

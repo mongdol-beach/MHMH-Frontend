@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
@@ -28,9 +28,10 @@ const SWIPER_CONFIG = {
 
 interface TopicCardsProps {
   topics: Topic[];
+  onHasViewedAllCards?: (hasViewedAllCards: boolean) => void;
 }
 
-const TopicCards = ({ topics }: TopicCardsProps) => {
+const TopicCards = ({ topics, onHasViewedAllCards }: TopicCardsProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLastSlide, setIsLastSlide] = useState(false);
   const slides = [...topics, ""];
@@ -47,6 +48,10 @@ const TopicCards = ({ topics }: TopicCardsProps) => {
     // topics의 마지막 인덱스일 때 isLastSlide를 true로 설정
     setIsLastSlide(newIndex >= topics.length);
   };
+
+  useEffect(() => {
+    onHasViewedAllCards?.(isLastSlide);
+  }, [isLastSlide, onHasViewedAllCards]);
 
   if (!topics.length) return null;
 

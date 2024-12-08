@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "../../elements/Modal";
+import Modal from "../../components/Modal/SituationFinishModal/Modal";
 import Close from "@assets/icons/close.svg";
 import * as S from "./styled";
 import { TopicTip } from "../../types/topic";

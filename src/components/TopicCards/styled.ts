@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import FONT from "../../styles/font";
-import { StackOrder } from "./type";
 
 export const CardStackContainer = styled.div`
   padding: 0 1.5rem;
@@ -22,41 +21,6 @@ export const CardStackContainer = styled.div`
       }
     }
   }
-`;
-
-export const CardStack = styled.div`
-  position: relative;
-  width: 100%;
-  height: 29.86rem;
-`;
-
-const styleByOrder: Record<
-  StackOrder,
-  { bottom: string; opacity: number; scaleX: number }
-> = {
-  1: {
-    bottom: "0rem",
-    opacity: 1,
-    scaleX: 1,
-  },
-  2: {
-    bottom: "1.38rem",
-    opacity: 0.4,
-    scaleX: 0.94,
-  },
-  3: {
-    bottom: "2.63rem",
-    opacity: 0.2,
-    scaleX: 0.88,
-  },
-};
-
-export const StackedCard = styled.div<{ order: 1 | 2 | 3 }>`
-  position: absolute;
-  bottom: ${({ order }) => styleByOrder[order].bottom};
-  opacity: ${({ order }) => styleByOrder[order].opacity};
-  transform: scaleX(${({ order }) => styleByOrder[order].scaleX});
-  z-index: ${({ order }) => 5 - order};
 `;
 
 export const ProgressContainer = styled.div`

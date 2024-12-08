@@ -32,7 +32,7 @@ export const Title = styled.span`
 `;
 
 export const TempLogo = styled.h1`
-  color: ${(props) => props.theme.colors["--card-color-blue"]};
+  color: ${(props) => props.theme.colors["--card-color-blue-500"]};
   font-size: 5.28419rem;
   font-weight: 700;
   line-height: 76%;

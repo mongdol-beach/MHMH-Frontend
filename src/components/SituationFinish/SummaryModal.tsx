@@ -2,16 +2,12 @@ import React from "react";
 import Modal from "../../elements/Modal";
 import Close from "@assets/icons/close.svg";
 import * as S from "./styled";
+import { Topic } from "../../types/topic";
 
 interface SummaryModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  topics: {
-    id: number;
-    content: string;
-    isRecommend: boolean;
-    tips: string[];
-  }[];
+  topics: Topic[];
 }
 
 const SummaryModal: React.FC<SummaryModalProps> = ({

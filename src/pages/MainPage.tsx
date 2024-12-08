@@ -1,11 +1,7 @@
-import styled from "styled-components";
-
-const Test = styled.h1`
-  color: red;
-`;
+import Main from "../components/Main";
 
 const MainPage = () => {
-  return <Test>메인 페이지</Test>;
+  return <Main />;
 };
 
 export default MainPage;

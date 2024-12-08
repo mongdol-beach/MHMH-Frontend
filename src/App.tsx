@@ -8,6 +8,7 @@ import { theme } from "./styles/theme";
 import PAGE_PATH from "./constants/path";
 import AppLayout from "./components/Layout";
 import SituationPage from "./pages/SituationPage";
+import BalanceGamePage from "./pages/BalanceGamePage";
 
 function App() {
   const [queryClient] = useState(
@@ -28,6 +29,10 @@ function App() {
           <Routes>
             <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
             <Route path={PAGE_PATH.SITUATION} element={<SituationPage />} />
+            <Route
+              path={PAGE_PATH["BALANCE-GAME"]}
+              element={<BalanceGamePage />}
+            />
           </Routes>
           <GlobalStyle />
         </AppLayout>

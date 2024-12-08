@@ -184,5 +184,5 @@ export const ModalContents_bg = styled.div`
   right: -21px;
   bottom: -51px;
   border-radius: 0px 0px 60px 60px;
-  background: ${(props) => props.theme.colors["--Primary-blud-700"]};
+  background: ${(props) => props.theme.colors["--Primary-blue-700"]};
 `;

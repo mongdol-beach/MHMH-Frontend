@@ -9,6 +9,14 @@ interface SituationResponse {
 export const useSituations = () => {
   return useQuery<SituationResponse>({
     queryKey: ["situations"],
-    queryFn: () => instance.get("/situation").then((res) => res.data),
+    queryFn: async () => {
+      try {
+        const res = await instance.get("/situation");
+        return res.data;
+      } catch (error) {
+        console.log("Error in queryFn:", error);
+        throw error; // 에러를 다시 throw
+      }
+    },
   });
 };

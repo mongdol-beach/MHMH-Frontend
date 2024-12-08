@@ -3,14 +3,7 @@ import * as S from "./styled";
 import PAGE_PATH from "../../constants/path";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-interface Situation {
-  id: string;
-  title: string;
-  color: string;
-  textColor: string;
-}
-
+import { type Situation } from "../../types/situation";
 const Situation = () => {
   const [situations, setSituations] = useState<Situation[]>([]); // 상태 관리
   useEffect(() => {

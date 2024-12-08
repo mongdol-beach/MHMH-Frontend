@@ -14,6 +14,7 @@ import { OverlayProvider } from "overlay-kit";
 
 import TopicsBySituationPage from "./pages/TopicsBySituationPage";
 import RandomTopicsPage from "./pages/RandomTopicsPage";
+import { Helmet } from "react-helmet";
 
 function App() {
   const [queryClient] = useState(
@@ -28,37 +29,49 @@ function App() {
   );
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <OverlayProvider>
-          <AppLayout>
-            <Suspense fallback={<div>임시 로딩 처리..</div>}>
-              <Routes>
-                <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
-                <Route path={PAGE_PATH.SITUATION} element={<SituationPage />} />
-                <Route
-                  path={PAGE_PATH.TOPIC_LIST}
-                  element={<TopicListPage />}
-                />
-                <Route
-                  path={`${PAGE_PATH.TOPICS_BY_SITUATION}/:situationId`}
-                  element={<TopicsBySituationPage />}
-                />
-                <Route
-                  path={PAGE_PATH.TOPICS_RANDOM}
-                  element={<RandomTopicsPage />}
-                />
-                <Route
-                  path={PAGE_PATH["BALANCE-GAME"]}
-                  element={<BalanceGamePage />}
-                />
-              </Routes>
-              <GlobalStyle />
-            </Suspense>
-          </AppLayout>
-        </OverlayProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <>
+      <Helmet>
+        <meta
+          property="og:image"
+          content={`${process.env.PUBLIC_URL}/og-image.png`}
+        />
+        <meta property="og:image:alt" content="말해머해 오픈 그래프 이미지" />
+      </Helmet>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <OverlayProvider>
+            <AppLayout>
+              <Suspense fallback={<div>임시 로딩 처리..</div>}>
+                <Routes>
+                  <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
+                  <Route
+                    path={PAGE_PATH.SITUATION}
+                    element={<SituationPage />}
+                  />
+                  <Route
+                    path={PAGE_PATH.TOPIC_LIST}
+                    element={<TopicListPage />}
+                  />
+                  <Route
+                    path={`${PAGE_PATH.TOPICS_BY_SITUATION}/:situationId`}
+                    element={<TopicsBySituationPage />}
+                  />
+                  <Route
+                    path={PAGE_PATH.TOPICS_RANDOM}
+                    element={<RandomTopicsPage />}
+                  />
+                  <Route
+                    path={PAGE_PATH["BALANCE-GAME"]}
+                    element={<BalanceGamePage />}
+                  />
+                </Routes>
+                <GlobalStyle />
+              </Suspense>
+            </AppLayout>
+          </OverlayProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </>
   );
 }
 

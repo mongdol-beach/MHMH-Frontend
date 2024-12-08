@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import FONT from "../../styles/font";
-import { StackOrder } from "../TopicCards/type";
 
 export const Main = styled.main``;
 

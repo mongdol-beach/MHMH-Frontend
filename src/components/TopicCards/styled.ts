@@ -6,6 +6,10 @@ export const CardStackContainer = styled.div`
   padding: 0 1.5rem;
   margin-top: 1.19rem;
 
+  .swiper-wrapper {
+    box-sizing: inherit !important;
+  }
+
   .stacked-card-swiper {
     .swiper-slide {
       transition: all 0.3s ease;

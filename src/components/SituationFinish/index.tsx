@@ -15,10 +15,10 @@ interface FinishProps {
 
 const Finish: React.FC<FinishProps> = ({ topics }) => {
   const { isOpen, openModal, closeModal } = useModal();
-  const navigate = useNavigate(); // 라우터 내비게이션 훅
+  const navigate = useNavigate();
 
   const handleRestart = () => {
-    navigate(0); // 토픽 페이지
+    navigate(0);
   };
 
   return (

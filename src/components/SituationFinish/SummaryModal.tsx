@@ -20,8 +20,8 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
   topics,
 }) => {
   return (
-    <Modal isOpen={isOpen} closeModal={closeModal}>
-      <S.CloseIcon src={Close} />
+    <Modal isOpen={isOpen}>
+      <S.CloseIcon src={Close} onClick={closeModal} />
       <S.ModalContainer>
         <S.ModalHeader>
           <S.ModalHeader_left>
@@ -56,6 +56,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
             </S.ModalContents_metrics>
           ))}
         </S.ModalContents>
+        <S.ModalFooter>즐거운 대화였길 바래요 :)</S.ModalFooter>
       </S.ModalContainer>
     </Modal>
   );

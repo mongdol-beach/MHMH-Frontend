@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface ModalProps {
   isOpen: boolean;
-  closeModal: () => void;
+  closeModal?: () => void;
   children: ReactNode;
 }
 
@@ -11,18 +11,17 @@ const Modal: React.FC<ModalProps> = ({ isOpen, closeModal, children }) => {
   if (!isOpen) return null;
 
   return (
-    <Overlay onClick={closeModal}>
+    <ModalBg onClick={closeModal}>
       <Content onClick={(e) => e.stopPropagation()}>{children}</Content>
-    </Overlay>
+    </ModalBg>
   );
 };
 
 export default Modal;
 
-// Styled components
-const Overlay = styled.div`
+const ModalBg = styled.div`
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 100vh;

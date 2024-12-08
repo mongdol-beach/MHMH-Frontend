@@ -12,9 +12,8 @@ interface Situation {
 }
 
 const Situation = () => {
-  const [situations, setSituations] = useState<Situation[]>([]); // 상태 관리
+  const [situations, setSituations] = useState<Situation[]>([]);
   useEffect(() => {
-    // Axios로 API 요청 보내기
     axios
       .get("https://mhmh-backend.fly.dev/situation")
       .then((response) => {

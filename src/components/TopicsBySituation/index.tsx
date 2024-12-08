@@ -56,7 +56,6 @@ const TopicsBySituation = () => {
       console.error("API 요청 중 오류 발생:", error);
     }
   };
-
   // 컴포넌트 마운트 시 또는 situation 값이 변경될 때 API 요청 실행
   useEffect(() => {
     if (situation) {
@@ -69,14 +68,18 @@ const TopicsBySituation = () => {
     Math.min(currentIndex + TOPICS_LENGTH_TO_SHOW, topics.length),
   );
 
-  const handleSlideChange = (swiper: SwiperType) => {
-    setCurrentIndex(Math.min(swiper.activeIndex, topics.length - 1));
-    setIsLastSlide(swiper.isEnd);
-
-    // 마지막 슬라이드에 도달하면 Finish 화면을 표시
-    if (swiper.isEnd) {
+  // currentIndex가 바뀔 때마다 마지막 슬라이드인지 확인하는 useEffect
+  useEffect(() => {
+    if (currentIndex === topics.length - 1) {
       setIsLastSlide(true);
+    } else {
+      setIsLastSlide(false);
     }
+  }, [currentIndex, topics.length]);
+
+  const handleSlideChange = (swiper: SwiperType) => {
+    console.log("swiper.activeIndex:", swiper.activeIndex);
+    setCurrentIndex(Math.min(swiper.activeIndex, topics.length - 1));
   };
 
   return (

@@ -6,10 +6,11 @@ import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import Finish from "../SituationFinish";
 import ShortArrow from "@assets/icons/short-arrow.svg";
+import Loading from "../Loading";
 
 const TopicsBySituation = () => {
   const { situationId } = useParams();
-  const { data } = useTopicsBySituation(situationId || "");
+  const { data, isLoading } = useTopicsBySituation(situationId || "");
   const [hasViewedAllCards, setHasViewedAllCards] = useState(false);
 
   const situationName = data?.situationName;
@@ -18,6 +19,14 @@ const TopicsBySituation = () => {
     console.error("situationId is not defined");
     return null;
   }
+
+  if (isLoading)
+    return (
+      <>
+        <Header title="상황별 토픽 추천" />
+        <Loading />
+      </>
+    );
 
   return (
     <>

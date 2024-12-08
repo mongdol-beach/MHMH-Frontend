@@ -9,6 +9,7 @@ import PAGE_PATH from "./constants/path";
 import AppLayout from "./components/Layout";
 import SituationPage from "./pages/SituationPage";
 import TopicsBySituationPage from "./pages/TopicsBySituationPage";
+import RandomTopicsPage from "./pages/RandomTopicsPage";
 
 function App() {
   const [queryClient] = useState(
@@ -32,6 +33,10 @@ function App() {
             <Route
               path={PAGE_PATH.TOPICS_BY_SITUATION}
               element={<TopicsBySituationPage />}
+            />
+            <Route
+              path={PAGE_PATH.TOPICS_RANDOM}
+              element={<RandomTopicsPage />}
             />
           </Routes>
           <GlobalStyle />

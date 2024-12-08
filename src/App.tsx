@@ -31,7 +31,7 @@ function App() {
             <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
             <Route path={PAGE_PATH.SITUATION} element={<SituationPage />} />
             <Route
-              path={PAGE_PATH.TOPICS_BY_SITUATION}
+              path={`${PAGE_PATH.TOPICS_BY_SITUATION}/:situationId`}
               element={<TopicsBySituationPage />}
             />
             <Route

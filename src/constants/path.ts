@@ -3,7 +3,7 @@ const PAGE_PATH = {
   TOPICS_RANDOM: "/topics/random",
   TOPIC: "/topic",
   SITUATION: "/situation",
-  TOPICS_BY_SITUATION: "/topics/situation/:situationId",
+  TOPICS_BY_SITUATION: "/topics/situation",
   "BALANCE-GAME": "/balance-game",
 } as const;
 

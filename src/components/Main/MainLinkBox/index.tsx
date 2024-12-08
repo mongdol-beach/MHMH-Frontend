@@ -12,7 +12,7 @@ const TOPICS = [
     text: "예측할 수 없는 다양한 주제로 색다른 대화 만들기",
   },
   {
-    to: PAGE_PATH.TOPICS_BY_SITUATION,
+    to: PAGE_PATH.SITUATION,
     title: "상황별 토픽",
     lineBreakTitle: "추천",
     width: "10.25",

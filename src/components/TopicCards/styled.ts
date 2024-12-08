@@ -30,7 +30,7 @@ export const Card = styled.div<{ order: number }>`
   position: absolute;
   width: 100%;
   height: 27.3rem;
-  background: ${(props) => props.theme.colors["--card-color-blue"]};
+  background: ${(props) => props.theme.colors["--card-color-blue-500"]};
   border-radius: 16px;
   display: flex;
   justify-content: center;

@@ -6,27 +6,10 @@ import { RANDOM_TOPICS } from "./data";
 import { useState } from "react";
 
 const RandomTopics = () => {
-  const { data, isError, error } = useRandomTopics();
+  const { data } = useRandomTopics();
   const [hasViewedAllCards, setHasViewedAllCards] = useState(false);
 
-  if (isError) {
-    console.error("Random topics fetch error:", error);
-    return (
-      <>
-        <Header title="랜덤 토픽 추천" />
-        <S.Main>
-          <S.TopicCardsContainer>
-            <TopicCards
-              topics={RANDOM_TOPICS}
-              onHasViewedAllCards={setHasViewedAllCards}
-            />
-          </S.TopicCardsContainer>
-        </S.Main>
-      </>
-    );
-  }
-
-  const topics = data?.topics ?? [];
+  const topics = data ? data.topics : RANDOM_TOPICS;
 
   return (
     <>

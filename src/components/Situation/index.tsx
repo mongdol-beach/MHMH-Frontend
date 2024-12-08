@@ -17,7 +17,7 @@ const Situation = () => {
         </S.DescriptionBox>
         <S.SituationBox>
           {SITUATIONS.map((situation) => (
-            <S.SituationItem key={`${situation.id}`}>
+            <S.SituationItem key={situation.id}>
               <S.SituationLink
                 to={`${PAGE_PATH.SITUATION}/${situation.id}/topics`}
               >

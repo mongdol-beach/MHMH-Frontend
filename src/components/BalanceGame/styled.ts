@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Main = styled.main``;
 
@@ -73,14 +74,21 @@ export const OptionBox = styled.div`
 export const Option = styled.button`
   height: 9rem;
   padding: 1rem;
+  font-family: "esamanru OTF";
+  font-size: 1.125rem;
+  font-style: normal;
   align-self: stretch;
   border-radius: 0.5rem;
   border: 1px solid ${(props) => props.theme.colors["-grayscale-200"]};
   background: ${(props) => props.theme.colors["--card-color-blue-100"]};
+  color: ${(props) => props.theme.colors["--grayscale-800"]};
 
   &:hover {
     height: 9rem;
     padding: 1rem;
+    font-family: "esamanru OTF";
+    font-size: 1.125rem;
+    font-style: normal;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -88,9 +96,13 @@ export const Option = styled.button`
     border-radius: 0.5rem;
     border: 1px solid ${(props) => props.theme.colors["-grayscale-200"]};
     background: ${(props) => props.theme.colors["--card-color-blue-300"]};
+    color: ${(props) => props.theme.colors["--card-color-beige"]};
   }
 
   &:active {
+    font-family: "esamanru OTF";
+    font-size: 1.125rem;
+    font-style: normal;
     width: 19rem;
     height: 9rem;
     padding: 1rem;
@@ -100,6 +112,7 @@ export const Option = styled.button`
     flex-shrink: 0;
     border-radius: 0.5rem;
     background: ${(props) => props.theme.colors["--card-color-blue-500"]};
+    color: ${(props) => props.theme.colors["--card-color-beige"]};
 
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
   }
@@ -123,7 +136,7 @@ export const FinishBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 23.4375rem;
-  height: 11.4375rem;
+  height: 12.3rem;
   background: ${(props) => props.theme.colors["--card-color-blue-100"]};
 `;
 
@@ -156,11 +169,14 @@ export const RetryButton = styled.button`
   line-height: 150%;
   letter-spacing: -0.011rem;
 `;
-export const MainButton = styled.button`
+export const MainButtonLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50%;
   border-radius: 5.375rem;
   background: ${(props) => props.theme.colors["--grayscale-800"]};
-  color: var(--grayscale-50, #f7f9fe);
+  color: ${(props) => props.theme.colors["-grayscale-50"]};
 
   font-family: "esamanru OTF";
   font-size: 1rem;
@@ -170,13 +186,10 @@ export const MainButton = styled.button`
   letter-spacing: -0.011rem;
 `;
 
-export const SituationButtonBox = styled.div`
+export const SituationButtonLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const SituationButton = styled.button`
   padding: 0.75rem 1rem;
   border-radius: 5.375rem;
   background: ${(props) => props.theme.colors["--card-color-blue-500"]};

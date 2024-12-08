@@ -1,24 +1,40 @@
 import { useState } from "react";
-import { BALANCEGAME } from "./data";
 import Header from "./Header";
 import * as S from "./styled";
-import { useNavigate } from "react-router-dom";
+import PAGE_PATH from "../../constants/path";
+import {
+  useRandomBalance,
+  usePercentBalance,
+} from "../../hooks/getRandomBalance";
+import { useQueryClient } from "@tanstack/react-query";
+
+const BALANCE_GAME_MAX_NUM = 5;
 
 const BalanceGame = () => {
+  const { data, isError, error } = useRandomBalance();
+  const { mutateAsync } = usePercentBalance();
   const [num, setNum] = useState(0);
-  const maxNum = 5;
-  const progressPercentage = Math.floor(((num + 1) / maxNum) * 100);
-  const navigate = useNavigate();
+  const [selectedOption, setSelectedOption] = useState(null);
+  const progressPercentage = Math.floor(
+    ((num + 1) / BALANCE_GAME_MAX_NUM) * 100,
+  );
 
-  const handleNextQuestion = () => {
-    if (num + 1 < maxNum) {
-      setNum(num + 1);
-    }
-  };
+  const balance = data?.questions ?? [];
+  const currentQuestion = balance[num];
+  const queryClient = useQueryClient();
 
-  const handleRetry = () => {
+  // 에러 처리
+  if (isError) return <div>오류 발생: {error.message}</div>;
+
+  const handleRetry = async () => {
+    await queryClient.invalidateQueries({ queryKey: ["randomBalance"] });
     setNum(0);
   };
+
+  const handleSelectOption = async () => {
+    await 
+  }
+
 
   return (
     <>
@@ -30,42 +46,62 @@ const BalanceGame = () => {
           </S.ProgressBar>
           <S.ProgressBarCounter>
             <S.CounterText>
-              {num + 1} / {maxNum}
+              {num + 1} / {BALANCE_GAME_MAX_NUM}
             </S.CounterText>
           </S.ProgressBarCounter>
         </S.ProgressBarBox>
         <S.DescriptionBox>
-          {BALANCEGAME.map((game, idx) =>
-            idx === num ? (
-              <>
-                <S.Description key={idx}>{game.subject}</S.Description>
-                <S.OptionBox>
-                  <S.Option onClick={handleNextQuestion}>
-                    {game.questionA}
-                  </S.Option>
-                  <S.ComparisonText>VS</S.ComparisonText>
-                  <S.Option onClick={handleNextQuestion}>
-                    {game.questionB}
-                  </S.Option>
-                </S.OptionBox>
-              </>
-            ) : null,
+          {currentQuestion && (
+            <>
+              <S.Description key={currentQuestion.id}>
+                {currentQuestion.description}
+              </S.Description>
+              <S.OptionBox>
+                <S.Option
+                  onClick={() =>
+                    handleSelectOption(
+                      currentQuestion.optionA,
+                      currentQuestion.id,
+                    )
+                  }
+                >
+                  {currentQuestion.optionA}
+                </S.Option>
+                <S.ComparisonText>VS</S.ComparisonText>
+                <S.Option
+                  onClick={() =>
+                    handleSelectOption(
+                      currentQuestion.optionB,
+                      currentQuestion.id,
+                    )
+                  }
+                >
+                  {currentQuestion.optionB}
+                </S.Option>
+              </S.OptionBox>
+              {selectedOption && (
+                <>
+                  <div>
+                    <div>선택한 옵션: {selectedOption}</div>
+                    <div>선택한 퍼센트: {selectedPercentage}%</div>
+                  </div>
+                </>
+              )}
+            </>
           )}
         </S.DescriptionBox>
-        {num + 1 === maxNum && (
+        {num + 1 === BALANCE_GAME_MAX_NUM && (
           <S.FinishBox>
             <S.ButtonBox>
               <S.RetryMainBox>
                 <S.RetryButton onClick={handleRetry}>다시하기</S.RetryButton>
-                <S.MainButton onClick={() => navigate("/")}>
+                <S.MainButtonLink to={PAGE_PATH.MAIN}>
                   메인으로
-                </S.MainButton>
+                </S.MainButtonLink>
               </S.RetryMainBox>
-              <S.SituationButtonBox>
-                <S.SituationButton onClick={() => navigate("/situation")}>
-                  토픽 추천받아 대화 시작해보기
-                </S.SituationButton>
-              </S.SituationButtonBox>
+              <S.SituationButtonLink to={PAGE_PATH.SITUATION}>
+                토픽 추천받아 대화 시작해보기
+              </S.SituationButtonLink>
             </S.ButtonBox>
           </S.FinishBox>
         )}

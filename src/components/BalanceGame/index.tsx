@@ -5,6 +5,7 @@ import PAGE_PATH from "../../constants/path";
 import {
   useRandomBalance,
   usePercentBalance,
+  SelectedPercentage,
 } from "../../hooks/getRandomBalance";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -14,7 +15,8 @@ const BalanceGame = () => {
   const { data, isError, error } = useRandomBalance();
   const { mutateAsync } = usePercentBalance();
   const [num, setNum] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedPercentage, setSelectedPercentage] =
+    useState<SelectedPercentage | null>(null);
   const progressPercentage = Math.floor(
     ((num + 1) / BALANCE_GAME_MAX_NUM) * 100,
   );
@@ -31,10 +33,10 @@ const BalanceGame = () => {
     setNum(0);
   };
 
-  const handleSelectOption = async () => {
-    await 
-  }
-
+  const handleSelectOption = async (option: string, id: number) => {
+    const data = await mutateAsync({ id, selectedOption: option });
+    setSelectedPercentage(data);
+  };
 
   return (
     <>
@@ -58,35 +60,21 @@ const BalanceGame = () => {
               </S.Description>
               <S.OptionBox>
                 <S.Option
-                  onClick={() =>
-                    handleSelectOption(
-                      currentQuestion.optionA,
-                      currentQuestion.id,
-                    )
-                  }
+                  onClick={() => handleSelectOption("A", currentQuestion.id)}
                 >
                   {currentQuestion.optionA}
+                  <br />
+                  {selectedPercentage && `${selectedPercentage.optionA}%`}
                 </S.Option>
                 <S.ComparisonText>VS</S.ComparisonText>
                 <S.Option
-                  onClick={() =>
-                    handleSelectOption(
-                      currentQuestion.optionB,
-                      currentQuestion.id,
-                    )
-                  }
+                  onClick={() => handleSelectOption("B", currentQuestion.id)}
                 >
                   {currentQuestion.optionB}
+                  <br />
+                  {selectedPercentage && `${selectedPercentage.optionB}%`}
                 </S.Option>
               </S.OptionBox>
-              {selectedOption && (
-                <>
-                  <div>
-                    <div>선택한 옵션: {selectedOption}</div>
-                    <div>선택한 퍼센트: {selectedPercentage}%</div>
-                  </div>
-                </>
-              )}
             </>
           )}
         </S.DescriptionBox>

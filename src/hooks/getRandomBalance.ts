@@ -6,10 +6,6 @@ interface RandomBalanceResponse {
   questions: Questions[];
 }
 
-interface SelectDataBalance {
-  selectedOption: SelectQuestions;
-}
-
 export const useRandomBalance = () => {
   return useQuery<RandomBalanceResponse, Error>({
     queryKey: ["randomBalance"],
@@ -18,14 +14,22 @@ export const useRandomBalance = () => {
   });
 };
 
+export interface SelectedPercentage {
+  optionA: number;
+  optionB: number;
+}
+
 export const usePercentBalance = () => {
-  return useMutation<SelectDataBalance, Error, { id: number; answer: string }>({
-    mutationFn: async ({ id, answer }) => {
+  return useMutation<
+    SelectedPercentage,
+    Error,
+    { id: number; selectedOption: string }
+  >({
+    mutationFn: async ({ id, selectedOption }) => {
       const response = await instance.post(
         `/balance-game/questions/${id}/answer`,
-        { answer },
+        { selectedOption },
       );
-      console.log(response.data);
       return response.data;
     },
     onSuccess: (data) => {

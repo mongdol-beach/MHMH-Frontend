@@ -30,12 +30,11 @@ export const Title = styled.span`
   font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.011rem;
-  color: ${(props) => props.theme.colors["--point-beige"]};
+  color: ${(props) => props.theme.colors["--card-color-beige"]};
 `;
 
 export const TempLogo = styled.h1`
-  margin-top: 0.38rem;
-  color: ${(props) => props.theme.colors["--card-color-blue"]};
+  color: ${(props) => props.theme.colors["--card-color-blue-500"]};
   font-size: 5.28419rem;
   font-weight: 700;
   line-height: 76%;

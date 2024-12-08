@@ -48,7 +48,7 @@ export const SituationLink = styled(Link)`
 
   &:hover {
     transition: background-color 0.75s;
-    background-color: ${(props) => props.theme.colors["--card-color-blue"]};
+    background-color: ${(props) => props.theme.colors["--card-color-blue-500"]};
     color: white;
   }
 `;

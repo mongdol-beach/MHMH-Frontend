@@ -18,20 +18,23 @@ export const SubTitle = styled.p`
   font-weight: 500;
   line-height: 150%;
   letter-spacing: -0.011rem;
+  margin-bottom: 0.31rem;
 `;
 
 export const Title = styled.span`
   border-radius: 4.5625rem;
   padding: 0.25rem 0.75rem;
-  background: ${(props) => props.theme.colors["--card-color-beige"]};
+  background: ${(props) => props.theme.colors["-grayscale-800"]};
   text-align: center;
   font-family: "esamanru OTF";
   font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.011rem;
+  color: ${(props) => props.theme.colors["--point-beige"]};
 `;
 
 export const TempLogo = styled.h1`
+  margin-top: 0.38rem;
   color: ${(props) => props.theme.colors["--card-color-blue"]};
   font-size: 5.28419rem;
   font-weight: 700;

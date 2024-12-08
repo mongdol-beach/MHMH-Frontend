@@ -1,7 +1,7 @@
 import * as S from "./styled";
 import Header from "../Header";
 import TopicCards from "../TopicCards";
-import { topics } from "./data";
+import { TOPICS_BY_SITUATION } from "./data";
 
 const TopicsBySituation = () => {
   return (
@@ -12,7 +12,7 @@ const TopicsBySituation = () => {
           <S.Situation>#소개팅</S.Situation>
           <S.ViewAllTopicsButton>전체 토픽 둘러보기 &gt;</S.ViewAllTopicsButton>
         </S.SituationBox>
-        <TopicCards topics={topics} />
+        <TopicCards topics={TOPICS_BY_SITUATION} />
       </S.Main>
     </>
   );

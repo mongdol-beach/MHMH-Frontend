@@ -19,7 +19,7 @@ export const Description = styled.p`
 `;
 
 export const DescriptionBold = styled.span`
-  font-weight: 800;
+  font-weight: ${({ theme }) => theme.weight["--font-weight-bold"]};
 `;
 
 export const SituationBox = styled.ul`

@@ -10,9 +10,11 @@ export const Container = styled.header`
 export const Title = styled.h1`
   font-family: "esamanru OTF";
   font-size: 1rem;
-  font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.011rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export const Icon = styled.img``;

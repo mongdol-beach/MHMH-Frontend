@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "swiper/css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,17 +9,19 @@ import * as S from "./styled";
 import Header from "../Header";
 import { topics } from "./data";
 
+const TOPICS_LENGTH_TO_SHOW = 3;
+
 const TopicBySituation = () => {
-  const topicsLengthToShow = 3;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const topicsToShow = topics.slice(
     currentIndex,
-    currentIndex + topicsLengthToShow,
+    Math.min(currentIndex + TOPICS_LENGTH_TO_SHOW, topics.length),
   );
 
   const handleSlideChange = (swiper: SwiperType) => {
-    setCurrentIndex(swiper.activeIndex);
+    const newIndex = Math.min(swiper.activeIndex, topics.length - 1);
+    setCurrentIndex(newIndex);
   };
 
   return (
@@ -45,16 +47,22 @@ const TopicBySituation = () => {
               slideShadows: false,
             }}
             direction="horizontal"
+            loop={false}
           >
-            <S.CardStack>
-              {topicsToShow.map((topic, index) => (
-                <SwiperSlide key={`${topic}-${index}`}>
-                  <S.StackedCard order={(index + 1) as 1 | 2 | 3}>
-                    {topic}
-                  </S.StackedCard>
-                </SwiperSlide>
-              ))}
-            </S.CardStack>
+            {topics.map((_, index) => (
+              <SwiperSlide key={`slide-${index}`}>
+                <S.CardStack>
+                  {topicsToShow.map((topic, stackIndex) => (
+                    <S.StackedCard
+                      key={`${topic}-${stackIndex}`}
+                      order={(stackIndex + 1) as 1 | 2 | 3}
+                    >
+                      {topic}
+                    </S.StackedCard>
+                  ))}
+                </S.CardStack>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </S.CardStackContainer>
       </S.Main>

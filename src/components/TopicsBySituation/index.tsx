@@ -18,7 +18,7 @@ const TopicsBySituation = () => {
 
   return (
     <>
-      <Header title="소개팅 토픽" />
+      <Header title="상황별 토픽 추천" />
       <S.Main>
         <S.SituationBox>
           <S.Situation>#소개팅</S.Situation>

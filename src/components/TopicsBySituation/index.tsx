@@ -2,7 +2,7 @@ import * as S from "./styled";
 import Header from "../Header";
 import TopicCards from "../TopicCards";
 import { useTopicsBySituation } from "../../hooks/useTopicsBySituation";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import Finish from "../SituationFinish";
 import ShortArrow from "@assets/icons/short-arrow.svg";
@@ -25,10 +25,12 @@ const TopicsBySituation = () => {
       <S.Main>
         <S.SituationBox>
           <S.Situation>#{situationName}</S.Situation>
-          <S.ViewAllTopicsButton>
-            {situationName} 토픽 둘러보기
-            <S.Icon src={ShortArrow} alt="토픽 둘러보기 아이콘" />
-          </S.ViewAllTopicsButton>
+          <Link to={`/topic-list/${situationId}`}>
+            <S.ViewAllTopicsButton>
+              {situationName} 토픽 둘러보기
+              <S.Icon src={ShortArrow} alt="토픽 둘러보기 아이콘" />
+            </S.ViewAllTopicsButton>
+          </Link>
         </S.SituationBox>
         {hasViewedAllCards ? (
           <Finish topics={data?.topics || []} />

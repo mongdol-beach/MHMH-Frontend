@@ -49,6 +49,8 @@ const TopicCards = ({ topics }: TopicCardsProps) => {
     setIsLastSlide(newIndex >= topics.length);
   };
 
+  if (!topics.length) return null;
+
   return (
     <S.CardStackContainer>
       {isLastSlide ? (

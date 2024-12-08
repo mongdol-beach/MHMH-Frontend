@@ -7,6 +7,7 @@ import type { Swiper as SwiperType } from "swiper";
 import * as S from "./styled";
 import Header from "../Header";
 import { topics } from "./data";
+import { StackOrder } from "./type";
 
 const TOPICS_LENGTH_TO_SHOW = 3;
 
@@ -66,7 +67,7 @@ const TopicsBySituation = () => {
                     {topicsToShow.map((stackTopic, stackIndex) => (
                       <S.StackedCard
                         key={`${stackTopic}-${stackIndex}`}
-                        order={(stackIndex + 1) as 1 | 2 | 3}
+                        order={(stackIndex + 1) as StackOrder}
                       >
                         {stackTopic}
                       </S.StackedCard>

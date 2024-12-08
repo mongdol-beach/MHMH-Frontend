@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import FONT, { WEIGHT } from "../../styles/font";
+import { StackOrder } from "./type";
 
 export const Main = styled.main``;
 
@@ -61,7 +62,7 @@ export const Card = styled.div<{ order: number }>`
 `;
 
 const styleByOrder: Record<
-  1 | 2 | 3,
+  StackOrder,
   { bottom: string; opacity: number; scaleX: number }
 > = {
   1: {

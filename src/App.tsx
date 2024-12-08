@@ -6,8 +6,12 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import PAGE_PATH from "./constants/path";
 import AppLayout from "./components/Layout";
+
+import BalanceGamePage from "./pages/BalanceGamePage";
+
 import { MainPage, SituationPage, TopicListPage } from "./pages/index";
 import { OverlayProvider } from "overlay-kit";
+
 import TopicsBySituationPage from "./pages/TopicsBySituationPage";
 import RandomTopicsPage from "./pages/RandomTopicsPage";
 import { Helmet } from "react-helmet";

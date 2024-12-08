@@ -34,7 +34,6 @@ const TopicCards = ({ topics }: TopicCardsProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLastSlide, setIsLastSlide] = useState(false);
   const slides = [...topics, ""];
-  console.info("slides ", slides);
 
   const topicsToShow = topics.slice(
     currentIndex,

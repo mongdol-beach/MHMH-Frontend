@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FONT, { WEIGHT } from "../../styles/font";
+import FONT from "../../styles/font";
 import { StackOrder } from "../TopicCards/type";
 
 export const Main = styled.main``;
@@ -9,8 +9,8 @@ export const SituationBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1.69rem;
-  margin-bottom: 0.69rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2.75rem;
 `;
 
 export const Situation = styled.div`
@@ -18,12 +18,14 @@ export const Situation = styled.div`
 `;
 
 export const ViewAllTopicsButton = styled.button`
-  ${FONT.caption12}
+  ${FONT.caption14}
   padding: 0.25rem 0.75rem;
-  background-color: ${(props) => props.theme.colors["--card-color-beige"]};
+  color: white;
+  background-color: ${(props) => props.theme.colors["-grayscale-800"]};
   border-radius: 4.56rem;
-  font-weight: ${WEIGHT["--font-weight-bold"]};
-  margin-top: 0.69rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
 `;
 
 export const CardStackContainer = styled.div`

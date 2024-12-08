@@ -160,6 +160,7 @@ export const ModalContents_metrics_topic = styled.p`
   font-weight: ${(props) => props.theme.weight["--font-weight-light"]};
   line-height: 1.5;
   letter-spacing: -0.28px;
+  width: 133px;
 `;
 
 export const ModalContents_metrics_right = styled.div`

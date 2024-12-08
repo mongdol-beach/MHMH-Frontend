@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "../../elements/Modal";
 import Close from "@assets/icons/close.svg";
 import * as S from "./styled";
+import { TopicTip } from "../../types/topic";
 
 interface SummaryModalProps {
   isOpen: boolean;
@@ -10,7 +11,7 @@ interface SummaryModalProps {
     id: number;
     content: string;
     isRecommend: boolean;
-    tips: string[];
+    tips: TopicTip[]; // string[] 대신 TopicTip[]
   }[];
 }
 
@@ -33,7 +34,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
             </S.ModalHeader_desc>
           </S.ModalHeader_left>
           <S.ModalHeader_right>
-            <S.ModalHeader_date>2021.12.07</S.ModalHeader_date>
+            {/* <S.ModalHeader_date>2021.12.07</S.ModalHeader_date> */}
           </S.ModalHeader_right>
         </S.ModalHeader>
         <S.ModalContents>

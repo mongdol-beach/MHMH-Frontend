@@ -3,16 +3,17 @@ import { useNavigate } from "react-router-dom";
 import useModal from "../../hooks/useModal";
 import SummaryModal from "./SummaryModal";
 import * as S from "./styled";
+import { TopicTip } from "../../types/topic";
 
 interface FinishProps {
+  // 또는 아래처럼 직접 정의
   topics: {
     id: number;
     content: string;
     isRecommend: boolean;
-    tips: string[];
+    tips: TopicTip[]; // string[] 대신 TopicTip[]
   }[];
 }
-
 const Finish: React.FC<FinishProps> = ({ topics }) => {
   const { isOpen, openModal, closeModal } = useModal();
   const navigate = useNavigate();

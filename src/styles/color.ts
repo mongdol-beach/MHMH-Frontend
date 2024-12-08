@@ -1,4 +1,5 @@
 export const COLORS = {
+  "--point-beige": "#F9F4E3",
   "--card-color-blue-100": "#e8eeff",
   "--card-color-blue": "#5881f3",
   "--card-color-sky_b": "#97b2ff",

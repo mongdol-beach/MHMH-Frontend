@@ -1,6 +1,7 @@
 import { SITUATIONS } from "./data";
 import Header from "../Header";
 import * as S from "./styled";
+import PAGE_PATH from "../../constants/path";
 
 const Situation = () => {
   return (
@@ -9,16 +10,18 @@ const Situation = () => {
       <S.Main>
         <S.DescriptionBox>
           <S.Description>
-            토픽 추천이 필요한
+            원하는 상황에 맞는
             <br />
-            상황을 선택 해주세요
+            <S.DescriptionBold>토픽 5가지를 추천</S.DescriptionBold>해줄게요
           </S.Description>
         </S.DescriptionBox>
         <S.SituationBox>
-          {SITUATIONS.map((situation, idx) => (
-            <S.SituationItem key={idx}>
-              <S.SituationLink to={situation.to}>
-                {situation.text}
+          {SITUATIONS.map((situation) => (
+            <S.SituationItem key={situation.id}>
+              <S.SituationLink
+                to={`${PAGE_PATH.SITUATION}/${situation.id}/topics`}
+              >
+                {situation.title}
               </S.SituationLink>
             </S.SituationItem>
           ))}

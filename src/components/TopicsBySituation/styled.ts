@@ -101,3 +101,5 @@ export const ProgressText = styled.span`
   ${FONT.body16}
   opacity: 0.5;
 `;
+
+export const Icon = styled.img``;

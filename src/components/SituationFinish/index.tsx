@@ -3,14 +3,10 @@ import { useNavigate } from "react-router-dom";
 import useModal from "../../hooks/useModal";
 import SummaryModal from "./SummaryModal";
 import * as S from "./styled";
+import { Topic } from "../../types/topic";
 
 interface FinishProps {
-  topics: {
-    id: number;
-    content: string;
-    isRecommend: boolean;
-    tips: string[];
-  }[];
+  topics: Topic[];
 }
 
 const Finish: React.FC<FinishProps> = ({ topics }) => {

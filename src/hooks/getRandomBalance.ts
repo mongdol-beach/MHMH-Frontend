@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { instance } from "../apis/axios";
-import { Questions, SelectQuestions } from "../types/balance";
+import { Questions } from "../types/balance";
 
 interface RandomBalanceResponse {
   questions: Questions[];

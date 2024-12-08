@@ -2,10 +2,19 @@ import Header from "../Header";
 import * as S from "./styled";
 import PAGE_PATH from "../../constants/path";
 import { useSituations } from "../../hooks/useSituations";
+import Loading from "../Loading";
 
 const Situation = () => {
-  const { data } = useSituations();
+  const { data, isLoading } = useSituations();
   const situations = data?.situations ?? [];
+
+  if (isLoading)
+    return (
+      <>
+        <Header title="상황별 토픽" />
+        <Loading />
+      </>
+    );
 
   return (
     <>

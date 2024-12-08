@@ -8,11 +8,12 @@ import {
   SelectedPercentage,
 } from "../../hooks/getRandomBalance";
 import { useQueryClient } from "@tanstack/react-query";
+import Loading from "../Loading";
 
 const BALANCE_GAME_MAX_NUM = 5;
 
 const BalanceGame = () => {
-  const { data, isError, error } = useRandomBalance();
+  const { data, isLoading, isError, error } = useRandomBalance();
   const { mutateAsync } = usePercentBalance();
   const [num, setNum] = useState(0);
   const [selectedPercentage, setSelectedPercentage] =
@@ -37,6 +38,14 @@ const BalanceGame = () => {
     const data = await mutateAsync({ id, selectedOption: option });
     setSelectedPercentage(data);
   };
+
+  if (isLoading)
+    return (
+      <>
+        <Header />
+        <Loading />
+      </>
+    );
 
   return (
     <>

@@ -5,10 +5,11 @@ import { useGetTopicList } from "../hooks/useGetTopicList";
 import TopicList from "../components/TopicList";
 import { Helmet } from "react-helmet";
 import { Situation } from "../types";
+import Loading from "../components/Loading";
 
 function TopicListPage() {
   const { id: situation } = useParams();
-  const { data } = useGetTopicList(situation as Situation);
+  const { data, isLoading } = useGetTopicList(situation as Situation);
 
   return (
     <>
@@ -16,7 +17,11 @@ function TopicListPage() {
         <title>{data.situationName} 토픽 | 말해머해</title>
       </Helmet>
       <Header title={data.situationName} hasHomeIcon={false} />
-      <TopicList topicList={data.topics} situationName={data.situationName} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <TopicList topicList={data.topics} situationName={data.situationName} />
+      )}
     </>
   );
 }

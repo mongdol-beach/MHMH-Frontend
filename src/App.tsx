@@ -30,7 +30,7 @@ function App() {
             <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
             <Route path={PAGE_PATH.SITUATION} element={<SituationPage />} />
             <Route
-              path={`${PAGE_PATH.SITUATION}/:situationId/topics`}
+              path={PAGE_PATH.TOPICS_BY_SITUATION}
               element={<TopicsBySituationPage />}
             />
           </Routes>

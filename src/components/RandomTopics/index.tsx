@@ -5,10 +5,23 @@ import { useRandomTopics } from "../../hooks/getRandomTopics";
 import { RANDOM_TOPICS } from "./data";
 
 const RandomTopics = () => {
-  const { data, isError } = useRandomTopics();
-  // TODO: isError 처리
-  // useRandomTopics 에러가 나도 isError가 그대로 false여서 임시로 이렇게 처리
-  const topics = isError ? RANDOM_TOPICS : (data?.topics ?? []);
+  const { data, isError, error } = useRandomTopics();
+
+  if (isError) {
+    console.error("Random topics fetch error:", error);
+    return (
+      <>
+        <Header title="랜덤 토픽 추천" />
+        <S.Main>
+          <S.TopicCardsContainer>
+            <TopicCards topics={RANDOM_TOPICS} />
+          </S.TopicCardsContainer>
+        </S.Main>
+      </>
+    );
+  }
+
+  const topics = data?.topics ?? [];
 
   return (
     <>

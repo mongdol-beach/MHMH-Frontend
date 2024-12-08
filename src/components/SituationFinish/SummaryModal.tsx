@@ -1,13 +1,18 @@
 import React from "react";
-import Modal from "../../elements/Modal";
+import Modal from "../../components/Modal/SituationFinishModal/Modal";
 import Close from "@assets/icons/close.svg";
 import * as S from "./styled";
-import { Topic } from "../../types/topic";
+import { TopicTip } from "../../types/topic";
 
 interface SummaryModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  topics: Topic[];
+  topics: {
+    id: number;
+    content: string;
+    isRecommend: boolean;
+    tips: TopicTip[]; // string[] 대신 TopicTip[]
+  }[];
 }
 
 const SummaryModal: React.FC<SummaryModalProps> = ({
@@ -16,8 +21,8 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
   topics,
 }) => {
   return (
-    <Modal isOpen={isOpen} closeModal={closeModal}>
-      <S.CloseIcon src={Close} />
+    <Modal isOpen={isOpen}>
+      <S.CloseIcon src={Close} onClick={closeModal} />
       <S.ModalContainer>
         <S.ModalHeader>
           <S.ModalHeader_left>
@@ -29,7 +34,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
             </S.ModalHeader_desc>
           </S.ModalHeader_left>
           <S.ModalHeader_right>
-            <S.ModalHeader_date>2021.12.07</S.ModalHeader_date>
+            {/* <S.ModalHeader_date>2021.12.07</S.ModalHeader_date> */}
           </S.ModalHeader_right>
         </S.ModalHeader>
         <S.ModalContents>
@@ -52,6 +57,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
             </S.ModalContents_metrics>
           ))}
         </S.ModalContents>
+        <S.ModalFooter>즐거운 대화였길 바래요 :)</S.ModalFooter>
       </S.ModalContainer>
     </Modal>
   );

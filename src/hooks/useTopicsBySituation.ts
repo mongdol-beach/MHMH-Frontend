@@ -3,6 +3,7 @@ import { Topic } from "../types/topic";
 import { instance } from "../apis/axios";
 
 interface TopicsBySituationResponse {
+  situationName: string;
   topics: Topic[];
 }
 

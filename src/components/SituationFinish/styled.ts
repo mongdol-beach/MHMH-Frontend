@@ -31,7 +31,7 @@ export const Comment = styled.p`
   ${FONT.body16}
 `;
 
-export const CommentBold = styled.p`
+export const CommentBold = styled.span`
   color: ${(props) => props.theme.colors["-grayscale-800"]};
   font-family: "esamanru OTF";
   font-size: 1.125rem;
@@ -61,22 +61,23 @@ export const reTryBtn = styled(Button)`
 `;
 
 export const SummaryBtn = styled(Button)`
-  background-color: ${(props) => props.theme.colors["--card-color-blue"]};
+  background-color: ${(props) => props.theme.colors["--Primary-blue-500"]};
 `;
 
 /* Modal */
 
-export const CloseIcon = styled.img`
+export const CloseIcon = styled.img<{ onClick: () => void }>`
   position: absolute;
   top: 16px;
   right: 20px;
+  cursor: pointer;
 `;
 
 export const ModalContainer = styled.div`
-  margin-top: 64px;
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 `;
 
 export const ModalHeader = styled.div`
@@ -85,7 +86,7 @@ export const ModalHeader = styled.div`
   justify-content: space-between;
   border-bottom: 1.5px solid
     ${(props) => props.theme.colors["--card-color-sky_b"]};
-  padding-bottom: 8px;
+  padding-bottom: 0.5rem;
 `;
 
 export const ModalHeader_left = styled.div``;
@@ -96,7 +97,7 @@ export const ModalHeader_title = styled.p`
   ${FONT.body16}
   line-height: 1.5;
   letter-spacing: -0.32px;
-  color: ${(props) => props.theme.colors["--card-color-blue"]};
+  color: ${(props) => props.theme.colors["--Primary-blue-500"]};
 `;
 
 export const ModalHeader_desc = styled.p`
@@ -116,24 +117,27 @@ export const ModalContents = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  border-bottom: 1.5px solid
+    ${(props) => props.theme.colors["--card-color-sky_b"]};
+  padding-bottom: 0.5rem;
 `;
 
 export const ModalContents_metrics = styled.div`
   position: relative;
   overflow: hidden;
   display: flex;
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   justify-content: space-between;
   align-items: flex-start;
   align-self: stretch;
   border-radius: 4px;
-  background-color: ${(props) => props.theme.colors["--card-color-blue"]};
+  background-color: ${(props) => props.theme.colors["--Primary-blue-500"]};
 `;
 
 export const ModalContents_metrics_left = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 1rem;
 `;
 
 export const ModalContents_metrics_currentOrder = styled.p`
@@ -156,6 +160,7 @@ export const ModalContents_metrics_topic = styled.p`
   font-weight: ${(props) => props.theme.weight["--font-weight-light"]};
   line-height: 1.5;
   letter-spacing: -0.28px;
+  width: 133px;
 `;
 
 export const ModalContents_metrics_right = styled.div`
@@ -184,5 +189,13 @@ export const ModalContents_bg = styled.div`
   right: -21px;
   bottom: -51px;
   border-radius: 0px 0px 60px 60px;
-  background: ${(props) => props.theme.colors["--Primary-blud-700"]};
+  background: ${(props) => props.theme.colors["--Primary-blue-700"]};
+`;
+
+export const ModalFooter = styled.p`
+  ${FONT.caption14};
+  line-height: 1.3;
+  letter-spacing: -0.28;
+  color: ${(props) => props.theme.colors["-grayscale-800"]};
+  text-align: center;
 `;

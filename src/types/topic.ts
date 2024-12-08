@@ -3,6 +3,8 @@ export interface Topic {
   content: string;
   isRecommend: boolean;
   tips: TopicTip[];
+  situationType: string;
+  situationName: string;
 }
 
 export interface TopicTip {

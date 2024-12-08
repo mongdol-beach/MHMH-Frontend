@@ -4,6 +4,7 @@ import * as S from "./styled";
 import { useRandomTopics } from "../../hooks/getRandomTopics";
 import { RANDOM_TOPICS } from "./data";
 import { useState } from "react";
+import Finish from "../SituationFinish";
 
 const RandomTopics = () => {
   const { data } = useRandomTopics();
@@ -16,10 +17,14 @@ const RandomTopics = () => {
       <Header title="랜덤 토픽 추천" />
       <S.Main>
         <S.TopicCardsContainer>
-          <TopicCards
-            topics={topics}
-            onHasViewedAllCards={setHasViewedAllCards}
-          />
+          {hasViewedAllCards ? (
+            <Finish topics={topics} />
+          ) : (
+            <TopicCards
+              topics={topics}
+              onHasViewedAllCards={setHasViewedAllCards}
+            />
+          )}
         </S.TopicCardsContainer>
       </S.Main>
     </>

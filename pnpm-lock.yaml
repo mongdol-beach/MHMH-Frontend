@@ -48,6 +48,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.1
         version: 18.3.2
+      '@types/react-helmet':
+        specifier: ^6.1.11
+        version: 6.1.11
       '@vitejs/plugin-react':
         specifier: ^4.3.4
         version: 4.3.4(vite@6.0.3(@types/node@22.10.1))
@@ -545,6 +548,9 @@ packages:
 
   '@types/react-dom@18.3.2':
     resolution: {integrity: sha512-Fqp+rcvem9wEnGr3RY8dYNvSQ8PoLqjZ9HLgaPUOjJJD120uDyOxOjc/39M4Kddp9JQCxpGQbnhVQF0C0ncYVg==}
+
+  '@types/react-helmet@6.1.11':
+    resolution: {integrity: sha512-0QcdGLddTERotCXo3VFlUSWO3ztraw8nZ6e3zJSgG7apwV5xt+pJUS8ewPBqT4NYB1optGLprNQzFleIY84u/g==}
 
   '@types/react@18.3.14':
     resolution: {integrity: sha512-NzahNKvjNhVjuPBQ+2G7WlxstQ+47kXZNHlUvFakDViuIEfGY926GqhMueQFZ7woG+sPiQKlF36XfrIUVSUfFg==}
@@ -1705,6 +1711,10 @@ snapshots:
   '@types/prop-types@15.7.14': {}
 
   '@types/react-dom@18.3.2':
+    dependencies:
+      '@types/react': 18.3.14
+
+  '@types/react-helmet@6.1.11':
     dependencies:
       '@types/react': 18.3.14
 

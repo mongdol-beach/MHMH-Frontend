@@ -5,6 +5,7 @@ import { EffectCards } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import * as S from "./styled";
 import { StackOrder } from "./type";
+import { Topic } from "../../types/topic";
 const TOPICS_LENGTH_TO_SHOW = 3;
 
 const SWIPER_CONFIG = {
@@ -26,7 +27,7 @@ const SWIPER_CONFIG = {
 };
 
 interface TopicCardsProps {
-  topics: string[];
+  topics: Topic[];
 }
 
 const TopicCards = ({ topics }: TopicCardsProps) => {
@@ -62,7 +63,7 @@ const TopicCards = ({ topics }: TopicCardsProps) => {
                     key={`${stackTopic}-${stackIndex}`}
                     order={(stackIndex + 1) as StackOrder}
                   >
-                    {stackTopic}
+                    {stackTopic.content}
                   </S.StackedCard>
                 ))}
               </S.CardStack>

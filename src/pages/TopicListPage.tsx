@@ -5,17 +5,13 @@ import { useGetTopicList } from "../hooks/useGetTopicList";
 import TopicList from "../components/TopicList";
 
 function TopicListPage() {
-  const { id } = useParams();
-  const { data } = useGetTopicList(id!);
-
-  if (!data) {
-    return null;
-  }
+  const { id: situation } = useParams();
+  const { data } = useGetTopicList(situation!);
 
   return (
     <>
-      <Header title="#소개팅 토픽" hasHomeIcon={false} />
-      <TopicList topicList={data.topics} />
+      <Header title={data.situationName} hasHomeIcon={false} />
+      <TopicList topicList={data.topics} situationName={data.situationName} />
     </>
   );
 }

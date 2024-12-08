@@ -4,13 +4,14 @@ import Topic from "./Topic";
 
 interface TopicListProps {
   topicList: TopicType[];
+  situationName: string;
 }
 
-function TopicList({ topicList }: TopicListProps) {
+function TopicList({ topicList, situationName }: TopicListProps) {
   return (
     <S.TopicList>
       {topicList.map((topic) => (
-        <Topic key={topic.id} topic={topic} />
+        <Topic key={topic.id} topic={topic} situationName={situationName} />
       ))}
     </S.TopicList>
   );

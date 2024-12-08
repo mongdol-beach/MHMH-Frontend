@@ -1,5 +1,7 @@
+import { Situation } from "../types";
+
 export const topicListKey = {
   all: ["topic-list"],
   details: () => [...topicListKey.all, "detail"],
-  detail: (id: string) => [...topicListKey.details(), id],
+  detail: (situation: Situation) => [...topicListKey.details(), situation],
 } as const;

@@ -4,7 +4,7 @@ import PAGE_PATH from "../../../constants/path";
 
 const TOPICS = [
   {
-    to: PAGE_PATH["RANDOM-TOPIC"],
+    to: PAGE_PATH.TOPICS_RANDOM,
     title: "랜덤 토픽",
     lineBreakTitle: "추천",
     width: "10.25",

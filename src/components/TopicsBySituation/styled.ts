@@ -27,4 +27,15 @@ export const ViewAllTopicsButton = styled.button`
   align-items: center;
 `;
 
+export const ProgressContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+`;
+
+export const ProgressText = styled.span`
+  ${FONT.body16}
+  opacity: 0.5;
+`;
+
 export const Icon = styled.img``;

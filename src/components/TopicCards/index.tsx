@@ -4,16 +4,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import * as S from "./styled";
-import { StackOrder } from "./type";
 import { Topic } from "../../types/topic";
-const TOPICS_LENGTH_TO_SHOW = 3;
+import Card from "../Card";
+
+const TOPICS_LENGTH_TO_SHOW = 1;
 
 const SWIPER_CONFIG = {
   slidesPerView: 1,
   effect: "cards" as const,
   modules: [EffectCards],
   className: "stacked-card-swiper",
-  style: { height: "29.86rem" },
+  style: { height: "27rem" },
   cardsEffect: {
     perSlideOffset: 0,
     perSlideRotate: 0,
@@ -63,16 +64,14 @@ const TopicCards = ({ topics, onHasViewedAllCards }: TopicCardsProps) => {
         <Swiper {...SWIPER_CONFIG} onSlideChange={handleSlideChange}>
           {slides.map((_, index) => (
             <SwiperSlide key={`slide-${index}`}>
-              <S.CardStack>
-                {topicsToShow.map((stackTopic, stackIndex) => (
-                  <S.StackedCard
-                    key={`${stackTopic}-${stackIndex}`}
-                    order={(stackIndex + 1) as StackOrder}
-                  >
-                    {stackTopic.content}
-                  </S.StackedCard>
-                ))}
-              </S.CardStack>
+              {topicsToShow.map((stackTopic, stackIndex) => (
+                <Card
+                  key={`${stackTopic}-${stackIndex}`}
+                  content={stackTopic.content}
+                  situationName={stackTopic.situationName}
+                  id={stackTopic.id}
+                />
+              ))}
             </SwiperSlide>
           ))}
         </Swiper>

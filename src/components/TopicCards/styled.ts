@@ -1,30 +1,6 @@
 import styled from "styled-components";
-import FONT, { WEIGHT } from "../../styles/font";
-import { StackOrder } from "../TopicCards/type";
-
-export const Main = styled.main``;
-
-export const SituationBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.69rem;
-  margin-bottom: 0.69rem;
-`;
-
-export const Situation = styled.div`
-  ${FONT.headline28}
-`;
-
-export const ViewAllTopicsButton = styled.button`
-  ${FONT.caption12}
-  padding: 0.25rem 0.75rem;
-  background-color: ${(props) => props.theme.colors["--card-color-beige"]};
-  border-radius: 4.56rem;
-  font-weight: ${WEIGHT["--font-weight-bold"]};
-  margin-top: 0.69rem;
-`;
+import FONT from "../../styles/font";
+import { StackOrder } from "./type";
 
 export const CardStackContainer = styled.div`
   padding: 0 1.5rem;
@@ -85,7 +61,6 @@ const styleByOrder: Record<
 export const StackedCard = styled(Card)<{ order: 1 | 2 | 3 }>`
   position: absolute;
   bottom: ${({ order }) => styleByOrder[order].bottom};
-  // TODO: opacity값을 쓸 게 아니라 opacity가 적용된 색상값을 return해야 함.
   opacity: ${({ order }) => styleByOrder[order].opacity};
   transform: scaleX(${({ order }) => styleByOrder[order].scaleX});
   z-index: ${({ order }) => 5 - order};

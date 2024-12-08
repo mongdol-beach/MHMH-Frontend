@@ -1,28 +1,11 @@
 import Header from "../Header";
 import * as S from "./styled";
 import PAGE_PATH from "../../constants/path";
-import { useEffect, useState } from "react";
-import axios from "axios";
-
-interface Situation {
-  id: string;
-  title: string;
-  color: string;
-  textColor: string;
-}
+import { useSituations } from "../../hooks/useSituations";
 
 const Situation = () => {
-  const [situations, setSituations] = useState<Situation[]>([]);
-  useEffect(() => {
-    axios
-      .get("https://mhmh-backend.fly.dev/situation")
-      .then((response) => {
-        setSituations(response.data.situations);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const { data } = useSituations();
+  const situations = data?.situations ?? [];
 
   return (
     <>

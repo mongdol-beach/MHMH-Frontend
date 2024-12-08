@@ -10,6 +10,7 @@ export const COLORS = {
   "--card-color-yellow": "#ffdc79",
   "--card-color-red": "#ff5255",
   "--card-color-pink": "#ffaec5",
+  "--Primary-blud-700": "#2D56CA",
   "-grayscale-800": "#27272C",
   "-grayscale-600": "#606060",
   "-grayscale-400": "#939393",

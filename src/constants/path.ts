@@ -1,6 +1,6 @@
 const PAGE_PATH = {
   MAIN: "/",
-  "RANDOM-TOPIC": "/random-topic",
+  TOPICS_RANDOM: "/topics/random",
   TOPIC: "/topic",
   SITUATION: "/situation",
   TOPICS_BY_SITUATION: "/topics/situation/:situationId",

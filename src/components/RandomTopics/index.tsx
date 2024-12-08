@@ -2,7 +2,6 @@ import Header from "../Header";
 import TopicCards from "../TopicCards";
 import * as S from "./styled";
 import { useRandomTopics } from "../../hooks/getRandomTopics";
-import { RANDOM_TOPICS } from "./data";
 import { useState } from "react";
 import Finish from "../SituationFinish";
 
@@ -10,7 +9,7 @@ const RandomTopics = () => {
   const { data } = useRandomTopics();
   const [hasViewedAllCards, setHasViewedAllCards] = useState(false);
 
-  const topics = data ? data.topics : RANDOM_TOPICS;
+  const topics = data?.topics || [];
 
   return (
     <>

@@ -1,7 +1,7 @@
-import TopicBySituation from "../components/TopicsBySituation";
+import TopicsBySituation from "../components/TopicsBySituation";
 
 const TopicsBySituationPage = () => {
-  return <TopicBySituation />;
+  return <TopicsBySituation />;
 };
 
 export default TopicsBySituationPage;

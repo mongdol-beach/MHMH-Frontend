@@ -89,3 +89,14 @@ export const StackedCard = styled(Card)<{ order: 1 | 2 | 3 }>`
   transform: scaleX(${({ order }) => styleByOrder[order].scaleX});
   z-index: ${({ order }) => 5 - order};
 `;
+
+export const ProgressContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+`;
+
+export const ProgressText = styled.span`
+  ${FONT.body16}
+  opacity: 0.5;
+`;

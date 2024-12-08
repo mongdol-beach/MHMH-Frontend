@@ -11,6 +11,8 @@ const TopicsBySituation = () => {
   const { data } = useTopicsBySituation(situationId || "");
   const [hasViewedAllCards, setHasViewedAllCards] = useState(false);
 
+  const situationName = data?.situationName;
+
   if (!situationId) {
     console.error("situationId is not defined");
     return null;
@@ -21,8 +23,10 @@ const TopicsBySituation = () => {
       <Header title="상황별 토픽 추천" />
       <S.Main>
         <S.SituationBox>
-          <S.Situation>#소개팅</S.Situation>
-          <S.ViewAllTopicsButton>전체 토픽 둘러보기 &gt;</S.ViewAllTopicsButton>
+          <S.Situation>#{situationName}</S.Situation>
+          <S.ViewAllTopicsButton>
+            ${situationName} 토픽 둘러보기 &gt;
+          </S.ViewAllTopicsButton>
         </S.SituationBox>
         {hasViewedAllCards ? (
           <Finish topics={data?.topics || []} />

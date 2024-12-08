@@ -68,9 +68,10 @@ const TopicCards = ({ topics, onHasViewedAllCards }: TopicCardsProps) => {
                   <S.StackedCard
                     key={`${stackTopic}-${stackIndex}`}
                     order={(stackIndex + 1) as StackOrder}
-                  >
-                    {stackTopic.content}
-                  </S.StackedCard>
+                    content={stackTopic.content}
+                    situationName={stackTopic.situationName}
+                    id={stackTopic.id}
+                  />
                 ))}
               </S.CardStack>
             </SwiperSlide>

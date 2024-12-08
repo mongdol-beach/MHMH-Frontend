@@ -27,6 +27,7 @@ const Overlay = styled.div`
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,6 +36,8 @@ const Overlay = styled.div`
 
 const Content = styled.div`
   background-color: white;
-  padding: 20px;
+  padding: 16px 20px;
+  border-radius: 8px;
   width: 100%;
+  position: relative;
 `;

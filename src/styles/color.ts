@@ -7,9 +7,6 @@ export const COLORS = {
   "--card-color-blue-500": "#5881f3",
 
   "--point-beige": "#F9F4E3",
-  "--Primary-blue-300": "#97b2ff",
-  "--Primary-blue-500": "#5881f3",
-  "--Primary-blue-700": "#2d56ca",
   "--card-color-sky_b": "#97b2ff",
   "--card-color-beige": "#f9f4e3",
   "--card-color-yellow": "#ffdc79",

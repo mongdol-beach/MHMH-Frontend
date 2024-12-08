@@ -61,7 +61,7 @@ export const reTryBtn = styled(Button)`
 `;
 
 export const SummaryBtn = styled(Button)`
-  background-color: ${(props) => props.theme.colors["--card-color-blue"]};
+  background-color: ${(props) => props.theme.colors["--Primary-blue-500"]};
 `;
 
 /* Modal */
@@ -97,7 +97,7 @@ export const ModalHeader_title = styled.p`
   ${FONT.body16}
   line-height: 1.5;
   letter-spacing: -0.32px;
-  color: ${(props) => props.theme.colors["--card-color-blue"]};
+  color: ${(props) => props.theme.colors["--Primary-blue-500"]};
 `;
 
 export const ModalHeader_desc = styled.p`
@@ -131,7 +131,7 @@ export const ModalContents_metrics = styled.div`
   align-items: flex-start;
   align-self: stretch;
   border-radius: 4px;
-  background-color: ${(props) => props.theme.colors["--card-color-blue"]};
+  background-color: ${(props) => props.theme.colors["--Primary-blue-500"]};
 `;
 
 export const ModalContents_metrics_left = styled.div`
@@ -189,7 +189,7 @@ export const ModalContents_bg = styled.div`
   right: -21px;
   bottom: -51px;
   border-radius: 0px 0px 60px 60px;
-  background: ${(props) => props.theme.colors["--Primary-blud-700"]};
+  background: ${(props) => props.theme.colors["--Primary-blue-700"]};
 `;
 
 export const ModalFooter = styled.p`

@@ -9,6 +9,7 @@ import PAGE_PATH from "./constants/path";
 import AppLayout from "./components/Layout";
 import SituationPage from "./pages/SituationPage";
 import BalanceGamePage from "./pages/BalanceGamePage";
+import TopicsBySituationPage from "./pages/TopicsBySituationPage";
 
 function App() {
   const [queryClient] = useState(
@@ -32,6 +33,10 @@ function App() {
             <Route
               path={PAGE_PATH["BALANCE-GAME"]}
               element={<BalanceGamePage />}
+            />
+            <Route
+              path={PAGE_PATH.TOPICS_BY_SITUATION}
+              element={<TopicsBySituationPage />}
             />
           </Routes>
           <GlobalStyle />

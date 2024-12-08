@@ -14,7 +14,7 @@ const SWIPER_CONFIG = {
   effect: "cards" as const,
   modules: [EffectCards],
   className: "stacked-card-swiper",
-  style: { height: "29.86rem" },
+  style: { height: "27rem" },
   cardsEffect: {
     perSlideOffset: 0,
     perSlideRotate: 0,

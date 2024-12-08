@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import FONT from "../../styles/font";
 import { StackOrder } from "./type";
-import Card from "../Card";
 
 export const CardStackContainer = styled.div`
   padding: 0 1.5rem;
   margin-top: 1.19rem;
+
+  .swiper-wrapper {
+    box-sizing: inherit !important;
+  }
 
   .stacked-card-swiper {
     .swiper-slide {
@@ -26,17 +29,6 @@ export const CardStack = styled.div`
   width: 100%;
   height: 29.86rem;
 `;
-
-// export const Card = styled.div<{ order: number }>`
-//   position: absolute;
-//   width: 100%;
-//   height: 27.3rem;
-//   background: ${(props) => props.theme.colors["--card-color-blue"]};
-//   border-radius: 16px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
 
 const styleByOrder: Record<
   StackOrder,
@@ -59,7 +51,7 @@ const styleByOrder: Record<
   },
 };
 
-export const StackedCard = styled(Card)<{ order: 1 | 2 | 3 }>`
+export const StackedCard = styled.div<{ order: 1 | 2 | 3 }>`
   position: absolute;
   bottom: ${({ order }) => styleByOrder[order].bottom};
   opacity: ${({ order }) => styleByOrder[order].opacity};

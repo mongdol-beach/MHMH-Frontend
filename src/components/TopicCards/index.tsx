@@ -6,6 +6,7 @@ import type { Swiper as SwiperType } from "swiper";
 import * as S from "./styled";
 import { StackOrder } from "./type";
 import { Topic } from "../../types/topic";
+import Card from "../Card";
 const TOPICS_LENGTH_TO_SHOW = 3;
 
 const SWIPER_CONFIG = {
@@ -65,13 +66,14 @@ const TopicCards = ({ topics, onHasViewedAllCards }: TopicCardsProps) => {
             <SwiperSlide key={`slide-${index}`}>
               <S.CardStack>
                 {topicsToShow.map((stackTopic, stackIndex) => (
-                  <S.StackedCard
-                    key={`${stackTopic}-${stackIndex}`}
-                    order={(stackIndex + 1) as StackOrder}
-                    content={stackTopic.content}
-                    situationName={stackTopic.situationName}
-                    id={stackTopic.id}
-                  />
+                  <S.StackedCard order={(stackIndex + 1) as StackOrder}>
+                    <Card
+                      key={`${stackTopic}-${stackIndex}`}
+                      content={stackTopic.content}
+                      situationName={stackTopic.situationName}
+                      id={stackTopic.id}
+                    />
+                  </S.StackedCard>
                 ))}
               </S.CardStack>
             </SwiperSlide>

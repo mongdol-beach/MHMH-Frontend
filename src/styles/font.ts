@@ -10,6 +10,7 @@ export const SIZE = {
 
 export const WEIGHT = {
   "--font-weight-extraBold": "800",
+  "--font-weight-semiBold": "600",
   "--font-weight-bold": "700",
   "--font-weight-medium": "500",
   "--font-weight-regular": "400",

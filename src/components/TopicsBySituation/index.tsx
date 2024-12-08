@@ -78,13 +78,12 @@ const TopicsBySituation = () => {
           )}
         </S.CardStackContainer>
 
-        {!isLastSlide ? (
+        {!isLastSlide && (
           <S.ProgressContainer>
             <S.ProgressText>
               {currentIndex + 1}/{topics.length}
             </S.ProgressText>
-          </S.ProgressContainer>
-        ) : null}
+          </S.ProgressContainer>)}
       </S.Main>
     </>
   );

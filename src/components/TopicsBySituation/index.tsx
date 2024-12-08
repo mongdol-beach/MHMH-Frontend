@@ -5,11 +5,14 @@ import { useTopicsBySituation } from "../../hooks/useTopicsBySituation";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Finish from "../SituationFinish";
+import ShortArrow from "@assets/icons/short-arrow.svg";
 
 const TopicsBySituation = () => {
   const { situationId } = useParams();
   const { data } = useTopicsBySituation(situationId || "");
   const [hasViewedAllCards, setHasViewedAllCards] = useState(false);
+
+  const situationName = data?.situationName;
 
   if (!situationId) {
     console.error("situationId is not defined");
@@ -18,11 +21,14 @@ const TopicsBySituation = () => {
 
   return (
     <>
-      <Header title="소개팅 토픽" />
+      <Header title="상황별 토픽 추천" />
       <S.Main>
         <S.SituationBox>
-          <S.Situation>#소개팅</S.Situation>
-          <S.ViewAllTopicsButton>전체 토픽 둘러보기 &gt;</S.ViewAllTopicsButton>
+          <S.Situation>#{situationName}</S.Situation>
+          <S.ViewAllTopicsButton>
+            {situationName} 토픽 둘러보기
+            <S.Icon src={ShortArrow} alt="토픽 둘러보기 아이콘" />
+          </S.ViewAllTopicsButton>
         </S.SituationBox>
         {hasViewedAllCards ? (
           <Finish topics={data?.topics || []} />

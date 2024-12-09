@@ -19,6 +19,7 @@ const BalanceGame = () => {
   const [selectedPercentage, setSelectedPercentage] =
     useState<SelectedPercentage | null>(null);
   const [clickedOption, setClickedOption] = useState<string | null>(null);
+  const [isOptionLocked, setIsOptionLocked] = useState(false);
   const progressPercentage = Math.floor(
     ((num + 1) / BALANCE_GAME_MAX_NUM) * 100,
   );
@@ -31,11 +32,15 @@ const BalanceGame = () => {
     await queryClient.invalidateQueries({ queryKey: ["randomBalance"] });
     setNum(0);
     setSelectedPercentage(null);
+    setIsOptionLocked(false);
     setClickedOption(null);
   };
 
   const handleSelectOption = async (option: string, id: number) => {
+    if (clickedOption) return;
+
     setClickedOption(option);
+    setIsOptionLocked(true);
     const data = await mutateAsync({ id, selectedOption: option });
     setSelectedPercentage(data);
 
@@ -44,6 +49,7 @@ const BalanceGame = () => {
         setNum((prev) => prev + 1);
         setSelectedPercentage(null);
         setClickedOption(null);
+        setIsOptionLocked(false);
       }
     }, 2000);
   };
@@ -81,6 +87,7 @@ const BalanceGame = () => {
                   onClick={() => handleSelectOption("A", currentQuestion.id)}
                   isClicked={clickedOption === "A"}
                   isOtherClicked={clickedOption === "B"}
+                  disabled={isOptionLocked}
                 >
                   {currentQuestion.optionA}
                   <S.PercentText isClicked={clickedOption === "A"}>
@@ -92,6 +99,7 @@ const BalanceGame = () => {
                   onClick={() => handleSelectOption("B", currentQuestion.id)}
                   isClicked={clickedOption === "B"}
                   isOtherClicked={clickedOption === "A"}
+                  disabled={isOptionLocked}
                 >
                   {currentQuestion.optionB}
                   <S.PercentText isClicked={clickedOption === "B"}>
@@ -102,7 +110,7 @@ const BalanceGame = () => {
             </>
           )}
         </S.DescriptionBox>
-        {num + 1 === BALANCE_GAME_MAX_NUM && (
+        {num + 1 === BALANCE_GAME_MAX_NUM && clickedOption && (
           <S.FinishBox>
             <S.ButtonBox>
               <S.RetryMainBox>

@@ -137,13 +137,20 @@ export const Option = styled.button<{
     align-items: center;
     flex-shrink: 0;
     border-radius: 0.5rem;
-    background: ${(props) => props.theme.colors["--card-color-blue-500"]};
-    color: ${({ isClicked, theme }) =>
+    background: ${({ isClicked, isOtherClicked, theme }) =>
       isClicked
-        ? theme.colors["-grayscale-400"]
-        : theme.colors["--card-color-beige"]};
-
-    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+        ? theme.colors["--card-color-blue-500"]
+        : isOtherClicked
+          ? theme.colors["--card-color-blue-100"]
+          : theme.colors["--card-color-blue-500"]};
+    color: ${({ isClicked, isOtherClicked, theme }) =>
+      isClicked
+        ? theme.colors["--point-beige"]
+        : isOtherClicked
+          ? theme.colors["-grayscale-400"]
+          : theme.colors["--point-beige"]};
+    box-shadow: ${({ isClicked }) =>
+      isClicked ? "inset 4px 4px 4px rgba(0, 0, 0, 0.25)" : "none"};
   }
 `;
 

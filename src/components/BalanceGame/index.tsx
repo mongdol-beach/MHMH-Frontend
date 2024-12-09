@@ -13,11 +13,13 @@ import Loading from "../Loading";
 const BALANCE_GAME_MAX_NUM = 5;
 
 const BalanceGame = () => {
-  const { data, isLoading, isError, error } = useRandomBalance();
+  const { data, isLoading } = useRandomBalance();
   const { mutateAsync } = usePercentBalance();
   const [num, setNum] = useState(0);
   const [selectedPercentage, setSelectedPercentage] =
     useState<SelectedPercentage | null>(null);
+  const [clickedOption, setClickedOption] = useState<string | null>(null);
+  const [isOptionLocked, setIsOptionLocked] = useState(false);
   const progressPercentage = Math.floor(
     ((num + 1) / BALANCE_GAME_MAX_NUM) * 100,
   );
@@ -26,17 +28,30 @@ const BalanceGame = () => {
   const currentQuestion = balance[num];
   const queryClient = useQueryClient();
 
-  // 에러 처리
-  if (isError) return <div>오류 발생: {error.message}</div>;
-
   const handleRetry = async () => {
     await queryClient.invalidateQueries({ queryKey: ["randomBalance"] });
     setNum(0);
+    setSelectedPercentage(null);
+    setIsOptionLocked(false);
+    setClickedOption(null);
   };
 
   const handleSelectOption = async (option: string, id: number) => {
+    if (clickedOption) return;
+
+    setClickedOption(option);
+    setIsOptionLocked(true);
     const data = await mutateAsync({ id, selectedOption: option });
     setSelectedPercentage(data);
+
+    setTimeout(() => {
+      if (num + 1 < BALANCE_GAME_MAX_NUM) {
+        setNum((prev) => prev + 1);
+        setSelectedPercentage(null);
+        setClickedOption(null);
+        setIsOptionLocked(false);
+      }
+    }, 2000);
   };
 
   if (isLoading)
@@ -70,24 +85,32 @@ const BalanceGame = () => {
               <S.OptionBox>
                 <S.Option
                   onClick={() => handleSelectOption("A", currentQuestion.id)}
+                  isClicked={clickedOption === "A"}
+                  isOtherClicked={clickedOption === "B"}
+                  disabled={isOptionLocked}
                 >
                   {currentQuestion.optionA}
-                  <br />
-                  {selectedPercentage && `${selectedPercentage.optionA}%`}
+                  <S.PercentText isClicked={clickedOption === "A"}>
+                    {selectedPercentage && `${selectedPercentage.optionA}%`}
+                  </S.PercentText>
                 </S.Option>
                 <S.ComparisonText>VS</S.ComparisonText>
                 <S.Option
                   onClick={() => handleSelectOption("B", currentQuestion.id)}
+                  isClicked={clickedOption === "B"}
+                  isOtherClicked={clickedOption === "A"}
+                  disabled={isOptionLocked}
                 >
                   {currentQuestion.optionB}
-                  <br />
-                  {selectedPercentage && `${selectedPercentage.optionB}%`}
+                  <S.PercentText isClicked={clickedOption === "B"}>
+                    {selectedPercentage && `${selectedPercentage.optionB}%`}
+                  </S.PercentText>
                 </S.Option>
               </S.OptionBox>
             </>
           )}
         </S.DescriptionBox>
-        {num + 1 === BALANCE_GAME_MAX_NUM && (
+        {num + 1 === BALANCE_GAME_MAX_NUM && clickedOption && (
           <S.FinishBox>
             <S.ButtonBox>
               <S.RetryMainBox>

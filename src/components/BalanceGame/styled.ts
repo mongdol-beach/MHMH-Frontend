@@ -71,7 +71,10 @@ export const OptionBox = styled.div`
   align-items: center;
 `;
 
-export const Option = styled.button`
+export const Option = styled.button<{
+  isClicked: boolean;
+  isOtherClicked: boolean;
+}>`
   height: 9rem;
   padding: 1rem;
   font-family: "esamanru OTF";
@@ -80,8 +83,20 @@ export const Option = styled.button`
   align-self: stretch;
   border-radius: 0.5rem;
   border: 1px solid ${(props) => props.theme.colors["-grayscale-200"]};
-  background: ${(props) => props.theme.colors["--card-color-blue-100"]};
-  color: ${(props) => props.theme.colors["--grayscale-800"]};
+  box-shadow: ${({ isClicked }) =>
+    isClicked ? "0px 2px 16px rgba(88, 129, 243, 1)" : "none"};
+  background: ${({ isClicked, isOtherClicked, theme }) =>
+    isClicked
+      ? theme.colors["--card-color-blue-700"]
+      : isOtherClicked
+        ? theme.colors["--card-color-blue-100"]
+        : theme.colors["--card-color-blue-100"]};
+  color: ${({ isClicked, isOtherClicked, theme }) =>
+    isClicked
+      ? theme.colors["--point-beige"]
+      : isOtherClicked
+        ? theme.colors["-grayscale-400"]
+        : theme.colors["-grayscale-800"]};
 
   &:hover {
     height: 9rem;
@@ -95,8 +110,19 @@ export const Option = styled.button`
     align-self: stretch;
     border-radius: 0.5rem;
     border: 1px solid ${(props) => props.theme.colors["-grayscale-200"]};
-    background: ${(props) => props.theme.colors["--card-color-blue-300"]};
-    color: ${(props) => props.theme.colors["--card-color-beige"]};
+
+    background: ${({ isClicked, isOtherClicked, theme }) =>
+      isClicked
+        ? theme.colors["--card-color-blue-700"]
+        : isOtherClicked
+          ? theme.colors["--card-color-blue-100"]
+          : theme.colors["--card-color-blue-300"]};
+    color: ${({ isClicked, isOtherClicked, theme }) =>
+      isClicked
+        ? theme.colors["--point-beige"]
+        : isOtherClicked
+          ? theme.colors["-grayscale-400"]
+          : theme.colors["--point-beige"]};
   }
 
   &:active {
@@ -111,11 +137,36 @@ export const Option = styled.button`
     align-items: center;
     flex-shrink: 0;
     border-radius: 0.5rem;
-    background: ${(props) => props.theme.colors["--card-color-blue-500"]};
-    color: ${(props) => props.theme.colors["--card-color-beige"]};
-
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    background: ${({ isClicked, isOtherClicked, theme }) =>
+      isClicked
+        ? theme.colors["--card-color-blue-500"]
+        : isOtherClicked
+          ? theme.colors["--card-color-blue-100"]
+          : theme.colors["--card-color-blue-500"]};
+    color: ${({ isClicked, isOtherClicked, theme }) =>
+      isClicked
+        ? theme.colors["--point-beige"]
+        : isOtherClicked
+          ? theme.colors["-grayscale-400"]
+          : theme.colors["--point-beige"]};
+    box-shadow: ${({ isClicked }) =>
+      isClicked ? "inset 4px 4px 4px rgba(0, 0, 0, 0.25)" : "none"};
   }
+`;
+
+export const PercentText = styled.p<{
+  isClicked: boolean;
+}>`
+  color: ${({ isClicked, theme }) =>
+    isClicked ? theme.colors["--point-beige"] : theme.colors["-grayscale-400"]};
+
+  text-align: center;
+  font-family: "esamanru OTF";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 3rem */
+  letter-spacing: -0.04rem;
 `;
 
 export const ComparisonText = styled.p`

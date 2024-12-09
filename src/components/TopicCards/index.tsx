@@ -65,12 +65,17 @@ const TopicCards = ({ topics, onHasViewedAllCards }: TopicCardsProps) => {
           {slides.map((_, index) => (
             <SwiperSlide key={`slide-${index}`}>
               {topicsToShow.map((stackTopic, stackIndex) => (
-                <Card
+                <S.CardWrapper
                   key={`${stackTopic}-${stackIndex}`}
-                  content={stackTopic.content}
-                  situationName={stackTopic.situationName}
-                  id={stackTopic.id}
-                />
+                  isVisible={index === currentIndex}
+                >
+                  <Card
+                    key={`${stackTopic}-${stackIndex}`}
+                    content={stackTopic.content}
+                    situationName={stackTopic.situationName}
+                    id={stackTopic.id}
+                  />
+                </S.CardWrapper>
               ))}
             </SwiperSlide>
           ))}

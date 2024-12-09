@@ -24,7 +24,7 @@ export const Container = styled.div<{ $isOpen: boolean }>`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 375px;
-  height: 812px;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   animation: ${({ $isOpen }) => ($isOpen ? openEffect : closeEffect)} 0.25s ease;
 `;

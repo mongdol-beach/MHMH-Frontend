@@ -21,10 +21,10 @@ function TopicCardModal({
     <Modal isOpen={isOpen}>
       <S.CardBox>
         <Card id={id} content={content} situationName={situationName} />
+        <S.CloseButton type="button" onClick={onClose}>
+          닫기
+        </S.CloseButton>
       </S.CardBox>
-      <S.CloseButton type="button" onClick={onClose}>
-        닫기
-      </S.CloseButton>
     </Modal>
   );
 }

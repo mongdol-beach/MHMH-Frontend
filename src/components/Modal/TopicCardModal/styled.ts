@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CardBox = styled.div`
   position: absolute;
   left: 50%;
-  top: 15%;
+  top: 19%;
   transform: translateX(-50%);
 `;
 
@@ -13,7 +13,7 @@ export const CloseButton = styled.button`
   padding: 1rem 2rem;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 22.5%;
+  bottom: -72px;
   border-radius: 12px;
   background-color: ${(props) => props.theme.colors["--Primary-blue-300"]};
   font-size: 1.25rem;

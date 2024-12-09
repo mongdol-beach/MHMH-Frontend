@@ -13,11 +13,12 @@ import Loading from "../Loading";
 const BALANCE_GAME_MAX_NUM = 5;
 
 const BalanceGame = () => {
-  const { data, isLoading, isError, error } = useRandomBalance();
+  const { data, isLoading } = useRandomBalance();
   const { mutateAsync } = usePercentBalance();
   const [num, setNum] = useState(0);
   const [selectedPercentage, setSelectedPercentage] =
     useState<SelectedPercentage | null>(null);
+  const [clickedOption, setClickedOption] = useState<string | null>(null);
   const progressPercentage = Math.floor(
     ((num + 1) / BALANCE_GAME_MAX_NUM) * 100,
   );
@@ -26,17 +27,25 @@ const BalanceGame = () => {
   const currentQuestion = balance[num];
   const queryClient = useQueryClient();
 
-  // 에러 처리
-  if (isError) return <div>오류 발생: {error.message}</div>;
-
   const handleRetry = async () => {
     await queryClient.invalidateQueries({ queryKey: ["randomBalance"] });
     setNum(0);
+    setSelectedPercentage(null);
+    setClickedOption(null);
   };
 
   const handleSelectOption = async (option: string, id: number) => {
+    setClickedOption(option);
     const data = await mutateAsync({ id, selectedOption: option });
     setSelectedPercentage(data);
+
+    setTimeout(() => {
+      if (num + 1 < BALANCE_GAME_MAX_NUM) {
+        setNum((prev) => prev + 1);
+        setSelectedPercentage(null);
+        setClickedOption(null);
+      }
+    }, 2000);
   };
 
   if (isLoading)
@@ -70,18 +79,24 @@ const BalanceGame = () => {
               <S.OptionBox>
                 <S.Option
                   onClick={() => handleSelectOption("A", currentQuestion.id)}
+                  isClicked={clickedOption === "A"}
+                  isOtherClicked={clickedOption === "B"}
                 >
                   {currentQuestion.optionA}
-                  <br />
-                  {selectedPercentage && `${selectedPercentage.optionA}%`}
+                  <S.PercentText isClicked={clickedOption === "A"}>
+                    {selectedPercentage && `${selectedPercentage.optionA}%`}
+                  </S.PercentText>
                 </S.Option>
                 <S.ComparisonText>VS</S.ComparisonText>
                 <S.Option
                   onClick={() => handleSelectOption("B", currentQuestion.id)}
+                  isClicked={clickedOption === "B"}
+                  isOtherClicked={clickedOption === "A"}
                 >
                   {currentQuestion.optionB}
-                  <br />
-                  {selectedPercentage && `${selectedPercentage.optionB}%`}
+                  <S.PercentText isClicked={clickedOption === "B"}>
+                    {selectedPercentage && `${selectedPercentage.optionB}%`}
+                  </S.PercentText>
                 </S.Option>
               </S.OptionBox>
             </>

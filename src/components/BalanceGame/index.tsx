@@ -20,6 +20,7 @@ const BalanceGame = () => {
     useState<SelectedPercentage | null>(null);
   const [clickedOption, setClickedOption] = useState<string | null>(null);
   const [isOptionLocked, setIsOptionLocked] = useState(false);
+  const [isRetryVisible, setIsRetryVisible] = useState(false);
   const progressPercentage = Math.floor(
     ((num + 1) / BALANCE_GAME_MAX_NUM) * 100,
   );
@@ -34,6 +35,7 @@ const BalanceGame = () => {
     setSelectedPercentage(null);
     setIsOptionLocked(false);
     setClickedOption(null);
+    setIsRetryVisible(false);
   };
 
   const handleSelectOption = async (option: string, id: number) => {
@@ -44,14 +46,29 @@ const BalanceGame = () => {
     const data = await mutateAsync({ id, selectedOption: option });
     setSelectedPercentage(data);
 
-    setTimeout(() => {
-      if (num + 1 < BALANCE_GAME_MAX_NUM) {
+    //   setTimeout(() => {
+    //     if (num + 1 < BALANCE_GAME_MAX_NUM) {
+    //       setNum((prev) => prev + 1);
+    //       setSelectedPercentage(null);
+    //       setClickedOption(null);
+    //       setIsOptionLocked(false);
+    //     }
+    //   }, 2000);
+    // };
+    if (num + 1 === BALANCE_GAME_MAX_NUM) {
+      // 마지막 질문인 경우
+      setTimeout(() => {
+        setIsRetryVisible(true);
+      }, 1500);
+    } else {
+      // 다음 질문으로 진행
+      setTimeout(() => {
         setNum((prev) => prev + 1);
         setSelectedPercentage(null);
         setClickedOption(null);
         setIsOptionLocked(false);
-      }
-    }, 2000);
+      }, 2500);
+    }
   };
 
   if (isLoading)
@@ -110,21 +127,23 @@ const BalanceGame = () => {
             </>
           )}
         </S.DescriptionBox>
-        {num + 1 === BALANCE_GAME_MAX_NUM && clickedOption && (
-          <S.FinishBox>
-            <S.ButtonBox>
-              <S.RetryMainBox>
-                <S.RetryButton onClick={handleRetry}>다시하기</S.RetryButton>
-                <S.MainButtonLink to={PAGE_PATH.MAIN}>
-                  메인으로
-                </S.MainButtonLink>
-              </S.RetryMainBox>
-              <S.SituationButtonLink to={PAGE_PATH.SITUATION}>
-                토픽 추천받아 대화 시작해보기
-              </S.SituationButtonLink>
-            </S.ButtonBox>
-          </S.FinishBox>
-        )}
+        {num + 1 === BALANCE_GAME_MAX_NUM &&
+          clickedOption &&
+          isRetryVisible && (
+            <S.FinishBox>
+              <S.ButtonBox>
+                <S.RetryMainBox>
+                  <S.RetryButton onClick={handleRetry}>다시하기</S.RetryButton>
+                  <S.MainButtonLink to={PAGE_PATH.MAIN}>
+                    메인으로
+                  </S.MainButtonLink>
+                </S.RetryMainBox>
+                <S.SituationButtonLink to={PAGE_PATH.SITUATION}>
+                  토픽 추천받아 대화 시작해보기
+                </S.SituationButtonLink>
+              </S.ButtonBox>
+            </S.FinishBox>
+          )}
       </S.Main>
     </>
   );

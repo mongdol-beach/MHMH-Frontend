@@ -4,10 +4,10 @@ import { topicListKey } from "../constants/queryKey";
 import { Situation } from "../types";
 
 export const useGetTopicList = (situation: Situation) => {
-  const { data, isLoading } = useSuspenseQuery({
+  const { data } = useSuspenseQuery({
     queryKey: topicListKey.detail(situation),
     queryFn: () => getTopicList(situation),
   });
 
-  return { data, isLoading };
+  return { data };
 };

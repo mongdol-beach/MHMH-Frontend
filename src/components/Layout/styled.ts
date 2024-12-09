@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const AppContainer = styled.div`
   max-width: 375px;
   width: 100%;
-  height: 812px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  min-height: 100vh;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;

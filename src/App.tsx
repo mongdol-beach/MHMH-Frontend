@@ -14,6 +14,8 @@ import { OverlayProvider } from "overlay-kit";
 
 import TopicsBySituationPage from "./pages/TopicsBySituationPage";
 import RandomTopicsPage from "./pages/RandomTopicsPage";
+import Loading from "./components/Loading";
+import Header from "./components/Header";
 
 function App() {
   const [queryClient] = useState(
@@ -32,29 +34,38 @@ function App() {
       <ThemeProvider theme={theme}>
         <OverlayProvider>
           <AppLayout>
-            <Suspense fallback={<div>임시 로딩 처리..</div>}>
-              <Routes>
-                <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
-                <Route path={PAGE_PATH.SITUATION} element={<SituationPage />} />
-                <Route
-                  path={PAGE_PATH.TOPIC_LIST}
-                  element={<TopicListPage />}
-                />
-                <Route
-                  path={`${PAGE_PATH.TOPICS_BY_SITUATION}/:situationId`}
-                  element={<TopicsBySituationPage />}
-                />
-                <Route
-                  path={PAGE_PATH.TOPICS_RANDOM}
-                  element={<RandomTopicsPage />}
-                />
-                <Route
-                  path={PAGE_PATH["BALANCE-GAME"]}
-                  element={<BalanceGamePage />}
-                />
-              </Routes>
-              <GlobalStyle />
-            </Suspense>
+            <Routes>
+              <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
+              <Route path={PAGE_PATH.SITUATION} element={<SituationPage />} />
+              <Route
+                path={PAGE_PATH.TOPIC_LIST}
+                element={
+                  <Suspense
+                    fallback={
+                      <>
+                        <Header title="토픽 리스트 | 말해머해" />
+                        <Loading />
+                      </>
+                    }
+                  >
+                    <TopicListPage />
+                  </Suspense>
+                }
+              />
+              <Route
+                path={`${PAGE_PATH.TOPICS_BY_SITUATION}/:situationId`}
+                element={<TopicsBySituationPage />}
+              />
+              <Route
+                path={PAGE_PATH.TOPICS_RANDOM}
+                element={<RandomTopicsPage />}
+              />
+              <Route
+                path={PAGE_PATH["BALANCE-GAME"]}
+                element={<BalanceGamePage />}
+              />
+            </Routes>
+            <GlobalStyle />
           </AppLayout>
         </OverlayProvider>
       </ThemeProvider>

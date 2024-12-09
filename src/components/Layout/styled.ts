@@ -15,7 +15,9 @@ export const AppContainer = styled.div`
     display: none;
   }
 
-  @media screen and (min-width: 375px) {
+  @media screen and (min-width: 1024px) {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 812px;
+    min-height: 812px;
   }
 `;

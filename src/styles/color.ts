@@ -5,6 +5,7 @@ export const COLORS = {
   "--card-color-blue-100": "#E8EEFF",
   "--card-color-blue-300": "#97B2FF",
   "--card-color-blue-500": "#5881f3",
+  "--card-color-blue-700": "#2D56CA",
 
   "--point-beige": "#F9F4E3",
   "--card-color-sky_b": "#97b2ff",

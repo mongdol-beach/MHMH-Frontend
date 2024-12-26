@@ -11,6 +11,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.62.3
         version: 5.62.3(react@18.3.1)
+      '@types/react-gtm-module':
+        specifier: ^2.0.4
+        version: 2.0.4
       axios:
         specifier: ^1.7.9
         version: 1.7.9
@@ -26,6 +29,9 @@ importers:
       react-error-boundary:
         specifier: ^4.1.2
         version: 4.1.2(react@18.3.1)
+      react-gtm-module:
+        specifier: ^2.0.11
+        version: 2.0.11
       react-router-dom:
         specifier: ^7.0.2
         version: 7.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -555,6 +561,9 @@ packages:
 
   '@types/react-dom@18.3.2':
     resolution: {integrity: sha512-Fqp+rcvem9wEnGr3RY8dYNvSQ8PoLqjZ9HLgaPUOjJJD120uDyOxOjc/39M4Kddp9JQCxpGQbnhVQF0C0ncYVg==}
+
+  '@types/react-gtm-module@2.0.4':
+    resolution: {integrity: sha512-5wPMWsUE5AI6O0B0K1/zbs0rFHBKu+7NWXQwDXhqvA12ooLD6W1AYiWZqR4UiOd7ixZDV1H5Ys301zEsqyIfNg==}
 
   '@types/react-helmet@6.1.11':
     resolution: {integrity: sha512-0QcdGLddTERotCXo3VFlUSWO3ztraw8nZ6e3zJSgG7apwV5xt+pJUS8ewPBqT4NYB1optGLprNQzFleIY84u/g==}
@@ -1113,6 +1122,9 @@ packages:
 
   react-fast-compare@3.2.2:
     resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
+
+  react-gtm-module@2.0.11:
+    resolution: {integrity: sha512-8gyj4TTxeP7eEyc2QKawEuQoAZdjKvMY4pgWfycGmqGByhs17fR+zEBs0JUDq4US/l+vbTl+6zvUIx27iDo/Vw==}
 
   react-helmet@6.1.0:
     resolution: {integrity: sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==}
@@ -1733,6 +1745,8 @@ snapshots:
     dependencies:
       '@types/react': 18.3.14
 
+  '@types/react-gtm-module@2.0.4': {}
+
   '@types/react-helmet@6.1.11':
     dependencies:
       '@types/react': 18.3.14
@@ -2294,6 +2308,8 @@ snapshots:
       react: 18.3.1
 
   react-fast-compare@3.2.2: {}
+
+  react-gtm-module@2.0.11: {}
 
   react-helmet@6.1.0(react@18.3.1):
     dependencies:

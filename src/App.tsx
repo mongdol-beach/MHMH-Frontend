@@ -1,4 +1,4 @@
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom";
 import GlobalStyle from "./styles/global";
@@ -6,18 +6,16 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import PAGE_PATH from "./constants/path";
 import AppLayout from "./components/Layout";
-
 import BalanceGamePage from "./pages/BalanceGamePage";
-
 import { MainPage, SituationPage, TopicListPage } from "./pages/index";
 import { OverlayProvider } from "overlay-kit";
-
 import TopicsBySituationPage from "./pages/TopicsBySituationPage";
 import RandomTopicsPage from "./pages/RandomTopicsPage";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorPage from "./components/Error";
 import Loading from "./components/Loading";
 import Header from "./components/Header";
+import TagManager from "react-gtm-module";
 
 function App() {
   const [queryClient] = useState(
@@ -31,6 +29,12 @@ function App() {
         },
       }),
   );
+
+  useEffect(() => {
+    TagManager.initialize({
+      gtmId: import.meta.env.VITE_GTM_ID,
+    });
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

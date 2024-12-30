@@ -75,6 +75,10 @@ export const Option = styled.button<{
   isClicked: boolean;
   isOtherClicked: boolean;
 }>`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 9rem;
   padding: 1rem;
   font-family: "esamanru OTF";
@@ -116,15 +120,14 @@ export const Option = styled.button<{
         ? theme.colors["--card-color-blue-700"]
         : isOtherClicked
           ? theme.colors["--card-color-blue-100"]
-          : theme.colors["--card-color-blue-300"]};
+          : theme.colors["--card-color-blue-100"]};
     color: ${({ isClicked, isOtherClicked, theme }) =>
       isClicked
         ? theme.colors["--point-beige"]
         : isOtherClicked
           ? theme.colors["-grayscale-400"]
-          : theme.colors["--point-beige"]};
+          : theme.colors["-grayscale-800"]};
   }
-
   &:active {
     font-family: "esamanru OTF";
     font-size: 1.125rem;

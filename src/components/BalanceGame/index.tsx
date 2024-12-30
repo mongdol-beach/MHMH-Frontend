@@ -46,15 +46,6 @@ const BalanceGame = () => {
     const data = await mutateAsync({ id, selectedOption: option });
     setSelectedPercentage(data);
 
-    //   setTimeout(() => {
-    //     if (num + 1 < BALANCE_GAME_MAX_NUM) {
-    //       setNum((prev) => prev + 1);
-    //       setSelectedPercentage(null);
-    //       setClickedOption(null);
-    //       setIsOptionLocked(false);
-    //     }
-    //   }, 2000);
-    // };
     if (num + 1 === BALANCE_GAME_MAX_NUM) {
       // 마지막 질문인 경우
       setTimeout(() => {
@@ -107,9 +98,11 @@ const BalanceGame = () => {
                   disabled={isOptionLocked}
                 >
                   {currentQuestion.optionA}
-                  <S.PercentText isClicked={clickedOption === "A"}>
-                    {selectedPercentage && `${selectedPercentage.optionA}%`}
-                  </S.PercentText>
+                  {selectedPercentage?.optionA !== undefined && (
+                    <S.PercentText isClicked={clickedOption === "A"}>
+                      {`${selectedPercentage.optionA}%`}
+                    </S.PercentText>
+                  )}
                 </S.Option>
                 <S.ComparisonText>VS</S.ComparisonText>
                 <S.Option
@@ -119,9 +112,11 @@ const BalanceGame = () => {
                   disabled={isOptionLocked}
                 >
                   {currentQuestion.optionB}
-                  <S.PercentText isClicked={clickedOption === "B"}>
-                    {selectedPercentage && `${selectedPercentage.optionB}%`}
-                  </S.PercentText>
+                  {selectedPercentage?.optionB !== undefined && (
+                    <S.PercentText isClicked={clickedOption === "B"}>
+                      {`${selectedPercentage.optionB}%`}
+                    </S.PercentText>
+                  )}
                 </S.Option>
               </S.OptionBox>
             </>

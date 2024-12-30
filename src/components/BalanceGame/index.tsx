@@ -46,15 +46,6 @@ const BalanceGame = () => {
     const data = await mutateAsync({ id, selectedOption: option });
     setSelectedPercentage(data);
 
-    //   setTimeout(() => {
-    //     if (num + 1 < BALANCE_GAME_MAX_NUM) {
-    //       setNum((prev) => prev + 1);
-    //       setSelectedPercentage(null);
-    //       setClickedOption(null);
-    //       setIsOptionLocked(false);
-    //     }
-    //   }, 2000);
-    // };
     if (num + 1 === BALANCE_GAME_MAX_NUM) {
       // 마지막 질문인 경우
       setTimeout(() => {
@@ -85,7 +76,7 @@ const BalanceGame = () => {
       <S.Main>
         <S.ProgressBarBox>
           <S.ProgressBar>
-            <S.ProgressFill progressPercentage={progressPercentage} />
+            <S.ProgressFill $progressPercentage={progressPercentage} />
           </S.ProgressBar>
           <S.ProgressBarCounter>
             <S.CounterText>
@@ -102,26 +93,30 @@ const BalanceGame = () => {
               <S.OptionBox>
                 <S.Option
                   onClick={() => handleSelectOption("A", currentQuestion.id)}
-                  isClicked={clickedOption === "A"}
-                  isOtherClicked={clickedOption === "B"}
+                  $isClicked={clickedOption === "A"}
+                  $isOtherClicked={clickedOption === "B"}
                   disabled={isOptionLocked}
                 >
                   {currentQuestion.optionA}
-                  <S.PercentText isClicked={clickedOption === "A"}>
-                    {selectedPercentage && `${selectedPercentage.optionA}%`}
-                  </S.PercentText>
+                  {selectedPercentage?.optionA !== undefined && (
+                    <S.PercentText $isClicked={clickedOption === "A"}>
+                      {`${selectedPercentage.optionA}%`}
+                    </S.PercentText>
+                  )}
                 </S.Option>
                 <S.ComparisonText>VS</S.ComparisonText>
                 <S.Option
                   onClick={() => handleSelectOption("B", currentQuestion.id)}
-                  isClicked={clickedOption === "B"}
-                  isOtherClicked={clickedOption === "A"}
+                  $isClicked={clickedOption === "B"}
+                  $isOtherClicked={clickedOption === "A"}
                   disabled={isOptionLocked}
                 >
                   {currentQuestion.optionB}
-                  <S.PercentText isClicked={clickedOption === "B"}>
-                    {selectedPercentage && `${selectedPercentage.optionB}%`}
-                  </S.PercentText>
+                  {selectedPercentage?.optionB !== undefined && (
+                    <S.PercentText $isClicked={clickedOption === "B"}>
+                      {`${selectedPercentage.optionB}%`}
+                    </S.PercentText>
+                  )}
                 </S.Option>
               </S.OptionBox>
             </>

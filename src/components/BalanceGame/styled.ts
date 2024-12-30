@@ -19,11 +19,11 @@ export const ProgressBar = styled.div`
   background-color: ${(props) => props.theme.colors["-grayscale-100"]};
   border-radius: 0.62419rem;
 `;
-export const ProgressFill = styled.div<{ progressPercentage: number }>`
+export const ProgressFill = styled.div<{ $progressPercentage: number }>`
   height: 100%;
   background-color: ${(props) => props.theme.colors["--card-color-blue-500"]};
   border-radius: 0.62419rem;
-  width: ${({ progressPercentage }) => `${progressPercentage}%`};
+  width: ${({ $progressPercentage }) => `${$progressPercentage}%`};
   transition: width 0.3s ease;
 `;
 
@@ -72,9 +72,13 @@ export const OptionBox = styled.div`
 `;
 
 export const Option = styled.button<{
-  isClicked: boolean;
-  isOtherClicked: boolean;
+  $isClicked: boolean;
+  $isOtherClicked: boolean;
 }>`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 9rem;
   padding: 1rem;
   font-family: "esamanru OTF";
@@ -83,18 +87,18 @@ export const Option = styled.button<{
   align-self: stretch;
   border-radius: 0.5rem;
   border: 1px solid ${(props) => props.theme.colors["-grayscale-200"]};
-  box-shadow: ${({ isClicked }) =>
-    isClicked ? "0px 2px 16px rgba(88, 129, 243, 1)" : "none"};
-  background: ${({ isClicked, isOtherClicked, theme }) =>
-    isClicked
+  box-shadow: ${({ $isClicked }) =>
+    $isClicked ? "0px 2px 16px rgba(88, 129, 243, 1)" : "none"};
+  background: ${({ $isClicked, $isOtherClicked, theme }) =>
+    $isClicked
       ? theme.colors["--card-color-blue-700"]
-      : isOtherClicked
+      : $isOtherClicked
         ? theme.colors["--card-color-blue-100"]
         : theme.colors["--card-color-blue-100"]};
-  color: ${({ isClicked, isOtherClicked, theme }) =>
-    isClicked
+  color: ${({ $isClicked, $isOtherClicked, theme }) =>
+    $isClicked
       ? theme.colors["--point-beige"]
-      : isOtherClicked
+      : $isOtherClicked
         ? theme.colors["-grayscale-400"]
         : theme.colors["-grayscale-800"]};
 
@@ -111,20 +115,19 @@ export const Option = styled.button<{
     border-radius: 0.5rem;
     border: 1px solid ${(props) => props.theme.colors["-grayscale-200"]};
 
-    background: ${({ isClicked, isOtherClicked, theme }) =>
-      isClicked
+    background: ${({ $isClicked, $isOtherClicked, theme }) =>
+      $isClicked
         ? theme.colors["--card-color-blue-700"]
-        : isOtherClicked
+        : $isOtherClicked
           ? theme.colors["--card-color-blue-100"]
-          : theme.colors["--card-color-blue-300"]};
-    color: ${({ isClicked, isOtherClicked, theme }) =>
-      isClicked
+          : theme.colors["--card-color-blue-100"]};
+    color: ${({ $isClicked, $isOtherClicked, theme }) =>
+      $isClicked
         ? theme.colors["--point-beige"]
-        : isOtherClicked
+        : $isOtherClicked
           ? theme.colors["-grayscale-400"]
-          : theme.colors["--point-beige"]};
+          : theme.colors["-grayscale-800"]};
   }
-
   &:active {
     font-family: "esamanru OTF";
     font-size: 1.125rem;
@@ -137,28 +140,30 @@ export const Option = styled.button<{
     align-items: center;
     flex-shrink: 0;
     border-radius: 0.5rem;
-    background: ${({ isClicked, isOtherClicked, theme }) =>
-      isClicked
+    background: ${({ $isClicked, $isOtherClicked, theme }) =>
+      $isClicked
         ? theme.colors["--card-color-blue-500"]
-        : isOtherClicked
+        : $isOtherClicked
           ? theme.colors["--card-color-blue-100"]
           : theme.colors["--card-color-blue-500"]};
-    color: ${({ isClicked, isOtherClicked, theme }) =>
-      isClicked
+    color: ${({ $isClicked, $isOtherClicked, theme }) =>
+      $isClicked
         ? theme.colors["--point-beige"]
-        : isOtherClicked
+        : $isOtherClicked
           ? theme.colors["-grayscale-400"]
           : theme.colors["--point-beige"]};
-    box-shadow: ${({ isClicked }) =>
-      isClicked ? "inset 4px 4px 4px rgba(0, 0, 0, 0.25)" : "none"};
+    box-shadow: ${({ $isClicked }) =>
+      $isClicked ? "inset 4px 4px 4px rgba(0, 0, 0, 0.25)" : "none"};
   }
 `;
 
 export const PercentText = styled.p<{
-  isClicked: boolean;
+  $isClicked: boolean;
 }>`
-  color: ${({ isClicked, theme }) =>
-    isClicked ? theme.colors["--point-beige"] : theme.colors["-grayscale-400"]};
+  color: ${({ $isClicked, theme }) =>
+    $isClicked
+      ? theme.colors["--point-beige"]
+      : theme.colors["-grayscale-400"]};
 
   text-align: center;
   font-family: "esamanru OTF";

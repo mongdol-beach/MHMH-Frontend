@@ -76,7 +76,7 @@ const BalanceGame = () => {
       <S.Main>
         <S.ProgressBarBox>
           <S.ProgressBar>
-            <S.ProgressFill progressPercentage={progressPercentage} />
+            <S.ProgressFill $progressPercentage={progressPercentage} />
           </S.ProgressBar>
           <S.ProgressBarCounter>
             <S.CounterText>
@@ -93,13 +93,13 @@ const BalanceGame = () => {
               <S.OptionBox>
                 <S.Option
                   onClick={() => handleSelectOption("A", currentQuestion.id)}
-                  isClicked={clickedOption === "A"}
-                  isOtherClicked={clickedOption === "B"}
+                  $isClicked={clickedOption === "A"}
+                  $isOtherClicked={clickedOption === "B"}
                   disabled={isOptionLocked}
                 >
                   {currentQuestion.optionA}
                   {selectedPercentage?.optionA !== undefined && (
-                    <S.PercentText isClicked={clickedOption === "A"}>
+                    <S.PercentText $isClicked={clickedOption === "A"}>
                       {`${selectedPercentage.optionA}%`}
                     </S.PercentText>
                   )}
@@ -107,13 +107,13 @@ const BalanceGame = () => {
                 <S.ComparisonText>VS</S.ComparisonText>
                 <S.Option
                   onClick={() => handleSelectOption("B", currentQuestion.id)}
-                  isClicked={clickedOption === "B"}
-                  isOtherClicked={clickedOption === "A"}
+                  $isClicked={clickedOption === "B"}
+                  $isOtherClicked={clickedOption === "A"}
                   disabled={isOptionLocked}
                 >
                   {currentQuestion.optionB}
                   {selectedPercentage?.optionB !== undefined && (
-                    <S.PercentText isClicked={clickedOption === "B"}>
+                    <S.PercentText $isClicked={clickedOption === "B"}>
                       {`${selectedPercentage.optionB}%`}
                     </S.PercentText>
                   )}

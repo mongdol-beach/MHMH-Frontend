@@ -6,7 +6,11 @@ interface AppLayoutProps {
 }
 
 const AppLayout = ({ children }: AppLayoutProps) => {
-  return <S.AppContainer>{children}</S.AppContainer>;
+  return (
+    <S.Container>
+      <S.AppContainer>{children}</S.AppContainer>
+    </S.Container>
+  );
 };
 
 export default AppLayout;

@@ -132,11 +132,14 @@ export const ModalContents_metrics = styled.div`
   align-self: stretch;
   border-radius: 4px;
   background-color: ${(props) => props.theme.colors["--Primary-blue-500"]};
+  height: 60px;
+  align-items: center;
 `;
 
 export const ModalContents_metrics_left = styled.div`
   display: flex;
   align-items: flex-start;
+  align-items: center;
   gap: 1rem;
 `;
 

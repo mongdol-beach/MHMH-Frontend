@@ -21,7 +21,7 @@ export default Modal;
 
 const ModalBg = styled.div`
   position: fixed;
-  bottom: -40px;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -31,6 +31,10 @@ const ModalBg = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 999;
+  max-width: 375px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const Content = styled.div`

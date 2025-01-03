@@ -24,7 +24,7 @@ const Main = () => {
         <MainLinkBox />
         <S.HorizonLine />
         <S.UserFeedbackButton type="button">
-          사용자 의견
+          사용 후기를 알려주세요!
           <S.ArrowIcon src={RightArrowIcon} />
         </S.UserFeedbackButton>
         <S.CopyRight>

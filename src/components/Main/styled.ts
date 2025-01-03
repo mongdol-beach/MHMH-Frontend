@@ -96,7 +96,8 @@ export const TopicBox = styled.div`
 
 export const HorizonLine = styled.hr`
   margin: 0.88rem 0;
-  border: 0.5px solid ${(props) => props.theme.colors["--card-color-blue-100"]};
+  border: 1px solid ${(props) => props.theme.colors["--card-color-blue-100"]};
+  border-width: 0.5px 0 0 0;
 `;
 
 export const UserFeedbackButton = styled.button`

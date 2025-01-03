@@ -8,6 +8,11 @@ const SWIPE_THRESHOLD = 100;
 const SCALE_FACTOR = 0.05;
 const VERTICAL_OFFSET = 20;
 
+const getColor = (index: number) => {
+  const colors = ["", "#FF6600", "#00A087"];
+  return colors[index % colors.length];
+};
+
 interface TopicCardsProps {
   topics: Topic[];
   onHasViewedAllCards?: (hasViewedAllCards: boolean) => void;
@@ -86,6 +91,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                     content={topic.content}
                     situationName={topic.situationName}
                     id={topic.id}
+                    $color={getColor(index)}
                   />
                 </S.CardMotionWrapper>
               ))}

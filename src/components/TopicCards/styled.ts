@@ -1,25 +1,35 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import FONT from "../../styles/font";
 
-export const CardStackContainer = styled.div`
-  padding: 0 1.5rem;
-  margin-top: 1.19rem;
+export const DeckContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 27rem;
+  /* position: relative; */
+`;
 
-  .swiper-wrapper {
-    box-sizing: inherit !important;
-  }
+export const DeckWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 27rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-  .stacked-card-swiper {
-    .swiper-slide {
-      transition: all 0.3s ease;
-      opacity: 0;
+export const CardMotionWrapper = styled(motion.div)`
+  position: absolute;
+  width: 100%;
+  cursor: grab;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-      &.swiper-slide-active,
-      &.swiper-slide-next,
-      &.swiper-slide-next + .swiper-slide {
-        opacity: 1;
-      }
-    }
+  &:active {
+    cursor: grabbing;
   }
 `;
 

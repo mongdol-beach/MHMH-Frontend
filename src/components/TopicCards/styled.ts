@@ -8,7 +8,6 @@ export const DeckContainer = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 27rem;
-  /* position: relative; */
 `;
 
 export const DeckWrapper = styled.div`

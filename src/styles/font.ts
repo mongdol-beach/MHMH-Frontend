@@ -38,6 +38,13 @@ const FONT = {
       props.theme.weight["--font-weight-light"]}; /* 300 */
   `,
 
+  sub_title14: css`
+    font-family: "Esamanru OTF";
+    font-size: ${(props) => props.theme.size["--font-size-14"]}; /* 1rem */
+    font-weight: ${(props) =>
+      props.theme.weight["--font-weight-medium"]}; /* 500 */
+  `,
+
   body16: css`
     font-family: "Pretendard";
     font-size: ${(props) => props.theme.size["--font-size-16"]}; /* 1rem */

@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import FONT from "../../styles/font";
 
+export const HorizonDiv = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
 /* Finish 컴포넌트 */
 
 export const EmptyCircleContainer = styled.div`
@@ -19,7 +24,7 @@ export const EmptyLabel = styled.p`
   font-weight: 300;
   line-height: 9.375rem;
   letter-spacing: -0.125rem;
-  color: ${(props) => props.theme.colors["-grayscale-100"]};
+  color: ${(props) => props.theme.colors["--Primary-blue-300"]};
   position: absolute;
   top: 55%;
   left: 50%;
@@ -49,19 +54,63 @@ export const ButtonContainer = styled.div`
   gap: 0.75rem;
 `;
 
+export const HandleNext = styled.div`
+  border-radius: 5.375rem;
+  width: 100%;
+  padding: 0.75rem 0;
+  background-color: ${(props) => props.theme.colors["-grayscale-800"]};
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const handleNextP = styled.p`
+  ${FONT.sub_title16};
+  color: ${(props) => props.theme.colors["-grayscale-50"]};
+  line-height: 24px;
+  letter-spacing: -0.02em;
+`;
+
 export const Button = styled.button`
   border-radius: 5.375rem;
+  width: 100%;
   padding: 0.75rem 0;
   ${FONT.sub_title16};
   color: ${(props) => props.theme.colors["-grayscale-50"]};
 `;
 
-export const reTryBtn = styled(Button)`
-  background-color: ${(props) => props.theme.colors["-grayscale-800"]};
-`;
-
 export const SummaryBtn = styled(Button)`
   background-color: ${(props) => props.theme.colors["--Primary-blue-500"]};
+`;
+
+export const Footer = styled.div`
+  border-top: 0.5px solid ${(props) => props.theme.colors["-grayscale-400"]};
+  padding: 16px 0 40px;
+  margin: 40px auto 0 auto;
+`;
+
+export const FooterP = styled.p`
+  ${FONT.caption14};
+  line-height: 18.2px;
+  text-align: center;
+`;
+
+export const ShareContainer = styled.div`
+  display: flex;
+  gap: 32px;
+  margin: 10px auto 0 auto;
+  justify-content: center;
+`;
+
+export const ShareImage = styled.img`
+  cursor: pointer;
+`;
+
+export const FooterStrong = styled.span`
+  ${FONT.sub_title14};
+  line-height: 21px;
 `;
 
 /* Modal */
@@ -117,8 +166,6 @@ export const ModalContents = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border-bottom: 1.5px solid
-    ${(props) => props.theme.colors["--card-color-sky_b"]};
   padding-bottom: 0.5rem;
 `;
 
@@ -193,12 +240,4 @@ export const ModalContents_bg = styled.div`
   bottom: -51px;
   border-radius: 0px 0px 60px 60px;
   background: ${(props) => props.theme.colors["--Primary-blue-700"]};
-`;
-
-export const ModalFooter = styled.p`
-  ${FONT.caption14};
-  line-height: 1.3;
-  letter-spacing: -0.28;
-  color: ${(props) => props.theme.colors["-grayscale-800"]};
-  text-align: center;
 `;

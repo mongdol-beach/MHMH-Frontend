@@ -57,7 +57,6 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
             </S.ModalContents_metrics>
           ))}
         </S.ModalContents>
-        <S.ModalFooter>즐거운 대화였길 바래요 :)</S.ModalFooter>
       </S.ModalContainer>
     </Modal>
   );

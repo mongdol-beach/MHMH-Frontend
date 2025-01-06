@@ -29,6 +29,14 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
     navigate("/");
   };
 
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText("https://mh-mh.vercel.app/");
+    } catch (error) {
+      console.error("링크 복사 실패:", error);
+    }
+  };
+
   return (
     <>
       <EmptyCircle />
@@ -60,7 +68,7 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
           친구에게도 <S.FooterStrong>“말해머해”</S.FooterStrong>를 알려주세요
           <S.ShareContainer>
             <S.ShareImage src={KaKao} />
-            <S.ShareImage src={Share} />
+            <S.ShareImage src={Share} onClick={handleShare} />
           </S.ShareContainer>
         </S.FooterP>
       </S.Footer>

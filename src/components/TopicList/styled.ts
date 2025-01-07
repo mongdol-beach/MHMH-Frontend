@@ -5,5 +5,6 @@ export const TopicList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem 0.75rem;
   place-items: center;
-  margin: 2rem 1rem 0;
+  margin: 0 1rem;
+  padding: 1.5rem 0;
 `;

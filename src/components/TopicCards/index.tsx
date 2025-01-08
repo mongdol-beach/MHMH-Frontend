@@ -39,6 +39,12 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
     }
   };
 
+  const handleSwipeRight = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
   useEffect(() => {
     onHasViewedAllCards?.(isLastSlide);
   }, [isLastSlide, onHasViewedAllCards]);
@@ -106,7 +112,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
           <S.TopicNavigationControls>
             <S.LeftButtonWrapper>
               {currentIndex > 0 && (
-                <S.IconButton>
+                <S.IconButton onClick={handleSwipeRight}>
                   <S.Icon src={IconArrow} alt="이전 토픽으로 돌아가기" />
                 </S.IconButton>
               )}
@@ -115,7 +121,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
               {currentIndex + 1}/{topics.length}
             </S.ProgressText>
             <S.RightButtonWrapper>
-              <S.IconButton>
+              <S.IconButton onClick={handleSwipeLeft}>
                 <S.IconOpposite src={IconArrow} alt="다음 토픽으로 이동하기" />
               </S.IconButton>
             </S.RightButtonWrapper>

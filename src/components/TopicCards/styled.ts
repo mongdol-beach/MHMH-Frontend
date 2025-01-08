@@ -33,11 +33,21 @@ export const CardMotionWrapper = styled(motion.div)`
 `;
 
 export const TopicNavigationControls = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   margin-top: 1.5rem;
   width: 100%;
+  position: relative;
+  gap: 1rem;
+`;
+
+export const LeftButtonWrapper = styled.div`
+  justify-self: flex-start;
+`;
+
+export const RightButtonWrapper = styled.div`
+  justify-self: flex-end;
 `;
 
 export const ProgressText = styled.span`

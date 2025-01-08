@@ -104,15 +104,21 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
             </AnimatePresence>
           </S.DeckWrapper>
           <S.TopicNavigationControls>
-            <S.IconButton>
-              <S.Icon src={IconArrow} alt="이전 토픽으로 돌아가기" />
-            </S.IconButton>
+            <S.LeftButtonWrapper>
+              {currentIndex > 0 && (
+                <S.IconButton>
+                  <S.Icon src={IconArrow} alt="이전 토픽으로 돌아가기" />
+                </S.IconButton>
+              )}
+            </S.LeftButtonWrapper>
             <S.ProgressText>
               {currentIndex + 1}/{topics.length}
             </S.ProgressText>
-            <S.IconButton>
-              <S.IconOpposite src={IconArrow} alt="다음 토픽으로 이동하기" />
-            </S.IconButton>
+            <S.RightButtonWrapper>
+              <S.IconButton>
+                <S.IconOpposite src={IconArrow} alt="다음 토픽으로 이동하기" />
+              </S.IconButton>
+            </S.RightButtonWrapper>
           </S.TopicNavigationControls>
         </>
       )}

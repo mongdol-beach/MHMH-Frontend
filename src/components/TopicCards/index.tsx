@@ -30,7 +30,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
   // 현재 보여줄 카드들 (최대 3개)
   const visibleTopics = topics.slice(currentIndex, currentIndex + 3);
 
-  const handleSwipeRight = () => {
+  const handleSwipeLeft = () => {
     if (currentIndex < topics.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
@@ -74,7 +74,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                   }}
                   // 퇴장 애니메이션
                   exit={{
-                    x: 300, // 오른쪽으로 300px 이동
+                    x: -300, // 왼쪽으로 300px 이동
                     opacity: 0, // 투명해지면서 사라짐
                     transition: { duration: 0.2 }, // 애니메이션 지속 시간
                   }}
@@ -84,8 +84,8 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                     damping: 20, // 스프링의 감쇠(낮을수록 더 많이 튀어오름)
                   }}
                   onDragEnd={(_, info) => {
-                    if (info.offset.x > SWIPE_THRESHOLD) {
-                      handleSwipeRight();
+                    if (info.offset.x < SWIPE_THRESHOLD) {
+                      handleSwipeLeft();
                     }
                   }}
                   drag="x" // x축 방향으로만 드래그

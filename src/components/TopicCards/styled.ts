@@ -32,10 +32,12 @@ export const CardMotionWrapper = styled(motion.div)`
   }
 `;
 
-export const ProgressContainer = styled.div`
+export const TopicNavigationControls = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 1.5rem;
+  width: 100%;
 `;
 
 export const ProgressText = styled.span`
@@ -47,4 +49,20 @@ export const CardWrapper = styled.div<{
   isVisible: boolean;
 }>`
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
+`;
+
+export const IconButton = styled.button`
+  border: ${({ theme }) => `1.5px solid ${theme.colors["--grayscale-800"]}`};
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Icon = styled.img``;
+
+export const IconOpposite = styled(Icon)`
+  transform: rotate(180deg);
 `;

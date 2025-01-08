@@ -4,6 +4,7 @@ import * as S from "./styled";
 import { Topic } from "../../types/topic";
 import Card from "../Card";
 import { COLORS } from "../../styles/color";
+import IconArrow from "@assets/icons/left-arrow.svg";
 
 const SWIPE_THRESHOLD = 100;
 const SCALE_FACTOR = 0.05;
@@ -102,11 +103,17 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
               ))}
             </AnimatePresence>
           </S.DeckWrapper>
-          <S.ProgressContainer>
+          <S.TopicNavigationControls>
+            <S.IconButton>
+              <S.Icon src={IconArrow} alt="이전 토픽으로 돌아가기" />
+            </S.IconButton>
             <S.ProgressText>
               {currentIndex + 1}/{topics.length}
             </S.ProgressText>
-          </S.ProgressContainer>
+            <S.IconButton>
+              <S.IconOpposite src={IconArrow} alt="다음 토픽으로 이동하기" />
+            </S.IconButton>
+          </S.TopicNavigationControls>
         </>
       )}
     </S.DeckContainer>

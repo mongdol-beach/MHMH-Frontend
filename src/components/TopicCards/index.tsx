@@ -68,7 +68,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                   initial={{ scale: 1, y: 40, opacity: 0 }}
                   // 애니메이션 상태
                   animate={{
-                    scale: 1 - index * SCALE_FACTOR, // 뒤에 쌓인 카드는 작아짐
+                    scaleX: 1 - index * SCALE_FACTOR, // 뒤에 쌓인 카드는 작아짐
                     y: -index * VERTICAL_OFFSET, // 뒤에 쌓인 카드는 위로 올라감
                     opacity: 1, // 카드가 보이도록
                   }}

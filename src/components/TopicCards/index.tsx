@@ -10,8 +10,12 @@ const SCALE_FACTOR = 0.05;
 const VERTICAL_OFFSET = 20;
 
 const getColor = (index: number) => {
-  const colors = [COLORS["--Primary-blue-500"], "#FF6600", "#00A087"];
-  return colors[(index - 1) % colors.length];
+  const colors = [
+    COLORS["--Primary-blue-500"],
+    COLORS["--Primary-blue-300"],
+    COLORS["--Primary-blue-100"],
+  ];
+  return colors[index % colors.length];
 };
 
 interface TopicCardsProps {

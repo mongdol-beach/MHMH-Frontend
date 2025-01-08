@@ -1,4 +1,5 @@
 export const COLORS = {
+  "--Primary-blue-100": "#E8EEFF",
   "--Primary-blue-300": "#97b2ff",
   "--Primary-blue-500": "#5881f3",
   "--Primary-blue-700": "#2d56ca",

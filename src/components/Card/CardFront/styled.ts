@@ -15,7 +15,7 @@ export const Card = styled.div<CardStyleProps>`
   height: 27rem;
   border-radius: 1rem;
   background-color: ${(props) =>
-    props.$color || props.theme.colors["--Primary-blue-500"]};
+    props.$color ?? props.theme.colors["--Primary-blue-500"]};
   position: relative;
   display: flex;
   flex-direction: column;

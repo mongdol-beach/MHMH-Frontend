@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import FONT from "../../styles/font";
 
-export const Main = styled.main``;
+export const Main = styled.main`
+  padding: 0 1.5rem;
+`;
 
 export const SituationBox = styled.div`
   display: flex;

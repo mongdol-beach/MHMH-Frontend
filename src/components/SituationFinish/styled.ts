@@ -58,12 +58,20 @@ export const HandleNext = styled.div`
   border-radius: 5.375rem;
   width: 100%;
   padding: 0.75rem 0;
-  background-color: ${(props) => props.theme.colors["-grayscale-800"]};
+  background-color: ${(props) => props.theme.colors["--grayscale-800"]};
   display: flex;
   justify-content: center;
   gap: 2px;
   align-items: center;
   cursor: pointer;
+
+  &:hover {
+    background-color: #000000;
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
 `;
 
 export const handleNextP = styled.p`
@@ -83,8 +91,14 @@ export const Button = styled.button`
 
 export const SummaryBtn = styled(Button)`
   background-color: ${(props) => props.theme.colors["--Primary-blue-500"]};
-`;
+  &:hover {
+    box-shadow: inset 3px 4px 3px rgba(0, 0, 0, 0.3);
+  }
 
+  &:active {
+    filter: brightness(0.8);
+  }
+`;
 export const Footer = styled.div`
   border-top: 0.5px solid ${(props) => props.theme.colors["-grayscale-400"]};
   padding: 16px 0 40px;

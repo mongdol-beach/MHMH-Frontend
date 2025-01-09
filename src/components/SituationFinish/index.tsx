@@ -84,6 +84,7 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
 
             <S.handleNextP>메인으로</S.handleNextP>
           </S.HandleNext>
+
           <S.HandleNext onClick={handleRestart}>
             <img src={Restart} />
             <S.handleNextP>다시하기</S.handleNextP>

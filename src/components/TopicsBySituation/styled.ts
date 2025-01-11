@@ -3,6 +3,7 @@ import FONT from "../../styles/font";
 
 export const Main = styled.main`
   background: ${(props) => props.theme.colors["--Primary-blue-100"]};
+  min-height: 100vh;
 `;
 
 export const SituationBox = styled.div`

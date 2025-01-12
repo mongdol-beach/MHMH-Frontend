@@ -9,6 +9,7 @@ import IconArrow from "@assets/icons/left-arrow.svg";
 const SWIPE_THRESHOLD = 100;
 const SCALE_FACTOR = 0.05;
 const VERTICAL_OFFSET = 20;
+const DURATION = 0.83;
 
 const getColor = (index: number) => {
   const colors = [
@@ -70,6 +71,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
       ) : (
         <>
           <S.DeckWrapper>
+            {/* exit animation을 적용하기 위해 AnimatePresence 사용 */}
             <AnimatePresence mode="popLayout">
               {visibleTopics.map((topic, index) => (
                 <S.CardMotionWrapper
@@ -94,12 +96,19 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                     y: -index * VERTICAL_OFFSET, // 뒤에 쌓인 카드는 위로 올라감
                     opacity: 1, // 카드가 보이도록
                   }}
-                  // 퇴장 애니메이션
-                  exit={{
-                    x: -300, // 왼쪽으로 300px 이동
-                    opacity: 0, // 투명해지면서 사라짐
-                    transition: { duration: 0.2 }, // 애니메이션 지속 시간
-                  }}
+                  // 퇴장 애니메이션(요소가 DOM에서 사라질 때 적용)
+                  // 첫번째 카드에만 적용. 다른 카드에도 적용해버리면 뒤로가기 버튼을 눌렀을 때 세번째 카드가 DOM에서 벗어나면서 퇴장 애니메이션이 적용됨
+                  exit={
+                    index === 0
+                      ? {
+                          x: -300,
+                          y: 0,
+                          transition: {
+                            duration: DURATION,
+                          },
+                        }
+                      : undefined
+                  }
                   transition={{
                     type: "spring", // 스프링 물리 기반 애니메이션
                     stiffness: 200, // 스프링의 강성(높을수록 더 빠르고 탄력적)

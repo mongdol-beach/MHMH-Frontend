@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import FONT from "../../styles/font";
+import { Link } from "react-router-dom";
 
 export const HorizonDiv = styled.div`
   display: flex;
@@ -54,7 +55,7 @@ export const ButtonContainer = styled.div`
   gap: 0.75rem;
 `;
 
-export const HandleNext = styled.div`
+export const HandleNextLink = styled(Link)`
   border-radius: 5.375rem;
   width: 100%;
   padding: 0.75rem 0;
@@ -64,6 +65,8 @@ export const HandleNext = styled.div`
   gap: 2px;
   align-items: center;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 
   &:hover {
     background-color: #000000;

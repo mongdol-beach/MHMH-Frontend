@@ -1,12 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import useModal from "../../hooks/useModal";
 import SummaryModal from "./SummaryModal";
 import * as S from "./styled";
 import { TopicTip } from "../../types/topic";
-import HomeIcon from "../../assets/icons/HomeIcon";
+import Home from "../../assets/icons/Home";
 import Restart from "@assets/icons/re-start.svg";
-import KaKao from "../../assets/icons/kakao_small.svg";
+import KaKao from "../../assets/icons/share-kakao.svg";
 import Share from "../../assets/icons/share.svg";
 import toast from "react-hot-toast";
 
@@ -22,29 +21,21 @@ interface FinishProps {
 }
 const Finish: React.FC<FinishProps> = ({ topics }) => {
   const { isOpen, openModal, closeModal } = useModal();
-  const navigate = useNavigate();
-
-  const handleRestart = () => {
-    navigate(0);
-  };
-
-  const goToMain = () => {
-    navigate("/");
-  };
 
   const handleShare = async () => {
     try {
       await navigator.clipboard.writeText("https://mh-mh.vercel.app/");
       toast.success("링크가 복사되었습니다.");
     } catch (error) {
-      console.error("링크 복사 실패:", error);
       toast.error("링크 복사에 실패했습니다.");
     }
   };
 
   const handleKakaoShare = () => {
+    const kakaoJsKey = import.meta.env.VITE_KAKAO_JS_KEY;
+
     if (!window.Kakao.isInitialized()) {
-      window.Kakao.init("def5476a1875ffa04852c1ecd8950592");
+      window.Kakao.init(kakaoJsKey);
     }
 
     window.Kakao.Link.sendDefault({
@@ -82,16 +73,16 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
 
       <S.ButtonContainer>
         <S.HorizonDiv>
-          <S.HandleNext onClick={goToMain}>
-            <HomeIcon color="#FFFFFF" size={22} />
+          <S.HandleNextLink to={"/"}>
+            <Home color="#FFFFFF" size={22} />
 
             <S.handleNextP>메인으로</S.handleNextP>
-          </S.HandleNext>
+          </S.HandleNextLink>
 
-          <S.HandleNext onClick={handleRestart}>
+          <S.HandleNextLink to={"/situation"}>
             <img src={Restart} />
             <S.handleNextP>다시하기</S.handleNextP>
-          </S.HandleNext>
+          </S.HandleNextLink>
         </S.HorizonDiv>
         <S.SummaryBtn onClick={openModal}>요약 보기</S.SummaryBtn>
       </S.ButtonContainer>
@@ -101,11 +92,11 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
           대화가 즐거웠다면
           <br />
           친구에게도 <S.FooterStrong>“말해머해”</S.FooterStrong>를 알려주세요
-          <S.ShareContainer>
-            <S.ShareImage src={KaKao} onClick={handleKakaoShare} />
-            <S.ShareImage src={Share} onClick={handleShare} />
-          </S.ShareContainer>
         </S.FooterP>
+        <S.ShareContainer>
+          <S.ShareImage src={KaKao} onClick={handleKakaoShare} />
+          <S.ShareImage src={Share} onClick={handleShare} />
+        </S.ShareContainer>
       </S.Footer>
       <SummaryModal isOpen={isOpen} closeModal={closeModal} topics={topics} />
     </>

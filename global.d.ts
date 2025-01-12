@@ -1,3 +1,5 @@
+export {};
+
 declare module "swiper/css";
 
 declare global {
@@ -29,5 +31,3 @@ declare global {
     };
   }
 }
-
-export {};

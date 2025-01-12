@@ -32,7 +32,7 @@ const Toast = () => {
           icon: null,
           style: {
             ...BasicToastStyles,
-            background: "red",
+            background: "#FF0000",
             color: "#F7F9FE",
           },
         },

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import * as S from "./styled";
 import { Topic } from "../../types/topic";
@@ -27,6 +27,7 @@ interface TopicCardsProps {
 function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLastSlide, setIsLastSlide] = useState(false);
+  const isAfterFirstRender = useRef(false);
 
   // 현재 보여줄 카드들 (최대 3개)
   const visibleTopics = topics.slice(currentIndex, currentIndex + 3);
@@ -44,6 +45,11 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
       setCurrentIndex((prev) => prev - 1);
     }
   };
+
+  useEffect(() => {
+    // 첫 렌더링 이후에 ref 값을 변경
+    isAfterFirstRender.current = true;
+  }, []);
 
   useEffect(() => {
     onHasViewedAllCards?.(isLastSlide);
@@ -71,11 +77,20 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                   style={{
                     zIndex: topics.length - index,
                   }}
-                  // 애니메이션 초기 상태
-                  initial={{ scale: 1, y: 40, opacity: 0 }}
-                  // 애니메이션 상태
+                  // 첫 렌더링 시에는 animation 적용 안함
+                  // 첫번째 카드에 한해서 이후 initial을 적용하는데 뒤로가기 버튼을 클릭했을 때
+                  // 화면 밖으로 사라졌던(exit animation) 효과를 반대로 적용하기 위함
+                  initial={
+                    index === 0 && isAfterFirstRender.current
+                      ? {
+                          x: -300,
+                          y: -index * VERTICAL_OFFSET,
+                        }
+                      : false
+                  }
                   animate={{
                     scaleX: 1 - index * SCALE_FACTOR, // 뒤에 쌓인 카드는 작아짐
+                    x: 0,
                     y: -index * VERTICAL_OFFSET, // 뒤에 쌓인 카드는 위로 올라감
                     opacity: 1, // 카드가 보이도록
                   }}

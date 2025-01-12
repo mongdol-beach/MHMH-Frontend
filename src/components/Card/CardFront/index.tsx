@@ -8,10 +8,10 @@ import StartQuotes from "@assets/icons/quotes-start.svg";
 import EndQuotes from "@assets/icons/quotes-end.svg";
 import { CardProps } from "..";
 
-function CardFront({ situationName, id, content }: CardProps) {
+function CardFront({ situationName, id, content, $color }: CardProps) {
   return (
     <S.CardWrap>
-      <S.Card>
+      <S.Card $color={$color}>
         <S.NumberBox>
           <S.SemiCircleIcon src={SemiCircleIcon} />
           <S.NumberText>{id}</S.NumberText>

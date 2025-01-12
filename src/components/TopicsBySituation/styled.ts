@@ -9,7 +9,7 @@ export const SituationBox = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 1.5rem;
-  margin-bottom: 2.75rem;
+  margin-bottom: 4.12rem;
 `;
 
 export const Situation = styled.div`

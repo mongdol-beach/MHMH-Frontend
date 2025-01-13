@@ -16,6 +16,7 @@ import ErrorPage from "./components/Error";
 import Loading from "./components/Loading";
 import Header from "./components/Header";
 import TagManager from "react-gtm-module";
+import Toast from "./components/Toast";
 
 function App() {
   const [queryClient] = useState(
@@ -73,6 +74,7 @@ function App() {
                   element={<BalanceGamePage />}
                 />
               </Routes>
+              <Toast />
               <GlobalStyle />
             </ErrorBoundary>
           </AppLayout>

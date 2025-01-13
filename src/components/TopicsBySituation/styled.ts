@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import FONT from "../../styles/font";
 
-export const Main = styled.main``;
+export const Main = styled.main`
+  background: ${(props) => props.theme.colors["--Primary-blue-100"]};
+  min-height: 100vh;
+`;
 
 export const SituationBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1.5rem;
-  margin-bottom: 4.12rem;
+  padding-top: 1.5rem;
+  margin-bottom: 2.75rem;
 `;
 
 export const Situation = styled.div`

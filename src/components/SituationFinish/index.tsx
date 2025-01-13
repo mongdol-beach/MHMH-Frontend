@@ -1,9 +1,9 @@
 import React from "react";
 import useModal from "../../hooks/useModal";
-import SummaryModal from "./SummaryModal";
+import SummaryModal from "../Modal/SummaryModal";
 import * as S from "./styled";
 import Home from "../../assets/icons/HomeIcon";
-import Restart from "@assets/icons/re-start.svg";
+import Restart from "../../assets/icons/re-start.svg";
 import KaKao from "../../assets/icons/share-kakao.svg";
 import Share from "../../assets/icons/share.svg";
 import toast from "react-hot-toast";

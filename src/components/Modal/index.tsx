@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import styled from "styled-components";
+import * as S from "./styled";
 
 interface ModalProps {
   isOpen: boolean;
@@ -11,36 +11,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, closeModal, children }) => {
   if (!isOpen) return null;
 
   return (
-    <ModalBg onClick={closeModal}>
-      <Content onClick={(e) => e.stopPropagation()}>{children}</Content>
-    </ModalBg>
+    <S.ModalBg onClick={closeModal}>
+      <S.Content onClick={(e) => e.stopPropagation()}>{children}</S.Content>
+    </S.ModalBg>
   );
 };
 
 export default Modal;
-
-const ModalBg = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  max-width: 375px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const Content = styled.div`
-  background-color: white;
-  padding: 16px 20px;
-  border-radius: 8px;
-  width: 100%;
-  position: relative;
-`;

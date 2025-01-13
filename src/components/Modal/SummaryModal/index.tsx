@@ -1,8 +1,8 @@
 import React from "react";
-import Modal from "../../components/Modal";
+import Modal from "../index";
 import Close from "@assets/icons/close.svg";
-import * as S from "./styled";
-import { TopicTip } from "../../types/topic";
+import * as S from "../styled";
+import { TopicTip } from "../../../types/topic";
 
 interface SummaryModalProps {
   isOpen: boolean;

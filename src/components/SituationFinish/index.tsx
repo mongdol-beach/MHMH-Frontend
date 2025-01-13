@@ -94,8 +94,16 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
           친구에게도 <S.FooterStrong>“말해머해”</S.FooterStrong>를 알려주세요
         </S.FooterP>
         <S.ShareContainer>
-          <S.ShareImage src={KaKao} onClick={handleKakaoShare} />
-          <S.ShareImage src={Share} onClick={handleShare} />
+          <S.ShareImage
+            data-gtm="kakao-share"
+            src={KaKao}
+            onClick={handleKakaoShare}
+          />
+          <S.ShareImage
+            data-gtm="url-share"
+            src={Share}
+            onClick={handleShare}
+          />
         </S.ShareContainer>
       </S.Footer>
       <SummaryModal isOpen={isOpen} closeModal={closeModal} topics={topics} />

@@ -7,6 +7,7 @@ import Restart from "@assets/icons/re-start.svg";
 import KaKao from "../../assets/icons/share-kakao.svg";
 import Share from "../../assets/icons/share.svg";
 import toast from "react-hot-toast";
+import { TopicTip } from "../../types/topic";
 
 export {}; // global 선언을 위해 필요
 
@@ -15,6 +16,7 @@ interface FinishProps {
     id: number;
     content: string;
     isRecommend: boolean;
+    tips: TopicTip[];
   }[];
 }
 const Finish: React.FC<FinishProps> = ({ topics }) => {

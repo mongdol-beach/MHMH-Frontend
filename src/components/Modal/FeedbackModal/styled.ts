@@ -81,3 +81,25 @@ export const CharacterCount = styled.span`
   font-size: 0.75rem;
   color: #939393;
 `;
+
+export const FeedBackBtn = styled.button`
+  background: ${(props) => props.theme.colors["--Primary-blue-500"]};
+  padding: 0.75rem 1rem;
+  ${FONT.sub_title16}
+  line-height: 1.5rem;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: ${(props) => props.theme.colors["-grayscale-50"]};
+  border-radius: 86px;
+  margin: 1rem 0 1.5rem 0;
+
+  &:hover {
+    box-shadow: inset 3px 4px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
+`;

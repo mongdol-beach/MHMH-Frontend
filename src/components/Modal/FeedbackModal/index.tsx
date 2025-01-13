@@ -85,15 +85,24 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
           </S.ModalTitle>
           <S.IconDiv>
             <S.IconButton onClick={() => handleToggle("good")}>
-              <img src={toggleStates.good ? GoodOn : GoodOff} alt="good" />
+              <img
+                src={toggleStates.good ? GoodOn : GoodOff}
+                alt="말해뭐해 유저 피드백"
+              />
             </S.IconButton>
 
             <S.IconButton onClick={() => handleToggle("soso")}>
-              <img src={toggleStates.soso ? SosoOn : SosoOff} alt="soso" />
+              <img
+                src={toggleStates.soso ? SosoOn : SosoOff}
+                alt="말해뭐해 유저 피드백"
+              />
             </S.IconButton>
 
             <S.IconButton onClick={() => handleToggle("bad")}>
-              <img src={toggleStates.bad ? BadOn : BadOff} alt="bad" />
+              <img
+                src={toggleStates.bad ? BadOn : BadOff}
+                alt="말해뭐해 유저 피드백"
+              />
             </S.IconButton>
           </S.IconDiv>
           <S.TextAreaWrapper>
@@ -108,6 +117,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
               {value.length}/{MAX_LENGTH}
             </S.CharacterCount>
           </S.TextAreaWrapper>
+          <S.FeedBackBtn>의견 보내기</S.FeedBackBtn>
         </S.ModalContainer>
       </Modal>
     </>

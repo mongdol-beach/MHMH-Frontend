@@ -3,7 +3,7 @@ import useModal from "../../hooks/useModal";
 import SummaryModal from "./SummaryModal";
 import * as S from "./styled";
 import { TopicTip } from "../../types/topic";
-import Home from "../../assets/icons/Home";
+import Home from "../../assets/icons/HomeIcon";
 import Restart from "@assets/icons/re-start.svg";
 import KaKao from "../../assets/icons/share-kakao.svg";
 import Share from "../../assets/icons/share.svg";

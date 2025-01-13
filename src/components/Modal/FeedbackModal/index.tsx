@@ -8,6 +8,7 @@ import BadOff from "@assets/icons/bad-off.svg";
 import GoodOn from "@assets/icons/good-on.svg";
 import GoodOff from "@assets/icons/good-off.svg";
 import { useState } from "react";
+import { instance } from "../../../apis/axios";
 
 interface FeedbackModalProps {
   isOpen: boolean;
@@ -22,7 +23,14 @@ type ToggleState = {
 
 type IconType = keyof ToggleState;
 
-const MAX_LENGTH = 400;
+type FeedbackType = "BAD" | "AVERAGE" | "EXCELLENT";
+
+interface FeedbackRequest {
+  type: FeedbackType;
+  message: string;
+}
+
+const MAX_LENGTH = 1000;
 
 const FeedbackModal: React.FC<FeedbackModalProps> = ({
   isOpen,
@@ -36,21 +44,21 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
 
   const handleToggle = (iconType: IconType): void => {
     setToggleStates((prev) => {
-      // 모든 상태를 false로 초기화한 후, 선택된 아이콘만 true로 설정
-      const newState = {
+      // 이미 선택된 아이콘을 다시 클릭한 경우
+      if (prev[iconType]) {
+        return {
+          ...prev,
+          [iconType]: false,
+        };
+      }
+
+      // 다른 아이콘을 클릭한 경우
+      return {
         good: false,
         soso: false,
         bad: false,
+        [iconType]: true, // 새로 선택된 아이콘만 on
       };
-
-      // 이미 선택된 아이콘을 다시 클릭하면 모두 off
-      if (prev[iconType]) {
-        return newState;
-      }
-
-      // 새로운 아이콘을 선택하면 해당 아이콘만 on
-      newState[iconType] = true;
-      return newState;
     });
   };
 
@@ -60,6 +68,27 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
     const newValue = e.target.value;
     if (newValue.length <= MAX_LENGTH) {
       setValue(newValue);
+    }
+  };
+
+  const getFeedbackType = (): FeedbackType => {
+    if (toggleStates.good) return "EXCELLENT";
+    if (toggleStates.soso) return "AVERAGE";
+    if (toggleStates.bad) return "BAD";
+    return "AVERAGE";
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const requestBody: FeedbackRequest = {
+        type: getFeedbackType(),
+        message: value,
+      };
+
+      await instance.post("/feedbacks", requestBody);
+      handleCloseModal();
+    } catch (error) {
+      console.error("피드백 제출 실패:", error);
     }
   };
 
@@ -117,7 +146,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
               {value.length}/{MAX_LENGTH}
             </S.CharacterCount>
           </S.TextAreaWrapper>
-          <S.FeedBackBtn>의견 보내기</S.FeedBackBtn>
+          <S.FeedBackBtn onClick={handleSubmit}>의견 보내기</S.FeedBackBtn>
         </S.ModalContainer>
       </Modal>
     </>

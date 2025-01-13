@@ -1,8 +1,7 @@
 import React from "react";
-import Modal from "../../components/Modal/SituationFinishModal/Modal";
+import Modal from "../../components/Modal";
 import Close from "@assets/icons/close.svg";
 import * as S from "./styled";
-import { TopicTip } from "../../types/topic";
 
 interface SummaryModalProps {
   isOpen: boolean;
@@ -11,7 +10,6 @@ interface SummaryModalProps {
     id: number;
     content: string;
     isRecommend: boolean;
-    tips: TopicTip[]; // string[] 대신 TopicTip[]
   }[];
 }
 

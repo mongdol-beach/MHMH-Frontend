@@ -1,5 +1,5 @@
 
-export {}
+
 
 declare global {
     interface Window {
@@ -31,3 +31,4 @@ declare global {
     }
   }
   
+  export {}

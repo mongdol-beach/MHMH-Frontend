@@ -2,7 +2,6 @@ import React from "react";
 import useModal from "../../hooks/useModal";
 import SummaryModal from "./SummaryModal";
 import * as S from "./styled";
-import { TopicTip } from "../../types/topic";
 import Home from "../../assets/icons/HomeIcon";
 import Restart from "@assets/icons/re-start.svg";
 import KaKao from "../../assets/icons/share-kakao.svg";
@@ -16,7 +15,6 @@ interface FinishProps {
     id: number;
     content: string;
     isRecommend: boolean;
-    tips: TopicTip[];
   }[];
 }
 const Finish: React.FC<FinishProps> = ({ topics }) => {

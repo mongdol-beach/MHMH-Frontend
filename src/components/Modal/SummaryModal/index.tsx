@@ -21,7 +21,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
   topics,
 }) => {
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} closeModal={closeModal}>
       <S.CloseIcon src={Close} onClick={closeModal} />
       <S.ModalContainer>
         <S.ModalHeader>

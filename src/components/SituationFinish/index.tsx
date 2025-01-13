@@ -27,6 +27,8 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
       await navigator.clipboard.writeText("https://mh-mh.vercel.app/");
       toast.success("링크가 복사되었습니다.");
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "링크 복사 실패"
+      console.log(errorMessage)
       toast.error("링크 복사에 실패했습니다.");
     }
   };

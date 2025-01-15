@@ -8,7 +8,7 @@ export const CloseIcon = styled.img<{ onClick: () => void }>`
   cursor: pointer;
 `;
 
-export const ModalContainer = styled.div`
+export const ModalContainer = styled.form`
   margin-top: 4rem;
   display: flex;
   flex-direction: column;

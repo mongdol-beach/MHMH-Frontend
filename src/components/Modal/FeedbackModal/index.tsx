@@ -9,6 +9,7 @@ import GoodOn from "@assets/icons/good-on.svg";
 import GoodOff from "@assets/icons/good-off.svg";
 import { useState } from "react";
 import { instance } from "../../../apis/axios";
+import toast from "react-hot-toast";
 
 interface FeedbackModalProps {
   isOpen: boolean;
@@ -41,10 +42,10 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
     soso: false,
     bad: false,
   });
+  const [value, setValue] = useState("");
 
   const handleToggle = (iconType: IconType): void => {
     setToggleStates((prev) => {
-      // 이미 선택된 아이콘을 다시 클릭한 경우
       if (prev[iconType]) {
         return {
           ...prev,
@@ -52,17 +53,13 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
         };
       }
 
-      // 다른 아이콘을 클릭한 경우
+      const defaultFeedbackState = { good: false, soso: false, bad: false };
       return {
-        good: false,
-        soso: false,
-        bad: false,
-        [iconType]: true, // 새로 선택된 아이콘만 on
+        ...defaultFeedbackState,
+        [iconType]: true,
       };
     });
   };
-
-  const [value, setValue] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value;
@@ -71,29 +68,29 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
     }
   };
 
-  const getFeedbackType = (): FeedbackType => {
-    if (toggleStates.good) return "EXCELLENT";
-    if (toggleStates.soso) return "AVERAGE";
-    if (toggleStates.bad) return "BAD";
+  const getFeedbackType = (feedbackState: ToggleState): FeedbackType => {
+    if (feedbackState.good) return "EXCELLENT";
+    if (feedbackState.soso) return "AVERAGE";
+    if (feedbackState.bad) return "BAD";
     return "AVERAGE";
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       const requestBody: FeedbackRequest = {
-        type: getFeedbackType(),
+        type: getFeedbackType(toggleStates),
         message: value,
       };
 
       await instance.post("/feedbacks", requestBody);
       handleCloseModal();
     } catch (error) {
-      console.error("피드백 제출 실패:", error);
+      toast.error(" 의견 보내기 전송에 실패했습니다.");
     }
   };
 
   const handleCloseModal = () => {
-    // 상태 초기화
     setToggleStates({
       good: false,
       soso: false,
@@ -107,27 +104,27 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
     <>
       <HasCloseModal isOpen={isOpen} closeModal={handleCloseModal}>
         <S.CloseIcon src={Close} onClick={closeModal} />
-        <S.ModalContainer>
+        <S.ModalContainer onSubmit={handleSubmit}>
           <S.ModalTitle>
             "말해머해"이용 후,
             <br /> 얼마나 만족하나요?
           </S.ModalTitle>
           <S.IconDiv>
-            <S.IconButton onClick={() => handleToggle("good")}>
+            <S.IconButton type="button" onClick={() => handleToggle("good")}>
               <img
                 src={toggleStates.good ? GoodOn : GoodOff}
                 alt="말해뭐해 유저 피드백"
               />
             </S.IconButton>
 
-            <S.IconButton onClick={() => handleToggle("soso")}>
+            <S.IconButton type="button" onClick={() => handleToggle("soso")}>
               <img
                 src={toggleStates.soso ? SosoOn : SosoOff}
                 alt="말해뭐해 유저 피드백"
               />
             </S.IconButton>
 
-            <S.IconButton onClick={() => handleToggle("bad")}>
+            <S.IconButton type="button" onClick={() => handleToggle("bad")}>
               <img
                 src={toggleStates.bad ? BadOn : BadOff}
                 alt="말해뭐해 유저 피드백"
@@ -146,7 +143,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
               {value.length}/{MAX_LENGTH}
             </S.CharacterCount>
           </S.TextAreaWrapper>
-          <S.FeedBackBtn onClick={handleSubmit}>의견 보내기</S.FeedBackBtn>
+          <S.FeedBackBtn type="submit">의견 보내기</S.FeedBackBtn>
         </S.ModalContainer>
       </HasCloseModal>
     </>

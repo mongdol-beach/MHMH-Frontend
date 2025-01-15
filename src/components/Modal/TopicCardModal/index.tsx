@@ -1,4 +1,4 @@
-import Modal from "..";
+import Modal from "../index";
 import * as S from "./styled";
 import Card from "../../Card";
 

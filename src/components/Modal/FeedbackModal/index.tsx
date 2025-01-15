@@ -1,4 +1,4 @@
-import Modal from "..";
+import { HasCloseModal } from "../index";
 import * as S from "./styled";
 import Close from "@assets/icons/close.svg";
 import SosoOn from "@assets/icons/soso-on.svg";
@@ -105,7 +105,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
 
   return (
     <>
-      <Modal isOpen={isOpen} closeModal={handleCloseModal}>
+      <HasCloseModal isOpen={isOpen} closeModal={handleCloseModal}>
         <S.CloseIcon src={Close} onClick={closeModal} />
         <S.ModalContainer>
           <S.ModalTitle>
@@ -148,7 +148,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
           </S.TextAreaWrapper>
           <S.FeedBackBtn onClick={handleSubmit}>의견 보내기</S.FeedBackBtn>
         </S.ModalContainer>
-      </Modal>
+      </HasCloseModal>
     </>
   );
 };

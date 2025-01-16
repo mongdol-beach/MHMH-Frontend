@@ -1,46 +1,43 @@
 import React, { ReactNode } from "react";
-import styled from "styled-components";
+import * as S from "./styled";
+import Portal from "../Portal";
 
-interface ModalProps {
+interface HasModalProps {
   isOpen: boolean;
   closeModal?: () => void;
   children: ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, closeModal, children }) => {
+const HasCloseModal: React.FC<HasModalProps> = ({
+  isOpen,
+  closeModal,
+  children,
+}) => {
   if (!isOpen) return null;
 
+  const handleCloseModal = () => {
+    if (closeModal) closeModal();
+  };
+
   return (
-    <ModalBg onClick={closeModal}>
-      <Content onClick={(e) => e.stopPropagation()}>{children}</Content>
-    </ModalBg>
+    <S.ModalBg onClick={handleCloseModal}>
+      <S.Content onClick={(e) => e.stopPropagation()}>{children}</S.Content>
+    </S.ModalBg>
   );
 };
 
+interface ModalProps {
+  children: ReactNode;
+  isOpen: boolean;
+}
+
+function Modal({ isOpen, children }: ModalProps) {
+  return (
+    <Portal>
+      <S.Container $isOpen={isOpen}>{children}</S.Container>
+    </Portal>
+  );
+}
+
+export { HasCloseModal, Modal };
 export default Modal;
-
-const ModalBg = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  max-width: 375px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const Content = styled.div`
-  background-color: white;
-  padding: 16px 20px;
-  border-radius: 8px;
-  width: 100%;
-  position: relative;
-`;

@@ -1,8 +1,8 @@
 import React from "react";
-import Modal from "../../components/Modal";
+import { HasCloseModal } from "../index";
 import Close from "@assets/icons/close.svg";
-import * as S from "./styled";
-import { TopicTip } from "../../types/topic";
+import * as S from "./styled";
+import { TopicTip } from "../../../types/topic";
 
 interface SummaryModalProps {
   isOpen: boolean;
@@ -21,7 +21,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
   topics,
 }) => {
   return (
-    <Modal isOpen={isOpen}>
+    <HasCloseModal isOpen={isOpen} closeModal={closeModal}>
       <S.CloseIcon src={Close} onClick={closeModal} />
       <S.ModalContainer>
         <S.ModalHeader>
@@ -58,7 +58,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
           ))}
         </S.ModalContents>
       </S.ModalContainer>
-    </Modal>
+    </HasCloseModal>
   );
 };
 

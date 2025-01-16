@@ -1,4 +1,4 @@
-import { Situation, TopicList } from "../types";
+import { Situation, TopicList } from ".././types";
 import { instance } from "./axios";
 
 export const getTopicList = async (

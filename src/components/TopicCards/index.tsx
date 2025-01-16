@@ -101,7 +101,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                   exit={
                     index === 0
                       ? {
-                          x: -300,
+                          x: -500,
                           y: 0,
                           transition: {
                             duration: DURATION,

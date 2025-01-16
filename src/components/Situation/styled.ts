@@ -46,9 +46,13 @@ export const SituationLink = styled(Link)`
   letter-spacing: -0.025rem;
   word-break: keep-all;
 
-  &:hover {
-    transition: background-color 0.75s;
-    background-color: ${(props) => props.theme.colors["--card-color-blue-500"]};
-    color: white;
+  // 마우스처럼 정확한 포인팅 장치 사용 환경 감지
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transition: background-color 0.75s;
+      background-color: ${(props) =>
+        props.theme.colors["--card-color-blue-500"]};
+      color: white;
+    }
   }
 `;

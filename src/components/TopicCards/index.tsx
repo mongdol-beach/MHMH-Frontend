@@ -106,6 +106,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                           transition: {
                             duration: DURATION,
                           },
+                          zIndex: 10,
                         }
                       : undefined
                   }

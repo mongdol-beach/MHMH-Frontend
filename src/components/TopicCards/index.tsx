@@ -122,7 +122,7 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                   }}
                   drag="x" // x축 방향으로만 드래그
                   dragConstraints={{ left: 0, right: 0 }} // 드래그 제한 범위
-                  dragElastic={0} // 드래그 반발력(1에 가까울수록 더 탄력적), 드래그는 하지만 요소는 움직이지 않도록 하기 위해 0으로 설정
+                  dragElastic={0.7} // 드래그 반발력(1에 가까울수록 더 탄력적)
                 >
                   <Card
                     content={topic.content}

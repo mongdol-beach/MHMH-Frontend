@@ -22,6 +22,7 @@ export const Card = styled.div<CardStyleProps>`
   align-items: center;
   justify-content: space-between;
   padding: 1.35rem;
+  box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.25);
 `;
 
 const AbsoluteImage = styled.img`

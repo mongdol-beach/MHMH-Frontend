@@ -12,7 +12,6 @@ export const SituationBox = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: 1.5rem;
-  margin-bottom: 2.75rem;
 `;
 
 export const Situation = styled.div`

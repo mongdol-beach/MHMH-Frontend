@@ -118,6 +118,8 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
                   onDragEnd={(_, info) => {
                     if (info.offset.x < SWIPE_THRESHOLD) {
                       handleSwipeLeft();
+                    } else if (info.offset.x > Math.abs(SWIPE_THRESHOLD)) {
+                      handleSwipeRight();
                     }
                   }}
                   drag="x" // x축 방향으로만 드래그

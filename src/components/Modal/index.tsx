@@ -1,8 +1,32 @@
-import { ReactNode } from "react";
-import Portal from "../Portal";
+import React, { ReactNode } from "react";
 import * as S from "./styled";
+import Portal from "../Portal";
 
-export interface ModalProps {
+interface HasModalProps {
+  isOpen: boolean;
+  closeModal?: () => void;
+  children: ReactNode;
+}
+
+const HasCloseModal: React.FC<HasModalProps> = ({
+  isOpen,
+  closeModal,
+  children,
+}) => {
+  if (!isOpen) return null;
+
+  const handleCloseModal = () => {
+    if (closeModal) closeModal();
+  };
+
+  return (
+    <S.ModalBg onClick={handleCloseModal}>
+      <S.Content onClick={(e) => e.stopPropagation()}>{children}</S.Content>
+    </S.ModalBg>
+  );
+};
+
+interface ModalProps {
   children: ReactNode;
   isOpen: boolean;
 }
@@ -15,4 +39,5 @@ function Modal({ isOpen, children }: ModalProps) {
   );
 }
 
+export { HasCloseModal, Modal };
 export default Modal;

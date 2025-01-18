@@ -6,17 +6,23 @@ export const CardWrap = styled.div`
   user-select: none;
 `;
 
-export const Card = styled.div`
+export interface CardStyleProps {
+  $color?: string;
+}
+
+export const Card = styled.div<CardStyleProps>`
   width: 20.375rem;
   height: 27rem;
   border-radius: 1rem;
-  background-color: ${(props) => props.theme.colors["--Primary-blue-500"]};
+  background-color: ${(props) =>
+    props.$color ?? props.theme.colors["--Primary-blue-500"]};
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 1.35rem;
+  box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.25);
 `;
 
 const AbsoluteImage = styled.img`

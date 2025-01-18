@@ -1,8 +1,8 @@
 import React from "react";
-import Modal from "../../components/Modal/SituationFinishModal/Modal";
+import { HasCloseModal } from "../index";
 import Close from "@assets/icons/close.svg";
-import * as S from "./styled";
-import { TopicTip } from "../../types/topic";
+import * as S from "./styled";
+import { TopicTip } from "../../../types/topic";
 
 interface SummaryModalProps {
   isOpen: boolean;
@@ -11,7 +11,7 @@ interface SummaryModalProps {
     id: number;
     content: string;
     isRecommend: boolean;
-    tips: TopicTip[]; // string[] 대신 TopicTip[]
+    tips: TopicTip[];
   }[];
 }
 
@@ -21,7 +21,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
   topics,
 }) => {
   return (
-    <Modal isOpen={isOpen}>
+    <HasCloseModal isOpen={isOpen} closeModal={closeModal}>
       <S.CloseIcon src={Close} onClick={closeModal} />
       <S.ModalContainer>
         <S.ModalHeader>
@@ -57,9 +57,8 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
             </S.ModalContents_metrics>
           ))}
         </S.ModalContents>
-        <S.ModalFooter>즐거운 대화였길 바래요 :)</S.ModalFooter>
       </S.ModalContainer>
-    </Modal>
+    </HasCloseModal>
   );
 };
 

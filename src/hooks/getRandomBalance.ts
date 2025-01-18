@@ -11,6 +11,7 @@ export const useRandomBalance = () => {
     queryKey: ["randomBalance"],
     queryFn: async () =>
       await instance.get("/balance-game/questions").then((res) => res.data),
+    refetchOnWindowFocus: false,
   });
 };
 

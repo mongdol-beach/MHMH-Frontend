@@ -1,4 +1,5 @@
 export const COLORS = {
+  "--Primary-blue-100": "#E8EEFF",
   "--Primary-blue-300": "#97b2ff",
   "--Primary-blue-500": "#5881f3",
   "--Primary-blue-700": "#2d56ca",
@@ -6,7 +7,6 @@ export const COLORS = {
   "--card-color-blue-300": "#97B2FF",
   "--card-color-blue-500": "#5881f3",
   "--card-color-blue-700": "#2D56CA",
-
   "--point-beige": "#F9F4E3",
   "--card-color-sky_b": "#97b2ff",
   "--card-color-beige": "#f9f4e3",
@@ -15,6 +15,7 @@ export const COLORS = {
   "--card-color-pink": "#ffaec5",
   "-grayscale-800": "#1e1e1e",
   "--grayscale-800": "#27272C",
+  "--grayscale-900": "#161618",
   "-grayscale-600": "#606060",
   "-grayscale-400": "#939393",
   "-grayscale-200": "#c7c7c7",

@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
-export const AppContainer = styled.div`
+export const Container = styled.div`
+  background: ${(props) => props.theme.colors["--card-color-blue-100"]};
+  height: 100vh;
   max-width: 375px;
-  width: 100%;
   min-height: 100vh;
+  margin: 0 auto;
+`;
+
+export const AppContainer = styled.div`
+  background-color: #fff;
+  width: 100%;
   height: 100%;
-  position: relative;
   margin: 0 auto;
   overflow-y: auto;
   scrollbar-width: none;
@@ -13,11 +19,5 @@ export const AppContainer = styled.div`
 
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  @media screen and (min-width: 1024px) {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-height: 812px;
-    min-height: 812px;
   }
 `;

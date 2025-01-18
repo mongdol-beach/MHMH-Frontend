@@ -6,7 +6,7 @@ import Card from "../Card";
 import { COLORS } from "../../styles/color";
 import IconArrow from "@assets/icons/left-arrow.svg";
 
-const SWIPE_THRESHOLD = 100;
+const SWIPE_THRESHOLD = -100;
 const SCALE_FACTOR = 0.05;
 const VERTICAL_OFFSET = 20;
 const DURATION = 0.83;

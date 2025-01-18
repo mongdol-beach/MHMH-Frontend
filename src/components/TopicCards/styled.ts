@@ -40,6 +40,7 @@ export const TopicNavigationControls = styled.div`
   width: 100%;
   position: relative;
   gap: 1rem;
+  padding: 0 1.75rem;
 `;
 
 export const LeftButtonWrapper = styled.div`

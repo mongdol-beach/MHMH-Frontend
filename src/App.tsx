@@ -7,7 +7,12 @@ import { theme } from "./styles/theme";
 import PAGE_PATH from "./constants/path";
 import AppLayout from "./components/Layout";
 import BalanceGamePage from "./pages/BalanceGamePage";
-import { MainPage, SituationPage, TopicListPage } from "./pages/index";
+import {
+  MainPage,
+  SituationPage,
+  TopicListPage,
+  LoginPage,
+} from "./pages/index";
 import { OverlayProvider } from "overlay-kit";
 import TopicsBySituationPage from "./pages/TopicsBySituationPage";
 import RandomTopicsPage from "./pages/RandomTopicsPage";
@@ -45,6 +50,7 @@ function App() {
             <ErrorBoundary FallbackComponent={ErrorPage}>
               <Routes>
                 <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
+                <Route path={PAGE_PATH.LOGIN} element={<LoginPage />} />
                 <Route path={PAGE_PATH.SITUATION} element={<SituationPage />} />
                 <Route
                   path={PAGE_PATH.TOPIC_LIST}

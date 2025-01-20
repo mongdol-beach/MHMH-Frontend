@@ -1,5 +1,15 @@
+import { Helmet } from "react-helmet";
+import Login from "../components/Login";
+
 const LoginPage = () => {
-  return <div>LoginPage</div>;
+  return (
+    <>
+      <Helmet>
+        <title>로그인 | 말해머해</title>
+      </Helmet>
+      <Login />
+    </>
+  );
 };
 
 export default LoginPage;

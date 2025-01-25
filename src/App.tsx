@@ -13,6 +13,7 @@ import {
   TopicListPage,
   LoginPage,
 } from "./pages/index";
+import KakaoRedirect from "./pages/login-redirect/kakao";
 import { OverlayProvider } from "overlay-kit";
 import TopicsBySituationPage from "./pages/TopicsBySituationPage";
 import RandomTopicsPage from "./pages/RandomTopicsPage";
@@ -22,6 +23,7 @@ import Loading from "./components/Loading";
 import Header from "./components/Header";
 import TagManager from "react-gtm-module";
 import Toast from "./components/Toast";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   const [queryClient] = useState(
@@ -43,50 +45,60 @@ function App() {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <OverlayProvider>
-          <AppLayout>
-            <ErrorBoundary FallbackComponent={ErrorPage}>
-              <Routes>
-                <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
-                <Route path={PAGE_PATH.LOGIN} element={<LoginPage />} />
-                <Route path={PAGE_PATH.SITUATION} element={<SituationPage />} />
-                <Route
-                  path={PAGE_PATH.TOPIC_LIST}
-                  element={
-                    <Suspense
-                      fallback={
-                        <>
-                          <Header title="토픽 리스트 | 말해머해" />
-                          <Loading />
-                        </>
-                      }
-                    >
-                      <TopicListPage />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path={`${PAGE_PATH.TOPICS_BY_SITUATION}/:situationId`}
-                  element={<TopicsBySituationPage />}
-                />
-                <Route
-                  path={PAGE_PATH.TOPICS_RANDOM}
-                  element={<RandomTopicsPage />}
-                />
-                <Route
-                  path={PAGE_PATH["BALANCE-GAME"]}
-                  element={<BalanceGamePage />}
-                />
-              </Routes>
-              <Toast />
-              <GlobalStyle />
-            </ErrorBoundary>
-          </AppLayout>
-        </OverlayProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <OverlayProvider>
+            <AppLayout>
+              <ErrorBoundary FallbackComponent={ErrorPage}>
+                <Routes>
+                  <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
+                  <Route path={PAGE_PATH.LOGIN} element={<LoginPage />} />
+                  <Route
+                    path={PAGE_PATH.KAKAO_REDIRECT}
+                    element={<KakaoRedirect />}
+                  />
+
+                  <Route
+                    path={PAGE_PATH.SITUATION}
+                    element={<SituationPage />}
+                  />
+                  <Route
+                    path={PAGE_PATH.TOPIC_LIST}
+                    element={
+                      <Suspense
+                        fallback={
+                          <>
+                            <Header title="토픽 리스트 | 말해머해" />
+                            <Loading />
+                          </>
+                        }
+                      >
+                        <TopicListPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path={`${PAGE_PATH.TOPICS_BY_SITUATION}/:situationId`}
+                    element={<TopicsBySituationPage />}
+                  />
+                  <Route
+                    path={PAGE_PATH.TOPICS_RANDOM}
+                    element={<RandomTopicsPage />}
+                  />
+                  <Route
+                    path={PAGE_PATH["BALANCE-GAME"]}
+                    element={<BalanceGamePage />}
+                  />
+                </Routes>
+                <Toast />
+                <GlobalStyle />
+              </ErrorBoundary>
+            </AppLayout>
+          </OverlayProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 

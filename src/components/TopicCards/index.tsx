@@ -1,38 +1,21 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import * as S from "./styled";
 import { Topic } from "../../types/topic";
 import IconArrow from "@assets/icons/left-arrow.svg";
 import CardDeck from "../CardDeck";
+import useTopicCardNavigation from "../../hooks/useTopicCardNavigation";
+
 interface TopicCardsProps {
   topics: Topic[];
   onHasViewedAllCards?: (hasViewedAllCards: boolean) => void;
 }
 
 function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLastSlide, setIsLastSlide] = useState(false);
-
-  // 현재 보여줄 카드들 (최대 3개)
-  const visibleTopics = topics.slice(currentIndex, currentIndex + 3);
-
-  const handleSwipe = (direction: "left" | "right") => {
-    if (direction === "left") {
-      if (currentIndex < topics.length - 1) {
-        setCurrentIndex((prev) => prev + 1);
-      } else {
-        setIsLastSlide(true);
-      }
-    } else {
-      if (currentIndex > 0) {
-        setCurrentIndex((prev) => prev - 1);
-      }
-    }
-  };
-
-  useEffect(() => {
-    onHasViewedAllCards?.(isLastSlide);
-  }, [isLastSlide, onHasViewedAllCards]);
+  const { currentIndex, isLastSlide, visibleTopics, handleSwipe } =
+    useTopicCardNavigation({
+      topics,
+      onHasViewedAllCards,
+    });
 
   if (!topics.length) return null;
 

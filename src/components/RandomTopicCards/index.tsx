@@ -4,6 +4,7 @@ import CardDeck from "../CardDeck";
 import useTopicCardNavigation from "../../hooks/useTopicCardNavigation";
 import { useRandomTopics } from "../../hooks/useRandomTopics";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface RandomTopicCardsProps {
   onHasViewedAllCards?: (hasViewedAllCards: boolean) => void;
@@ -12,12 +13,17 @@ interface RandomTopicCardsProps {
 export default function RandomTopicCards({
   onHasViewedAllCards,
 }: RandomTopicCardsProps) {
+  const navigate = useNavigate();
   const { data, fetchNextPage } = useRandomTopics();
   const topics = data?.pages.flatMap((page) => page.topics) || [];
   const { currentIndex, visibleTopics, handleSwipe } = useTopicCardNavigation({
     topics,
     onHasViewedAllCards,
   });
+
+  const handleExit = () => {
+    navigate("/");
+  };
 
   // 현재 인덱스가 전체 토픽 개수의 80%에 도달하면 다음 페이지 로드
   useEffect(() => {
@@ -43,9 +49,7 @@ export default function RandomTopicCards({
             </S.IconButton>
           )}
         </S.LeftButtonWrapper>
-        <S.ProgressText>
-          {currentIndex + 1}/{topics.length}
-        </S.ProgressText>
+        <S.ExitButton onClick={handleExit}>종료하기</S.ExitButton>
         <S.RightButtonWrapper>
           <S.IconButton onClick={() => handleSwipe("left")}>
             <S.IconOpposite src={IconArrow} alt="다음 토픽으로 이동하기" />

@@ -25,7 +25,7 @@ export default function RandomTopicCards({
     navigate("/");
   };
 
-  // 현재 인덱스가 전체 토픽 개수의 80%에 도달하면 다음 페이지 로드
+  // 현재 인덱스가 전체 토픽 개수의 60%에 도달하면 다음 페이지 로드
   useEffect(() => {
     if (currentIndex >= topics.length * 0.6) {
       fetchNextPage();

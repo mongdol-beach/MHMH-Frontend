@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 import { instance } from "../apis/axios";
 import { Topic } from "../types/topic";
 
@@ -9,7 +9,7 @@ interface RandomTopicsResponse {
 }
 
 export const useRandomTopics = () => {
-  return useInfiniteQuery<RandomTopicsResponse, Error>({
+  return useSuspenseInfiniteQuery<RandomTopicsResponse, Error>({
     queryKey: ["randomTopics"],
     queryFn: async ({ pageParam = 1 }) =>
       await instance

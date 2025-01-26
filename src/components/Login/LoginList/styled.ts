@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 interface SocialButtonProps {
   $textColor: string;
@@ -23,7 +24,7 @@ export const Title = styled.span`
 
 export const Item = styled.li``;
 
-export const SocialButton = styled.button<SocialButtonProps>`
+export const SocialButton = styled(Link)<SocialButtonProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;

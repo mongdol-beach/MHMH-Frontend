@@ -3,25 +3,33 @@ import KakaoIcon from "@assets/icons/kakao.svg";
 import NaverIcon from "@assets/icons/naver.svg";
 import GoogleIcon from "@assets/icons/google.svg";
 
+const KAKAO_API_KEY = import.meta.env.VITE_KAKAO_API_KEY;
+
 const socialLoginList = [
   {
+    id: 1,
     text: "카카오",
     icon: KakaoIcon,
     textColor: "#000",
     backgroundColor: "#FEE500",
+    url: `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_API_KEY}&redirect_uri=${window.location.href}/kakao&response_type=code`,
   },
   {
+    id: 2,
     text: "네이버",
     icon: NaverIcon,
     textColor: "#FFF",
     backgroundColor: "#03C75A",
+    url: "",
   },
   {
+    id: 3,
     text: "Google",
     icon: GoogleIcon,
     textColor: "#000",
     backgroundColor: "#FFF",
     borderColor: "#C7C7C7",
+    url: "",
   },
 ];
 
@@ -30,11 +38,12 @@ const LoginList = () => {
     <S.List>
       <S.Title>SNS 계정으로 3초만에 가입하기</S.Title>
       {socialLoginList.map((item) => {
-        const { text, icon, textColor, backgroundColor, borderColor } = item;
+        const { id, text, icon, textColor, backgroundColor, borderColor, url } =
+          item;
         return (
-          <S.Item>
+          <S.Item key={id}>
             <S.SocialButton
-              type="button"
+              to={url}
               $textColor={textColor}
               $backgroundColor={backgroundColor}
               $borderColor={borderColor}

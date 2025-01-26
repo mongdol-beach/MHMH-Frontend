@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { instance } from "../apis/axios";
-import { Topic } from "../types/topic";
+import { SituationColor, Topic } from "../types/topic";
 
 interface RandomTopicsResponse {
   topics: Topic[];
+  situationColor: SituationColor;
 }
 
 export const useRandomTopics = () => {

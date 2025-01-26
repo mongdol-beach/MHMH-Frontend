@@ -3,13 +3,15 @@ import SemiCircleIcon from "@assets/icons/semi-circle.svg";
 import { Topic as TopicType } from "../../../types";
 import TopicCardModal from "../../Modal/TopicCardModal";
 import { overlay } from "overlay-kit";
+import { SituationColor } from "../../../types/topic";
 
 interface TopicProps {
   topic: TopicType;
   situationName: string;
+  situationColor: SituationColor;
 }
 
-function Topic({ topic, situationName }: TopicProps) {
+function Topic({ topic, situationName, situationColor }: TopicProps) {
   return (
     <S.Topic>
       <S.TopicButton
@@ -21,6 +23,7 @@ function Topic({ topic, situationName }: TopicProps) {
                 id={topic.id}
                 content={topic.content}
                 situationName={situationName}
+                situationColor={situationColor}
                 isOpen={isOpen}
                 onClose={() => {
                   close();

@@ -7,15 +7,22 @@ export const CardWrap = styled.div`
 `;
 
 export interface CardStyleProps {
-  $color?: string;
+  // situationColor: SituationColor;
+  $situationColor: {
+    mainCardColor: string;
+    backCardColor: string;
+    backgroundColor: string;
+    boldColor: string;
+  };
+  // $color?: string;
 }
 
 export const Card = styled.div<CardStyleProps>`
   width: 20.375rem;
   height: 27rem;
   border-radius: 1rem;
-  background-color: ${(props) =>
-    props.$color ?? props.theme.colors["--Primary-blue-500"]};
+  background-color: ${(props) => props.$situationColor?.mainCardColor};
+  // props.$color ?? props.theme.colors["--Primary-blue-500"]};
   position: relative;
   display: flex;
   flex-direction: column;
@@ -29,17 +36,20 @@ const AbsoluteImage = styled.img`
   position: absolute;
 `;
 
-export const Background = styled(AbsoluteImage)`
+export const Background = styled(AbsoluteImage)<CardStyleProps>`
+  color: ${(props) => props.$situationColor?.mainCardColor};
   left: 1.1rem;
   top: 1.375rem;
 `;
 
-export const LeftTopCircle = styled(AbsoluteImage)`
+export const LeftTopCircle = styled(AbsoluteImage)<CardStyleProps>`
+  color: ${(props) => props.$situationColor?.mainCardColor};
   top: 2.1875rem;
   left: 1.81rem;
 `;
 
-export const RightBottomCircle = styled(AbsoluteImage)`
+export const RightBottomCircle = styled(AbsoluteImage)<CardStyleProps>`
+  color: ${(props) => props.$situationColor?.mainCardColor};
   bottom: 2.1875rem;
   right: 1.81rem;
 `;
@@ -72,12 +82,12 @@ export const NumberBox = styled.div`
 
 export const SemiCircleIcon = styled.img``;
 
-export const NumberText = styled.span`
+export const NumberText = styled.span<CardStyleProps>`
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  color: ${(props) => props.theme.colors["--Primary-blue-500"]};
+  color: ${(props) => props.$situationColor?.mainCardColor};
   text-align: center;
   font-family: "esamanru OTF";
   font-size: 1.25rem;

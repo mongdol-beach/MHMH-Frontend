@@ -8,19 +8,29 @@ import StartQuotes from "@assets/icons/quotes-start.svg";
 import EndQuotes from "@assets/icons/quotes-end.svg";
 import { CardProps } from "..";
 
-function CardFront({ situationName, id, content, $color }: CardProps) {
+function CardFront({ situationName, id, content, $situationColor }: CardProps) {
+  // function CardFront({ situationName, id, content, $color }: CardProps) {
+  console.log("CardFront_index", $situationColor);
   return (
     <S.CardWrap>
-      <S.Card $color={$color}>
+      <S.Card $situationColor={$situationColor}>
+        {/* <S.Card $color={$color}> */}
         <S.NumberBox>
           <S.SemiCircleIcon src={SemiCircleIcon} />
-          <S.NumberText>{id}</S.NumberText>
+          <S.NumberText $situationColor={$situationColor}>{id}</S.NumberText>
         </S.NumberBox>
         <S.Title>{content}</S.Title>
         <S.Text>{situationName}</S.Text>
-        <S.Background src={CardBackgroundEffect} draggable={false} />
-        <S.LeftTopCircle src={BlueCircle} />
-        <S.RightBottomCircle src={BlueCircle} />
+        <S.Background
+          $situationColor={$situationColor}
+          src={CardBackgroundEffect}
+          draggable={false}
+        />
+        <S.LeftTopCircle src={BlueCircle} $situationColor={$situationColor} />
+        <S.RightBottomCircle
+          src={BlueCircle}
+          $situationColor={$situationColor}
+        />
         <S.Flip src={FlipIcon} alt="카드 뒤집기" />
         <S.Smile src={SmileIcon} />
         <S.StartQuotes src={StartQuotes} />

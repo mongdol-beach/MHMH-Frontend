@@ -3,14 +3,24 @@ import CardFront from "./CardFront";
 import CardBack from "./CardBack";
 import * as S from "./styled";
 import { CardStyleProps } from "./CardFront/styled";
+// import { SituationColor } from "../../types/topic";
 
 export interface CardProps extends CardStyleProps {
   situationName: string;
   id: number;
   content: string;
+  // situationColor: SituationColor;
+  $situationColor: {
+    mainCardColor: string;
+    backCardColor: string;
+    backgroundColor: string;
+    boldColor: string;
+  };
 }
 
-function Card({ situationName, id, content, $color }: CardProps) {
+function Card({ situationName, id, content, $situationColor }: CardProps) {
+  console.log("Card_index", $situationColor);
+  // function Card({ situationName, id, content, $color }: CardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const startX = useRef(0);
 
@@ -38,9 +48,20 @@ function Card({ situationName, id, content, $color }: CardProps) {
           id={id}
           content={content}
           situationName={situationName}
-          $color={$color}
+          $situationColor={{
+            mainCardColor: $situationColor.mainCardColor,
+            backCardColor: $situationColor.backCardColor,
+            boldColor: $situationColor.boldColor,
+            backgroundColor: $situationColor.backgroundColor,
+          }}
+          // situationColor={situationColor}
         />
-        <CardBack id={id} content={content} situationName={situationName} />
+        <CardBack
+          id={id}
+          content={content}
+          situationName={situationName}
+          $situationColor={$situationColor}
+        />
       </S.CardInner>
     </S.CardContainer>
   );

@@ -78,3 +78,12 @@ export const Icon = styled.img``;
 export const IconOpposite = styled(Icon)`
   transform: rotate(180deg);
 `;
+
+export const ExitButton = styled.button`
+  ${FONT.sub_title14}
+  background-color: ${({ theme }) => theme.colors["-grayscale-800"]};
+  padding: 0.75rem 1rem;
+  color: white;
+  border-radius: 5.375rem;
+  width: 7.9375rem;
+`;

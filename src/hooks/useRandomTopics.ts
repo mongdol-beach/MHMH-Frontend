@@ -22,3 +22,5 @@ export const useRandomTopics = () => {
     initialPageParam: 1,
   });
 };
+
+export default useRandomTopics;

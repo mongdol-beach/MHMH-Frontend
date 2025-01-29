@@ -2,7 +2,7 @@ import * as S from "../TopicCards/styled";
 import IconArrow from "@assets/icons/left-arrow.svg";
 import CardDeck from "../CardDeck";
 import useTopicCardNavigation from "../../hooks/useTopicCardNavigation";
-import { useRandomTopics } from "../../hooks/useRandomTopics";
+import useRandomTopics from "../../hooks/useRandomTopics";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

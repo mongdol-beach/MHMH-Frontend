@@ -5,6 +5,7 @@ import useTopicCardNavigation from "../../hooks/useTopicCardNavigation";
 import useRandomTopics from "../../hooks/useRandomTopics";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PAGE_PATH from "../../constants/path";
 
 interface RandomTopicCardsProps {
   onHasViewedAllCards?: (hasViewedAllCards: boolean) => void;
@@ -22,7 +23,7 @@ export default function RandomTopicCards({
   });
 
   const handleExit = () => {
-    navigate("/");
+    navigate(PAGE_PATH.MAIN);
   };
 
   // 현재 인덱스가 전체 토픽 개수의 60%에 도달하면 다음 페이지 로드

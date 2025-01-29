@@ -15,7 +15,7 @@ export default function RandomTopicCards({
   onHasViewedAllCards,
 }: RandomTopicCardsProps) {
   const navigate = useNavigate();
-  const { data, fetchNextPage } = useRandomTopics();
+  const { data, fetchNextPage, isFetching } = useRandomTopics();
   const topics = data?.pages.flatMap((page) => page.topics) || [];
   const { currentIndex, visibleTopics, handleSwipe } = useTopicCardNavigation({
     topics,
@@ -28,10 +28,10 @@ export default function RandomTopicCards({
 
   // 현재 인덱스가 전체 토픽 개수의 60%에 도달하면 다음 페이지 로드
   useEffect(() => {
-    if (currentIndex >= topics.length * 0.6) {
+    if (currentIndex >= topics.length * 0.6 && !isFetching) {
       fetchNextPage();
     }
-  }, [currentIndex, topics.length, fetchNextPage]);
+  }, [currentIndex, topics.length, fetchNextPage, isFetching]);
 
   if (!topics.length) return null;
 

@@ -9,7 +9,7 @@ const useGetOAuthToken = (platform: OAuthPlatform) => {
   switch (platform) {
     case "kakao":
       return kakaoMutate;
-    // 구글 Mutate 추가 예정
+    // TODO: 구글 Mutate 추가 예정
     // case "google":
     //   return naverMutate;
     default:

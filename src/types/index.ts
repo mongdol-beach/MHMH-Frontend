@@ -28,3 +28,5 @@ export interface TokenObject {
   accessToken: string;
   refreshToken: string;
 }
+
+export type OAuthPlatform = "kakao" | "naver" | "google";

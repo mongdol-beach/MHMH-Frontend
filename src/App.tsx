@@ -13,7 +13,6 @@ import {
   TopicListPage,
   LoginPage,
 } from "./pages/index";
-import KakaoRedirect from "./pages/login-redirect/kakao";
 import { OverlayProvider } from "overlay-kit";
 import TopicsBySituationPage from "./pages/TopicsBySituationPage";
 import RandomTopicsPage from "./pages/RandomTopicsPage";
@@ -24,6 +23,7 @@ import Header from "./components/Header";
 import TagManager from "react-gtm-module";
 import Toast from "./components/Toast";
 import { HelmetProvider } from "react-helmet-async";
+import OAutRedirect from "./pages/login-redirect/oauth";
 
 function App() {
   const [queryClient] = useState(
@@ -55,8 +55,8 @@ function App() {
                   <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
                   <Route path={PAGE_PATH.LOGIN} element={<LoginPage />} />
                   <Route
-                    path={PAGE_PATH.KAKAO_REDIRECT}
-                    element={<KakaoRedirect />}
+                    path={PAGE_PATH.NAVER_REDIRECT}
+                    element={<OAutRedirect />}
                   />
 
                   <Route

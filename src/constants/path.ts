@@ -1,7 +1,8 @@
 const PAGE_PATH = {
   MAIN: "/",
   LOGIN: "/login",
-  KAKAO_REDIRECT: "/login/kakao",
+  // KAKAO_REDIRECT: "/login/kakao",
+  NAVER_REDIRECT: "/login/:provider",
   TOPICS_RANDOM: "/topics/random",
   TOPIC: "/topic",
   SITUATION: "/situation",

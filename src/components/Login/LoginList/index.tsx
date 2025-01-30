@@ -4,6 +4,8 @@ import NaverIcon from "@assets/icons/naver.svg";
 import GoogleIcon from "@assets/icons/google.svg";
 
 const KAKAO_API_KEY = import.meta.env.VITE_KAKAO_API_KEY;
+const NAVER_API_KEY = import.meta.env.VITE_NAVER_API_KEY;
+const NAVER_API_STATE = import.meta.env.VITE_NAVER_API_STATE;
 
 const socialLoginList = [
   {
@@ -20,7 +22,7 @@ const socialLoginList = [
     icon: NaverIcon,
     textColor: "#FFF",
     backgroundColor: "#03C75A",
-    url: "",
+    url: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_API_KEY}&state=${NAVER_API_STATE}&redirect_uri=${window.location.href}/naver`,
   },
   {
     id: 3,

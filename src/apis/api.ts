@@ -12,3 +12,8 @@ export const getKakaoToken = async (code: string): Promise<TokenObject> => {
   const response = await instance.get(`/login/oauth2/code/kakao?code=${code}`);
   return response.data;
 };
+
+export const getNaverToken = async (code: string): Promise<TokenObject> => {
+  const response = await instance.get(`/login/oauth2/code/naver?code=${code}`);
+  return response.data;
+};

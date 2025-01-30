@@ -55,7 +55,7 @@ function App() {
                   <Route path={PAGE_PATH.MAIN} element={<MainPage />} />
                   <Route path={PAGE_PATH.LOGIN} element={<LoginPage />} />
                   <Route
-                    path={PAGE_PATH.NAVER_REDIRECT}
+                    path={PAGE_PATH.OAUTH_REDIRECT}
                     element={<OAutRedirect />}
                   />
 

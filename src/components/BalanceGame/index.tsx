@@ -78,18 +78,19 @@ const BalanceGame = () => {
           <S.ProgressBar>
             <S.ProgressFill $progressPercentage={progressPercentage} />
           </S.ProgressBar>
-          <S.ProgressBarCounter>
-            <S.CounterText>
-              {num + 1} / {BALANCE_GAME_MAX_NUM}
-            </S.CounterText>
-          </S.ProgressBarCounter>
         </S.ProgressBarBox>
         <S.DescriptionBox>
           {currentQuestion && (
             <>
-              <S.Description key={currentQuestion.id}>
-                {currentQuestion.description}
-              </S.Description>
+              <S.ProgressBox>
+                <S.CounterText>
+                  {num + 1}
+                  <S.CounterTotal>/ {BALANCE_GAME_MAX_NUM}</S.CounterTotal>
+                </S.CounterText>
+                <S.Description key={currentQuestion.id}>
+                  {currentQuestion.description}
+                </S.Description>
+              </S.ProgressBox>
               <S.OptionBox>
                 <S.Option
                   onClick={() => handleSelectOption("A", currentQuestion.id)}
@@ -104,7 +105,6 @@ const BalanceGame = () => {
                     </S.PercentText>
                   )}
                 </S.Option>
-                <S.ComparisonText>VS</S.ComparisonText>
                 <S.Option
                   onClick={() => handleSelectOption("B", currentQuestion.id)}
                   $isClicked={clickedOption === "B"}

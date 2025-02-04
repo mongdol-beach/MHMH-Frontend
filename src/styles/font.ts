@@ -31,6 +31,13 @@ const FONT = {
     font-weight: ${(props) =>
       props.theme.weight["--font-weight-light"]}; /* 300 */
   `,
+  title18: css`
+    font-family: "Esamanru OTF";
+    font-size: ${(props) => props.theme.size["--font-size-20"]}; /* 1.125rem */
+    font-weight: ${(props) =>
+      props.theme.weight["--font-weight-light"]}; /* 300 */
+    line-height: 150%;
+  `,
   sub_title16: css`
     font-family: "Esamanru OTF";
     font-size: ${(props) => props.theme.size["--font-size-16"]}; /* 1rem */

@@ -3,6 +3,7 @@ import { css } from "styled-components";
 export const SIZE = {
   "--font-size-28": "1.75rem",
   "--font-size-20": "1.25rem",
+  "--font-size-18": "1.125rem",
   "--font-size-16": "1rem",
   "--font-size-14": "0.875rem",
   "--font-size-12": "0.75rem",
@@ -28,6 +29,11 @@ const FONT = {
   title20: css`
     font-family: "Esamanru OTF";
     font-size: ${(props) => props.theme.size["--font-size-20"]}; /* 1.25rem */
+    font-weight: ${(props) =>
+      props.theme.weight["--font-weight-light"]}; /* 300 */
+  `,
+  title18: css`
+    font-size: ${(props) => props.theme.size["--font-size-18"]}; /* 1.125rem */
     font-weight: ${(props) =>
       props.theme.weight["--font-weight-light"]}; /* 300 */
   `,

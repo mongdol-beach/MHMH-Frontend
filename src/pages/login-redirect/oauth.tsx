@@ -7,7 +7,7 @@ import Loading from "../../components/Loading";
 const OAutRedirect = () => {
   const [searchParams] = useSearchParams();
   const platform = getOAuthPlatformFromPath(window.location.pathname);
-  const mutate = useGetOAuthToken(platform);
+  const { mutate } = useGetOAuthToken(platform);
   const oauthCode = searchParams.get("code");
 
   useEffect(() => {

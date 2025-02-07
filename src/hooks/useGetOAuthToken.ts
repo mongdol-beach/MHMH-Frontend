@@ -1,20 +1,24 @@
+import { useNavigate } from "react-router-dom";
+import { getOAuthToken } from "../apis/api";
+import PAGE_PATH from "../constants/path";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants/token";
 import { OAuthPlatform } from "../types";
-import { useGetKakaoToken } from "./useGetKakaoToken";
-import { useGetNaverToken } from "./useGetNaverToken";
+import { useMutation } from "@tanstack/react-query";
 
 const useGetOAuthToken = (platform: OAuthPlatform) => {
-  const { mutate: kakaoMutate } = useGetKakaoToken();
-  const { mutate: naverMutate } = useGetNaverToken();
+  const navigation = useNavigate();
 
-  switch (platform) {
-    case "kakao":
-      return kakaoMutate;
-    // TODO: 구글 Mutate 추가 예정
-    // case "google":
-    //   return naverMutate;
-    default:
-      return naverMutate;
-  }
+  const { mutate } = useMutation({
+    mutationFn: (code: string) => getOAuthToken(platform, code),
+    onSuccess: (tokens) => {
+      localStorage.setItem(ACCESS_TOKEN, tokens.accessToken);
+      localStorage.setItem(REFRESH_TOKEN, tokens.refreshToken);
+      navigation(PAGE_PATH.MAIN);
+    },
+    throwOnError: true,
+  });
+
+  return { mutate };
 };
 
 export default useGetOAuthToken;

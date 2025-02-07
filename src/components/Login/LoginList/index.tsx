@@ -6,6 +6,7 @@ import GoogleIcon from "@assets/icons/google.svg";
 const KAKAO_API_KEY = import.meta.env.VITE_KAKAO_API_KEY;
 const NAVER_API_KEY = import.meta.env.VITE_NAVER_API_KEY;
 const NAVER_API_STATE = import.meta.env.VITE_NAVER_API_STATE;
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const socialLoginList = [
   {
@@ -31,7 +32,7 @@ const socialLoginList = [
     textColor: "#000",
     backgroundColor: "#FFF",
     borderColor: "#C7C7C7",
-    url: "",
+    url: `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_API_KEY}&redirect_uri=${window.location.href}/google&response_type=code&scope=email profile`,
   },
 ];
 

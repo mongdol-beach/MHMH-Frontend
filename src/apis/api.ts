@@ -1,4 +1,4 @@
-import { Situation, TokenObject, TopicList } from ".././types";
+import { OAuthPlatform, Situation, TokenObject, TopicList } from ".././types";
 import { instance } from "./axios";
 
 export const getTopicList = async (
@@ -8,12 +8,12 @@ export const getTopicList = async (
   return response.data;
 };
 
-export const getKakaoToken = async (code: string): Promise<TokenObject> => {
-  const response = await instance.get(`/login/oauth2/code/kakao?code=${code}`);
-  return response.data;
-};
-
-export const getNaverToken = async (code: string): Promise<TokenObject> => {
-  const response = await instance.get(`/login/oauth2/code/naver?code=${code}`);
+export const getOAuthToken = async (
+  platform: OAuthPlatform,
+  code: string,
+): Promise<TokenObject> => {
+  const response = await instance.get(
+    `/login/oauth2/code/${platform}?code=${code}`,
+  );
   return response.data;
 };

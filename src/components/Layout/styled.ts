@@ -11,7 +11,11 @@ export const SidePanel = styled.aside`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
+  flex: 1 0 31.5rem;
+
+  @media screen and (max-width: 86.438rem) {
+    display: none;
+  }
 `;
 
 export const PanelContent = styled.div`
@@ -29,7 +33,7 @@ export const InstructionPanelContent = styled(PanelContent)`
 export const MainContent = styled.main`
   background: ${(props) => props.theme.colors["--card-color-blue-100"]};
   height: 100vh;
-  flex-basis: 375px;
+  flex: 0 0 375px;
   min-height: 100vh;
   margin: 0 auto;
 `;

@@ -9,6 +9,7 @@ import {
 } from "../../hooks/getRandomBalance";
 import { useQueryClient } from "@tanstack/react-query";
 import Loading from "../Loading";
+import AnimatedText from "./AnimatedText";
 
 const BALANCE_GAME_MAX_NUM = 5;
 
@@ -98,7 +99,9 @@ const BalanceGame = () => {
                   $isOtherClicked={clickedOption === "B"}
                   disabled={isOptionLocked}
                 >
-                  {currentQuestion.optionA}
+                  <AnimatedText animateTrigger={clickedOption === "A"}>
+                    {currentQuestion.optionA}
+                  </AnimatedText>
                   {selectedPercentage?.optionA !== undefined && (
                     <S.PercentText $isClicked={clickedOption === "A"}>
                       {`${selectedPercentage.optionA}%`}
@@ -111,7 +114,9 @@ const BalanceGame = () => {
                   $isOtherClicked={clickedOption === "A"}
                   disabled={isOptionLocked}
                 >
-                  {currentQuestion.optionB}
+                  <AnimatedText animateTrigger={clickedOption === "B"}>
+                    {currentQuestion.optionB}
+                  </AnimatedText>
                   {selectedPercentage?.optionB !== undefined && (
                     <S.PercentText $isClicked={clickedOption === "B"}>
                       {`${selectedPercentage.optionB}%`}

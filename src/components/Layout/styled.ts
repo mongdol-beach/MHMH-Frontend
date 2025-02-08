@@ -69,7 +69,7 @@ export const BrandName = styled.h1`
   position: relative;
   z-index: 2;
   font-family: RixYeoljeongdo;
-  font-size: 3.375rem;
+  font-size: 2.5rem;
   line-height: 90%;
   letter-spacing: -0.07425rem;
   white-space: nowrap;

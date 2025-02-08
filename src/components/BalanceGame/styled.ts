@@ -86,6 +86,8 @@ export const Option = styled.button<{
   $isClicked: boolean;
   $isOtherClicked: boolean;
 }>`
+  box-sizing: border-box;
+  border: 2px solid transparent;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -117,13 +119,19 @@ export const Option = styled.button<{
         ? theme.colors["--card-color-blue-700"]
         : $isOtherClicked
           ? theme.colors["--card-color-blue-100"]
-          : theme.colors["--card-color-blue-100"]};
+          : theme.colors["--Primary-blue-100"]};
     color: ${({ $isClicked, $isOtherClicked, theme }) =>
       $isClicked
         ? theme.colors["--point-beige"]
         : $isOtherClicked
           ? theme.colors["-grayscale-400"]
           : theme.colors["-grayscale-800"]};
+    border-color: ${({ $isClicked, $isOtherClicked, theme }) =>
+      $isClicked
+        ? "transparent"
+        : $isOtherClicked
+          ? "transparent"
+          : theme.colors["--Primary-blue-300"]};
   }
   &:active {
     background: ${({ $isClicked, $isOtherClicked, theme }) =>
@@ -131,15 +139,18 @@ export const Option = styled.button<{
         ? theme.colors["--card-color-blue-500"]
         : $isOtherClicked
           ? theme.colors["--card-color-blue-100"]
-          : theme.colors["--card-color-blue-500"]};
+          : theme.colors["--card-color-blue-300"]};
     color: ${({ $isClicked, $isOtherClicked, theme }) =>
       $isClicked
         ? theme.colors["--point-beige"]
         : $isOtherClicked
           ? theme.colors["-grayscale-400"]
-          : theme.colors["--point-beige"]};
+          : theme.colors["-grayscale-800"]};
+
     box-shadow: ${({ $isClicked }) =>
-      $isClicked ? "inset 4px 4px 4px rgba(0, 0, 0, 0.25)" : "none"};
+      $isClicked
+        ? "inset 4px 4px 4px rgba(0, 0, 0, 0.25)"
+        : "4px 4px 4px 0px rgba(0, 0, 0, 0.25)"};
   }
 `;
 

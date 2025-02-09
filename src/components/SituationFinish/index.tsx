@@ -38,7 +38,7 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
       window.Kakao.init(kakaoJsKey);
     }
 
-    window.Kakao.Link.sendDefault({
+    window.Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
         title: "말해머해",

@@ -4,7 +4,7 @@ import useGetOAuthToken from "../../hooks/useGetOAuthToken";
 import { getOAuthPlatformFromPath } from "../../utils/getOAuthPlatformFromPath";
 import Loading from "../../components/Loading";
 
-const OAutRedirect = () => {
+const OAuthRedirect = () => {
   const [searchParams] = useSearchParams();
   const platform = getOAuthPlatformFromPath(window.location.pathname);
   const { mutate } = useGetOAuthToken(platform);
@@ -21,4 +21,4 @@ const OAutRedirect = () => {
   return <Loading text="회원 정보를 불러오는 중..." />;
 };
 
-export default OAutRedirect;
+export default OAuthRedirect;

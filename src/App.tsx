@@ -23,7 +23,7 @@ import Header from "./components/Header";
 import TagManager from "react-gtm-module";
 import Toast from "./components/Toast";
 import { HelmetProvider } from "react-helmet-async";
-import OAutRedirect from "./pages/login-redirect/oauth";
+import OAuthRedirect from "./pages/login-redirect/oauth";
 
 function App() {
   const [queryClient] = useState(
@@ -56,7 +56,7 @@ function App() {
                   <Route path={PAGE_PATH.LOGIN} element={<LoginPage />} />
                   <Route
                     path={PAGE_PATH.OAUTH_REDIRECT}
-                    element={<OAutRedirect />}
+                    element={<OAuthRedirect />}
                   />
 
                   <Route

@@ -99,6 +99,11 @@ const BalanceGame = () => {
                   $isOtherClicked={clickedOption === "B"}
                   disabled={isOptionLocked}
                 >
+                  <S.OptionPercentBackground
+                    $percent={selectedPercentage?.optionA}
+                    $isVisible={!!selectedPercentage?.optionA}
+                    $isClicked={clickedOption === "A"}
+                  />
                   <AnimatedText animateTrigger={clickedOption === "A"}>
                     {currentQuestion.optionA}
                   </AnimatedText>
@@ -114,6 +119,11 @@ const BalanceGame = () => {
                   $isOtherClicked={clickedOption === "A"}
                   disabled={isOptionLocked}
                 >
+                  <S.OptionPercentBackground
+                    $percent={selectedPercentage?.optionB}
+                    $isVisible={!!selectedPercentage?.optionB}
+                    $isClicked={clickedOption === "B"}
+                  />
                   <AnimatedText animateTrigger={clickedOption === "B"}>
                     {currentQuestion.optionB}
                   </AnimatedText>

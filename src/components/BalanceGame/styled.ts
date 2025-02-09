@@ -110,9 +110,9 @@ const getButtonStyles = (state: ButtonState, theme: DefaultTheme) => {
       box-shadow: "inset 4px 4px 4px rgba(0, 0, 0, 0.25)";
     `,
     otherClicked: `
-      background: ${theme.colors["--card-color-blue-100"]};
-      color: ${theme.colors["-grayscale-400"]};
-      border-color: transparent;
+      background: ${theme.colors["-grayscale-50"]};
+      color: ${theme.colors["-grayscale-300"]};
+      border-color: ${theme.colors["-grayscale-100"]};
     `,
   };
 
@@ -123,6 +123,8 @@ export const Option = styled.button<{
   $isClicked: boolean;
   $isOtherClicked: boolean;
 }>`
+  position: relative;
+  overflow: hidden;
   box-sizing: border-box;
   border: 2px solid transparent;
   display: flex;
@@ -150,6 +152,27 @@ export const Option = styled.button<{
   }}
 `;
 
+export const OptionPercentBackground = styled.div<{
+  $percent: number | undefined;
+  $isVisible: boolean;
+  $isClicked: boolean;
+}>`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: ${({ $percent }) => `${$percent}%`};
+  background-color: ${({ $isClicked, theme }) =>
+    $isClicked
+      ? theme.colors["--card-color-blue-700"]
+      : theme.colors["-grayscale-100"]};
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transition:
+    height 0.5s ease-out,
+    opacity 0.3s ease-in-out;
+  z-index: 0;
+`;
+
 export const PercentText = styled.p<{
   $isClicked: boolean;
 }>`
@@ -161,6 +184,8 @@ export const PercentText = styled.p<{
 
   text-align: center;
   font-weight: 400;
+  position: absolute;
+  bottom: 1rem;
 `;
 
 export const FinishBox = styled.div`

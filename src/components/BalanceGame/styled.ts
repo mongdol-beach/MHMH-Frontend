@@ -157,18 +157,14 @@ export const Option = styled.button<{
 export const PercentText = styled.p<{
   $isClicked: boolean;
 }>`
+  ${FONT.caption14}
   color: ${({ $isClicked, theme }) =>
     $isClicked
-      ? theme.colors["--point-beige"]
+      ? theme.colors["--Primary-blue-300"]
       : theme.colors["-grayscale-400"]};
 
   text-align: center;
-  font-family: "esamanru OTF";
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%; /* 3rem */
-  letter-spacing: -0.04rem;
+  font-weight: 400;
 `;
 
 export const FinishBox = styled.div`

@@ -88,36 +88,32 @@ type ButtonState = "clicked" | "otherClicked" | "default";
 // 상태별 스타일 매핑
 const getButtonStyles = (state: ButtonState, theme: DefaultTheme) => {
   const styles = {
-    default: {
-      background: theme.colors["-grayscale-50"],
-      color: theme.colors["-grayscale-800"],
-      hoverBackground: theme.colors["--Primary-blue-100"],
-      hoverColor: theme.colors["-grayscale-800"],
-      hoverBorder: theme.colors["--Primary-blue-300"],
-      activeBackground: theme.colors["--card-color-blue-300"],
-      activeColor: theme.colors["-grayscale-800"],
-      boxShadow: "4px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-    },
-    clicked: {
-      background: theme.colors["--card-color-blue-700"],
-      color: theme.colors["--point-beige"],
-      hoverBackground: theme.colors["--card-color-blue-300"],
-      hoverColor: theme.colors["--point-beige"],
-      hoverBorder: "transparent",
-      activeBackground: theme.colors["--card-color-blue-500"],
-      activeColor: theme.colors["--point-beige"],
-      boxShadow: "inset 4px 4px 4px rgba(0, 0, 0, 0.25)",
-    },
-    otherClicked: {
-      background: theme.colors["--card-color-blue-100"],
-      color: theme.colors["-grayscale-400"],
-      hoverBackground: theme.colors["--card-color-blue-100"],
-      hoverColor: theme.colors["-grayscale-400"],
-      hoverBorder: "transparent",
-      activeBackground: theme.colors["--card-color-blue-100"],
-      activeColor: theme.colors["-grayscale-400"],
-      boxShadow: "4px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-    },
+    default: `
+      background: ${theme.colors["-grayscale-50"]};
+      color: ${theme.colors["-grayscale-800"]};
+      
+      &:hover {
+        background: ${theme.colors["--Primary-blue-100"]};
+        color: ${theme.colors["-grayscale-800"]};
+        border-color: ${theme.colors["--Primary-blue-300"]};
+      }
+      
+      &:active {
+        background: ${theme.colors["--card-color-blue-300"]};
+        color: ${theme.colors["-grayscale-800"]};
+        box-shadow: "4px 4px 4px 0px rgba(0, 0, 0, 0.25)";
+      }`,
+    clicked: `
+      background: ${theme.colors["--card-color-blue-300"]};
+      color: ${theme.colors["--point-beige"]};
+      border-color: ${theme.colors["--Primary-blue-500"]};
+      box-shadow: "inset 4px 4px 4px rgba(0, 0, 0, 0.25)";
+    `,
+    otherClicked: `
+      background: ${theme.colors["--card-color-blue-100"]};
+      color: ${theme.colors["-grayscale-400"]};
+      border-color: transparent;
+    `,
   };
 
   return styles[state];
@@ -150,22 +146,7 @@ export const Option = styled.button<{
         : "default";
     const styles = getButtonStyles(state, theme);
 
-    return `
-      background: ${styles.background};
-      color: ${styles.color};
-      
-      &:hover {
-        background: ${styles.hoverBackground};
-        color: ${styles.hoverColor};
-        border-color: ${styles.hoverBorder};
-      }
-      
-      &:active {
-        background: ${styles.activeBackground};
-        color: ${styles.activeColor};
-        box-shadow: ${styles.boxShadow};
-      }
-    `;
+    return styles;
   }}
 `;
 

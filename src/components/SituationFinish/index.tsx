@@ -9,7 +9,6 @@ import Share from "../../assets/icons/share.svg";
 import toast from "react-hot-toast";
 import { TopicTip } from "../../types/topic";
 
-export {}; // global 선언을 위해 필요
 
 interface FinishProps {
   topics: {
@@ -26,7 +25,7 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
     try {
       await navigator.clipboard.writeText("https://mh-mh.vercel.app/");
       toast.success("링크가 복사되었습니다.");
-    } catch (error) {
+    } catch {
       toast.error("링크 복사에 실패했습니다.");
     }
   };
@@ -80,7 +79,7 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
           </S.HandleNextLink>
 
           <S.HandleNextLink to={"/situation"}>
-            <img src={Restart} />
+            <img src={Restart} alt="상황 별 주제 다시하기" />
             <S.handleNextP>다시하기</S.handleNextP>
           </S.HandleNextLink>
         </S.HorizonDiv>

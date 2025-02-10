@@ -3,6 +3,19 @@
 import styled from "styled-components";
 import FONT from "../../../styles/font";
 
+export const Content = styled.div`
+  background-color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  top: 19%;
+  transform: translateX(-50%);
+`;
+
+
+
 export const CloseIcon = styled.img<{ onClick: () => void }>`
   position: absolute;
   top: 16px;
@@ -129,3 +142,4 @@ export const ModalContents_bg = styled.div`
   border-radius: 0px 0px 60px 60px;
   background: ${(props) => props.theme.colors["--Primary-blue-700"]};
 `;
+

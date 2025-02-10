@@ -11,6 +11,7 @@ export interface Topic {
   isRecommend: boolean;
   tips: Tip[] | null;
   situationColor: SituationColor;
+  situationName: string;
 }
 
 export interface TopicList {

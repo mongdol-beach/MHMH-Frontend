@@ -9,7 +9,6 @@ import { Situation } from "../types";
 function TopicListPage() {
   const { id: situation } = useParams();
   const { data } = useGetTopicList(situation as Situation);
-  console.log("CardList : ", data);
   return (
     <>
       <Helmet>

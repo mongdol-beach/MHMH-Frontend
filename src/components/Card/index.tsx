@@ -3,13 +3,11 @@ import CardFront from "./CardFront";
 import CardBack from "./CardBack";
 import * as S from "./styled";
 import { CardStyleProps } from "./CardFront/styled";
-// import { SituationColor } from "../../types/topic";
 
 export interface CardProps extends CardStyleProps {
   situationName: string;
   id: number;
   content: string;
-  // situationColor: SituationColor;
   $situationColor: {
     mainCardColor: string;
     backCardColor: string;
@@ -18,12 +16,13 @@ export interface CardProps extends CardStyleProps {
   };
 }
 
+export function ensureHexColor(color: string): string {
+  return color.startsWith("#") ? color : `#${color}`;
+}
+
 function Card({ situationName, id, content, $situationColor }: CardProps) {
-  console.log("Card_index", $situationColor);
-  // function Card({ situationName, id, content, $color }: CardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const startX = useRef(0);
-
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     startX.current = e.clientX;
   };
@@ -49,18 +48,22 @@ function Card({ situationName, id, content, $situationColor }: CardProps) {
           content={content}
           situationName={situationName}
           $situationColor={{
-            mainCardColor: $situationColor.mainCardColor,
-            backCardColor: $situationColor.backCardColor,
-            boldColor: $situationColor.boldColor,
-            backgroundColor: $situationColor.backgroundColor,
+            mainCardColor: ensureHexColor($situationColor.mainCardColor),
+            backCardColor: ensureHexColor($situationColor.backCardColor),
+            boldColor: ensureHexColor($situationColor.boldColor),
+            backgroundColor: ensureHexColor($situationColor.backgroundColor),
           }}
-          // situationColor={situationColor}
         />
         <CardBack
           id={id}
           content={content}
           situationName={situationName}
-          $situationColor={$situationColor}
+          $situationColor={{
+            mainCardColor: ensureHexColor($situationColor.mainCardColor),
+            backCardColor: ensureHexColor($situationColor.backCardColor),
+            boldColor: ensureHexColor($situationColor.boldColor),
+            backgroundColor: ensureHexColor($situationColor.backgroundColor),
+          }}
         />
       </S.CardInner>
     </S.CardContainer>

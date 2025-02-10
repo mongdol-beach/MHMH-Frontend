@@ -3,18 +3,29 @@ import SemiCircleIcon from "@assets/icons/semi-circle.svg";
 import { Topic as TopicType } from "../../../types";
 import TopicCardModal from "../../Modal/TopicCardModal";
 import { overlay } from "overlay-kit";
-import { SituationColor } from "../../../types/topic";
+import { ensureHexColor } from "../../Card";
 
 interface TopicProps {
   topic: TopicType;
   situationName: string;
-  situationColor: SituationColor;
+  $situationColor: {
+    mainCardColor: string;
+    backCardColor: string;
+    backgroundColor: string;
+    boldColor: string;
+  };
 }
 
-function Topic({ topic, situationName, situationColor }: TopicProps) {
+function Topic({ topic, situationName, $situationColor }: TopicProps) {
   return (
     <S.Topic>
       <S.TopicButton
+        $situationColor={{
+          mainCardColor: ensureHexColor($situationColor?.mainCardColor),
+          backCardColor: ensureHexColor($situationColor?.backCardColor),
+          backgroundColor: ensureHexColor($situationColor?.backgroundColor),
+          boldColor: ensureHexColor($situationColor?.boldColor),
+        }}
         type="button"
         onClick={() => {
           overlay.open(({ isOpen, close, unmount }) => {
@@ -23,7 +34,14 @@ function Topic({ topic, situationName, situationColor }: TopicProps) {
                 id={topic.id}
                 content={topic.content}
                 situationName={situationName}
-                situationColor={situationColor}
+                situationColor={{
+                  mainCardColor: ensureHexColor($situationColor?.mainCardColor),
+                  backCardColor: ensureHexColor($situationColor?.backCardColor),
+                  backgroundColor: ensureHexColor(
+                    $situationColor?.backgroundColor,
+                  ),
+                  boldColor: ensureHexColor($situationColor?.boldColor),
+                }}
                 isOpen={isOpen}
                 onClose={() => {
                   close();
@@ -38,11 +56,16 @@ function Topic({ topic, situationName, situationColor }: TopicProps) {
         }}
       >
         <S.NumberBox>
-          <S.SemiCircleIcon src={SemiCircleIcon} />
-          <S.NumberText>{topic.id}</S.NumberText>
+          <S.SemiCircleIcon
+            src={SemiCircleIcon}
+            $situationColor={$situationColor}
+          />
+          <S.NumberText $situationColor={$situationColor}>
+            {topic.id}
+          </S.NumberText>
         </S.NumberBox>
         <S.Content>{topic.content}</S.Content>
-        <S.TopicText>{situationName}</S.TopicText>
+        <S.TopicText>#{situationName}_토픽</S.TopicText>
       </S.TopicButton>
     </S.Topic>
   );

@@ -2,6 +2,7 @@ import Modal from "../index";
 import * as S from "./styled";
 import Card from "../../Card";
 import { SituationColor } from "../../../types/topic";
+import CancleIcon from "@assets/icons/Cancle.svg";
 
 export interface TopicCardModalProps {
   isOpen: boolean;
@@ -27,14 +28,14 @@ function TopicCardModal({
           id={id}
           content={content}
           situationName={situationName}
-          situationColor={situationColor}
+          $situationColor={situationColor}
         />
         <S.CloseButton
           type="button"
           onClick={onClose}
-          situationColor={situationColor}
+          $situationColor={situationColor}
         >
-          닫기
+          <S.Close src={CancleIcon} />
         </S.CloseButton>
       </S.CardBox>
     </Modal>

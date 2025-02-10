@@ -21,7 +21,7 @@ function TopicList({
           key={topic.id}
           topic={topic}
           situationName={situationName}
-          situationColor={situationColor}
+          $situationColor={situationColor}
         />
       ))}
     </S.TopicList>

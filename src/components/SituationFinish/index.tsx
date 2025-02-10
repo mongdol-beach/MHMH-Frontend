@@ -18,10 +18,20 @@ interface FinishProps {
     isRecommend: boolean;
     tips: TopicTip[];
   }[];
+  situationName: string;
+  $situationColor: {
+    boldColor: string;
+    mainCardColor: string;
+    backCardColor: string;
+    backgroundColor: string;
+  };
 }
-const Finish: React.FC<FinishProps> = ({ topics }) => {
+const Finish: React.FC<FinishProps> = ({
+  topics,
+  situationName,
+  $situationColor,
+}) => {
   const { isOpen, openModal, closeModal } = useModal();
-
   const handleShare = async () => {
     try {
       await navigator.clipboard.writeText("https://mh-mh.vercel.app/");
@@ -38,7 +48,7 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
       window.Kakao.init(kakaoJsKey);
     }
 
-    window.Kakao.Link.sendDefault({
+    window.Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
         title: "말해머해",
@@ -106,7 +116,13 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
           />
         </S.ShareContainer>
       </S.Footer>
-      <SummaryModal isOpen={isOpen} closeModal={closeModal} topics={topics} />
+      <SummaryModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        topics={topics}
+        situationName={situationName}
+        situationColor={$situationColor}
+      />
     </>
   );
 };

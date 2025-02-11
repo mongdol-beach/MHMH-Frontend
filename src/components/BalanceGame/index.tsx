@@ -104,7 +104,7 @@ const BalanceGame = () => {
                     $isVisible={!!selectedPercentage?.optionA}
                     $isClicked={clickedOption === "A"}
                   />
-                  <AnimatedText animateTrigger={clickedOption === "A"}>
+                  <AnimatedText isTriggerAnimation={clickedOption === "A"}>
                     {currentQuestion.optionA}
                   </AnimatedText>
                   {selectedPercentage?.optionA !== undefined && (
@@ -124,7 +124,7 @@ const BalanceGame = () => {
                     $isVisible={!!selectedPercentage?.optionB}
                     $isClicked={clickedOption === "B"}
                   />
-                  <AnimatedText animateTrigger={clickedOption === "B"}>
+                  <AnimatedText isTriggerAnimation={clickedOption === "B"}>
                     {currentQuestion.optionB}
                   </AnimatedText>
                   {selectedPercentage?.optionB !== undefined && (

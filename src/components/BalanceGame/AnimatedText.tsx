@@ -4,18 +4,18 @@ import { AnimatePresence, motion } from "framer-motion";
 interface AnimatedTextProps {
   children: React.ReactNode;
   // 애니메이션 트리거 값 (예: 클릭한 옵션 여부)
-  animateTrigger: boolean;
+  isTriggerAnimation: boolean;
 }
 
-function AnimatedText({ children, animateTrigger }: AnimatedTextProps) {
-  // animateTrigger가 변경될 때마다 animationKey를 갱신하여 기존 요소가 exit되고 새 요소가 mount됩니다.
+function AnimatedText({ children, isTriggerAnimation }: AnimatedTextProps) {
+  // isTriggerAnimation가 변경될 때마다 animationKey를 갱신하여 기존 요소가 exit되고 새 요소가 mount됩니다.
   const [animationKey, setAnimationKey] = useState<number>(0);
 
   useEffect(() => {
-    if (animateTrigger) {
+    if (isTriggerAnimation) {
       setAnimationKey((prev) => prev + 1);
     }
-  }, [animateTrigger]);
+  }, [isTriggerAnimation]);
 
   return (
     <div

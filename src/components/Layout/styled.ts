@@ -19,10 +19,6 @@ export const SidePanel = styled.aside<SidePanelProps>`
   align-items: center;
   justify-content: center;
   flex: 1 1 31.5rem;
-
-  @media screen and (max-width: 86.438rem) {
-    display: none;
-  }
 `;
 
 export const PanelContent = styled.div`
@@ -30,6 +26,10 @@ export const PanelContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 86.438rem) {
+    display: none;
+  }
 `;
 
 export const InstructionPanelContent = styled(PanelContent)`

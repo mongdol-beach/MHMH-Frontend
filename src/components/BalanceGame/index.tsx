@@ -9,7 +9,7 @@ import {
 } from "../../hooks/getRandomBalance";
 import { useQueryClient } from "@tanstack/react-query";
 import Loading from "../Loading";
-import AnimatedText from "./AnimatedText";
+import AnimatedText from "../AnimatedText";
 
 const BALANCE_GAME_MAX_NUM = 5;
 

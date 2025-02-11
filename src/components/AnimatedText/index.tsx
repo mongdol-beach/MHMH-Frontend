@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { AnimatedTextContainer } from "./styled";
 
 interface AnimatedTextProps {
   children: React.ReactNode;
@@ -18,13 +19,7 @@ function AnimatedText({ children, isTriggerAnimation }: AnimatedTextProps) {
   }, [isTriggerAnimation]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <AnimatedTextContainer>
       <AnimatePresence initial={false}>
         {/* absolute를 사용해서 덜컹거리는 이슈 해결 */}
         <motion.span
@@ -52,7 +47,7 @@ function AnimatedText({ children, isTriggerAnimation }: AnimatedTextProps) {
           {children}
         </motion.span>
       </AnimatePresence>
-    </div>
+    </AnimatedTextContainer>
   );
 }
 

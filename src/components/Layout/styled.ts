@@ -2,12 +2,19 @@ import styled from "styled-components";
 import FONT from "../../styles/font";
 
 export const LayoutWrapper = styled.div`
-  background: linear-gradient(90deg, #e8eeff 67.5%, #dce3f8 100%);
   display: flex;
 `;
 
-export const SidePanel = styled.aside`
-  background: ${(props) => props.theme.colors["--card-color-blue-100"]};
+interface SidePanelProps {
+  $gradientDirection: "left" | "right";
+}
+
+export const SidePanel = styled.aside<SidePanelProps>`
+  background: ${({ $gradientDirection = "left" }) =>
+    $gradientDirection === "left"
+      ? "linear-gradient(90deg, #dce3f8 0%, #e8eeff 32.5%)"
+      : "linear-gradient(90deg, #e8eeff 67.5%, #dce3f8 100%)"};
+
   display: flex;
   align-items: center;
   justify-content: center;

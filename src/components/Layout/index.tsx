@@ -10,7 +10,7 @@ function AppLayout({ children }: AppLayoutProps) {
   return (
     <S.LayoutWrapper>
       {/* 좌측 패널: 브랜드 로고 및 소개 */}
-      <S.SidePanel>
+      <S.SidePanel $gradientDirection="right">
         <S.PanelContent>
           <S.BrandLogoContainer>
             <S.BrandLogo src={MainLogoIcon} alt="회사 로고" />

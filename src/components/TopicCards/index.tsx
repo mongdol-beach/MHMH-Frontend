@@ -51,6 +51,7 @@ function TopicCards({
             situationName={situationName}
           />
 
+
           <S.TopicNavigationControls>
             <S.LeftButtonWrapper>
               {currentIndex > 0 && (

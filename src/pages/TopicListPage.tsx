@@ -3,7 +3,7 @@ import Header from "../components/Header";
 
 import { useGetTopicList } from "../hooks/useGetTopicList";
 import TopicList from "../components/TopicList";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Situation } from "../types";
 
 function TopicListPage() {

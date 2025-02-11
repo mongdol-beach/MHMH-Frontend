@@ -1,5 +1,7 @@
 const PAGE_PATH = {
   MAIN: "/",
+  LOGIN: "/login",
+  OAUTH_REDIRECT: "/login/:provider",
   TOPICS_RANDOM: "/topics/random",
   TOPIC: "/topic",
   SITUATION: "/situation",

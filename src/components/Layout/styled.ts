@@ -6,7 +6,7 @@ export const LayoutWrapper = styled.div`
 `;
 
 interface SidePanelProps {
-  $gradientDirection: "left" | "right";
+  $gradientDirection?: "left" | "right";
 }
 
 export const SidePanel = styled.aside<SidePanelProps>`

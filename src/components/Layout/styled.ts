@@ -18,7 +18,7 @@ export const SidePanel = styled.aside<SidePanelProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1 0 31.5rem;
+  flex: 1 1 31.5rem;
 
   @media screen and (max-width: 86.438rem) {
     display: none;

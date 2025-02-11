@@ -3,7 +3,7 @@ interface TipTextProps {
     mainCardColor: string;
   };
 }
-const TipText: React.FC<TipTextProps> = ({ $situationColor }) => (
+const TipTextIcon: React.FC<TipTextProps> = ({ $situationColor }) => (
   <svg
     width="24"
     height="15"
@@ -18,4 +18,4 @@ const TipText: React.FC<TipTextProps> = ({ $situationColor }) => (
   </svg>
 );
 
-export default TipText;
+export default TipTextIcon;

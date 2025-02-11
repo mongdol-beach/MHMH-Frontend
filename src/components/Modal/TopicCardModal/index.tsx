@@ -2,7 +2,7 @@ import Modal from "../index";
 import * as S from "./styled";
 import Card from "../../Card";
 import { SituationColor } from "../../../types/topic";
-import CancleIcon from "@assets/icons/Cancle.svg";
+import CancleIcon from "@assets/icons/cancle.svg";
 
 export interface TopicCardModalProps {
   isOpen: boolean;

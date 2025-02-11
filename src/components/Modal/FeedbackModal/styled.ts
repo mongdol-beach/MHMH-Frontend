@@ -13,7 +13,7 @@ export const Content = styled.div`
 `;
 
 
-export const CloseIcon = styled.img<{ onClick: () => void }>`
+export const CloseIcon = styled.img`
   position: absolute;
   top: 16px;
   right: 20px;

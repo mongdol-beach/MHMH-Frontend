@@ -7,15 +7,15 @@ interface AnimatedTextProps {
   animateTrigger: boolean;
 }
 
-function AnimatedText(props: AnimatedTextProps) {
+function AnimatedText({ children, animateTrigger }: AnimatedTextProps) {
   // animateTrigger가 변경될 때마다 animationKey를 갱신하여 기존 요소가 exit되고 새 요소가 mount됩니다.
   const [animationKey, setAnimationKey] = useState<number>(0);
 
   useEffect(() => {
-    if (props.animateTrigger) {
+    if (animateTrigger) {
       setAnimationKey((prev) => prev + 1);
     }
-  }, [props.animateTrigger]);
+  }, [animateTrigger]);
 
   return (
     <div
@@ -49,7 +49,7 @@ function AnimatedText(props: AnimatedTextProps) {
             transition: { duration: 0.5, ease: "easeInOut" },
           }}
         >
-          {props.children}
+          {children}
         </motion.span>
       </AnimatePresence>
     </div>

@@ -14,11 +14,11 @@ export const LoadingImage = styled.img`
   height: 13.25rem;
 `;
 
-export const LoadingText = styled.p`
+export const LoadingSubText = styled.p`
   ${FONT.body16}
 `;
 
-export const LoadingTitle = styled.p`
+export const LoadingText = styled.p`
   ${FONT.title20}
   font-size:1.125rem;
 `;

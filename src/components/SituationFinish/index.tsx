@@ -8,6 +8,8 @@ import KaKao from "../../assets/icons/share-kakao.svg";
 import Share from "../../assets/icons/share.svg";
 import toast from "react-hot-toast";
 import { TopicTip } from "../../types/topic";
+import { KakaoShareOptions } from "../../types/kakao";
+import { Helmet } from 'react-helmet-async';
 
 
 interface FinishProps {
@@ -17,8 +19,9 @@ interface FinishProps {
     isRecommend: boolean;
     tips: TopicTip[];
   }[];
+  situationName?: string;
 }
-const Finish: React.FC<FinishProps> = ({ topics }) => {
+const Finish: React.FC<FinishProps> = ({ topics, situationName }) => {
   const { isOpen, openModal, closeModal } = useModal();
 
   const handleShare = async () => {
@@ -33,36 +36,43 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
   const handleKakaoShare = () => {
     const kakaoJsKey = import.meta.env.VITE_KAKAO_JS_KEY;
 
+
+
+
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init(kakaoJsKey);
     }
 
-    window.Kakao.Share.sendDefault({
+    const shareOptions: KakaoShareOptions = {
       objectType: "feed",
       content: {
         title: "말해머해",
         description: "대화 주제 추천 서비스, 말해머해를 체험해보세요!",
-        imageUrl:
-          "https://brick-william-6f5.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fe321b4cb-8569-4a87-9b86-2845eb22f8d7%2Faa2b6f56-0316-4c2d-9674-3f3d013ef9f5%2Fog-image.png?table=block&id=1564e173-3f21-807f-90c2-f226ffed128b&spaceId=e321b4cb-8569-4a87-9b86-2845eb22f8d7&width=1420&userId=&cache=v2",
+        imageUrl: "...",
         link: {
-          mobileWebUrl: "https://mh-mh.vercel.app/",
-          webUrl: "https://mh-mh.vercel.app/",
+          mobileWebUrl: "https://mh-mh.vercel.app/?utm_source=kakao&utm_medium=social&utm_campaign=share",
+          webUrl: "https://mh-mh.vercel.app/?utm_source=kakao&utm_medium=social&utm_campaign=share",
         },
       },
       buttons: [
         {
           title: "웹으로 보기",
           link: {
-            mobileWebUrl: "https://mh-mh.vercel.app/",
-            webUrl: "https://mh-mh.vercel.app/",
+            mobileWebUrl: "https://mh-mh.vercel.app/?utm_source=kakao&utm_medium=social&utm_campaign=share",
+            webUrl: "https://mh-mh.vercel.app/?utm_source=kakao&utm_medium=social&utm_campaign=share",
           },
         },
       ],
-    });
+    };
+
+    window.Kakao.Share.sendDefault(shareOptions);
   };
 
   return (
     <>
+      <Helmet>
+        <title>{`${situationName} 토픽 결과 | 말해머해`}</title>
+      </Helmet>
       <EmptyCircle />
       <S.Comment>
         랜덤 토픽 5개를 모두 살펴보셨네요

@@ -42,7 +42,7 @@ const TopicsBySituation = () => {
           </Link>
         </S.SituationBox>
         {hasViewedAllCards ? (
-          <Finish topics={data?.topics || []} />
+          <Finish topics={data?.topics || []} situationName={situationName} />
         ) : (
           <TopicCards
             topics={data?.topics || []}

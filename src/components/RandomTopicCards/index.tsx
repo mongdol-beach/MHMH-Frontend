@@ -7,8 +7,15 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PAGE_PATH from "../../constants/path";
 
-interface RandomTopicCardsProps {
+export interface RandomTopicCardsProps {
   onHasViewedAllCards?: (hasViewedAllCards: boolean) => void;
+  situationName: string;
+  situationColor: {
+    boldColor: string;
+    mainCardColor: string;
+    backCardColor: string;
+    backgroundColor: string;
+  };
 }
 
 export default function RandomTopicCards({
@@ -41,13 +48,13 @@ export default function RandomTopicCards({
         visibleTopics={visibleTopics}
         currentIndex={currentIndex}
         onSwipe={handleSwipe}
-        situationName=""
         $situationColor={{
-          boldColor: "",
-          mainCardColor: "",
-          backCardColor: "",
-          backgroundColor: "",
+          mainCardColor: topics[currentIndex].situationColor.mainCardColor,
+          backCardColor: topics[currentIndex].situationColor.backCardColor,
+          boldColor: topics[currentIndex].situationColor.boldColor,
+          backgroundColor: "#ffff",
         }}
+        situationName={topics[currentIndex].situationName}
       />
       <S.TopicNavigationControls>
         <S.LeftButtonWrapper>

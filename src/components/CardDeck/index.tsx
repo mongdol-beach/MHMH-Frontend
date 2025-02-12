@@ -44,7 +44,6 @@ function CardDeck({
   $situationColor,
   situationName,
 }: CardDeckProps) {
-
   const isAfterFirstRender = useRef(false);
 
   useEffect(() => {
@@ -129,5 +128,4 @@ function CardDeck({
     </S.DeckWrapper>
   );
 }
-
 export default CardDeck;

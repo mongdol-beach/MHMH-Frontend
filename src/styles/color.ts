@@ -18,6 +18,7 @@ export const COLORS = {
   "--grayscale-900": "#161618",
   "-grayscale-600": "#606060",
   "-grayscale-400": "#939393",
+  "-grayscale-300": "#B3B3B3",
   "-grayscale-200": "#c7c7c7",
   "-grayscale-100": "#e8e8e8",
   "-grayscale-50": "#f7f9fe",

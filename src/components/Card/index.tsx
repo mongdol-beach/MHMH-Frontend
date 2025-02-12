@@ -8,12 +8,21 @@ export interface CardProps extends CardStyleProps {
   situationName: string;
   id: number;
   content: string;
+  $situationColor: {
+    mainCardColor: string;
+    backCardColor: string;
+    backgroundColor: string;
+    boldColor: string;
+  };
 }
 
-function Card({ situationName, id, content, $color }: CardProps) {
+export function ensureHexColor(color: string): string {
+  return color.startsWith("#") ? color : `#${color}`;
+}
+
+function Card({ situationName, id, content, $situationColor }: CardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const startX = useRef(0);
-
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     startX.current = e.clientX;
   };
@@ -38,9 +47,24 @@ function Card({ situationName, id, content, $color }: CardProps) {
           id={id}
           content={content}
           situationName={situationName}
-          $color={$color}
+          $situationColor={{
+            mainCardColor: ensureHexColor($situationColor.mainCardColor),
+            backCardColor: ensureHexColor($situationColor.backCardColor),
+            boldColor: ensureHexColor($situationColor.boldColor),
+            backgroundColor: ensureHexColor($situationColor.backgroundColor),
+          }}
         />
-        <CardBack id={id} content={content} situationName={situationName} />
+        <CardBack
+          id={id}
+          content={content}
+          situationName={situationName}
+          $situationColor={{
+            mainCardColor: ensureHexColor($situationColor.mainCardColor),
+            backCardColor: ensureHexColor($situationColor.backCardColor),
+            boldColor: ensureHexColor($situationColor.boldColor),
+            backgroundColor: ensureHexColor($situationColor.backgroundColor),
+          }}
+        />
       </S.CardInner>
     </S.CardContainer>
   );

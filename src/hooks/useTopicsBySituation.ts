@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { Topic } from "../types/topic";
+import { SituationColor, Topic } from "../types/topic";
 import { instance } from "../apis/axios";
 
 interface TopicsBySituationResponse {
   situationName: string;
+  situationColor: SituationColor;
   topics: Topic[];
 }
 

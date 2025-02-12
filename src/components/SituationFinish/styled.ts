@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import FONT from "../../styles/font";
 import { Link } from "react-router-dom";
+import { CardStyleProps } from "../Card/CardFront/styled";
+import { ensureHexColor } from "../Card";
 
 export const HorizonDiv = styled.div`
   display: flex;
@@ -17,7 +19,7 @@ export const EmptyCircleContainer = styled.div`
   height: 9.375rem;
 `;
 
-export const EmptyLabel = styled.p`
+export const EmptyLabel = styled.p<CardStyleProps>`
   text-align: center;
   font-family: "esamanru OTF";
   font-size: 6.25rem;
@@ -25,7 +27,7 @@ export const EmptyLabel = styled.p`
   font-weight: 300;
   line-height: 9.375rem;
   letter-spacing: -0.125rem;
-  color: ${(props) => props.theme.colors["--Primary-blue-300"]};
+  color: ${(props) => ensureHexColor(props.$situationColor?.backCardColor)};
   position: absolute;
   top: 55%;
   left: 50%;

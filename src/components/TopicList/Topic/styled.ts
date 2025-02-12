@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { CardStyleProps } from "../../Card/CardFront/styled";
+import { ensureHexColor } from "../../Card";
 
 export const Topic = styled.li``;
 
-export const TopicButton = styled.button`
+export const TopicButton = styled.button<CardStyleProps>`
   display: flex;
   width: 6.5625rem;
   height: 8.4375rem;
@@ -11,7 +13,8 @@ export const TopicButton = styled.button`
   align-items: center;
   justify-content: space-between;
   border-radius: 4px;
-  background-color: ${(props) => props.theme.colors["--Primary-blue-500"]};
+  background-color: ${(props) =>
+    ensureHexColor(props.$situationColor?.mainCardColor)};
 
   &:hover {
     transition: 0.75s;
@@ -23,14 +26,19 @@ export const NumberBox = styled.div`
   position: relative;
 `;
 
-export const SemiCircleIcon = styled.img``;
+export const SemiCircleIcon = styled.img<CardStyleProps>`
+  border-bottom-left-radius: 3.125rem;
+  border-bottom-right-radius: 3.125rem;
+  background-color: ${(props) =>
+    ensureHexColor(props.$situationColor?.boldColor)};
+`;
 
-export const NumberText = styled.span`
+export const NumberText = styled.span<CardStyleProps>`
   position: absolute;
   top: 0;
   left: 48.5%;
   transform: translateX(-50%);
-  color: ${(props) => props.theme.colors["--Primary-blue-500"]};
+  color: ${(props) => ensureHexColor(props.$situationColor?.mainCardColor)};
   text-align: center;
   font-family: "esamanru OTF";
   font-size: 1.25rem;

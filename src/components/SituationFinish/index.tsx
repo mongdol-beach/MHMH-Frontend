@@ -8,6 +8,7 @@ import KaKao from "../../assets/icons/share-kakao.svg";
 import Share from "../../assets/icons/share.svg";
 import toast from "react-hot-toast";
 import { TopicTip } from "../../types/topic";
+import { ensureHexColor } from "../Card";
 
 export {}; // global 선언을 위해 필요
 
@@ -18,10 +19,20 @@ interface FinishProps {
     isRecommend: boolean;
     tips: TopicTip[];
   }[];
+  situationName: string;
+  $situationColor: {
+    boldColor: string;
+    mainCardColor: string;
+    backCardColor: string;
+    backgroundColor: string;
+  };
 }
-const Finish: React.FC<FinishProps> = ({ topics }) => {
+const Finish: React.FC<FinishProps> = ({
+  topics,
+  situationName,
+  $situationColor,
+}) => {
   const { isOpen, openModal, closeModal } = useModal();
-
   const handleShare = async () => {
     try {
       await navigator.clipboard.writeText("https://mh-mh.vercel.app/");
@@ -64,7 +75,14 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
 
   return (
     <>
-      <EmptyCircle />
+      <EmptyCircle
+        $situationColor={{
+          mainCardColor: ensureHexColor($situationColor.mainCardColor),
+          backCardColor: ensureHexColor($situationColor.backCardColor),
+          boldColor: ensureHexColor($situationColor.boldColor),
+          backgroundColor: ensureHexColor($situationColor.backgroundColor),
+        }}
+      />
       <S.Comment>
         랜덤 토픽 5개를 모두 살펴보셨네요
         <br />
@@ -106,14 +124,22 @@ const Finish: React.FC<FinishProps> = ({ topics }) => {
           />
         </S.ShareContainer>
       </S.Footer>
-      <SummaryModal isOpen={isOpen} closeModal={closeModal} topics={topics} />
+      <SummaryModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        topics={topics}
+        situationName={situationName}
+        situationColor={$situationColor}
+      />
     </>
   );
 };
 
 export default Finish;
 
-const EmptyCircle = () => {
+const EmptyCircle: React.FC<{
+  $situationColor: FinishProps["$situationColor"];
+}> = ({ $situationColor }) => {
   return (
     <S.EmptyCircleContainer>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 141 141" fill="none">
@@ -121,13 +147,13 @@ const EmptyCircle = () => {
           cx="70.5"
           cy="70.5"
           r="69.5"
-          stroke="#97B2FF"
+          stroke={$situationColor?.boldColor}
           strokeWidth="4"
           strokeLinecap="round"
           strokeDasharray="8 16"
         />
       </svg>
-      <S.EmptyLabel>텅</S.EmptyLabel>
+      <S.EmptyLabel $situationColor={$situationColor}>텅</S.EmptyLabel>
     </S.EmptyCircleContainer>
   );
 };

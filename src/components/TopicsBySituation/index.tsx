@@ -7,6 +7,7 @@ import { useState } from "react";
 import Finish from "../SituationFinish";
 import ShortArrow from "@assets/icons/short-arrow.svg";
 import Loading from "../Loading";
+import { SituationColor } from "../../types/topic";
 
 const TopicsBySituation = () => {
   const { situationId } = useParams();
@@ -14,6 +15,7 @@ const TopicsBySituation = () => {
   const [hasViewedAllCards, setHasViewedAllCards] = useState(false);
 
   const situationName = data?.situationName;
+  const situationColor = data?.situationColor;
 
   if (!situationId) {
     console.error("situationId is not defined");
@@ -31,22 +33,28 @@ const TopicsBySituation = () => {
   return (
     <>
       <Header title="상황별 토픽 추천" />
-      <S.Main>
+      <S.Main $situationColor={situationColor as SituationColor}>
         <S.SituationBox>
           <S.Situation>#{situationName}</S.Situation>
           <Link to={`/topic-list/${situationId}`}>
             <S.ViewAllTopicsButton>
-              {situationName} 토픽 둘러보기
+              토픽 둘러보기
               <S.Icon src={ShortArrow} alt="토픽 둘러보기 아이콘" />
             </S.ViewAllTopicsButton>
           </Link>
         </S.SituationBox>
         {hasViewedAllCards ? (
-          <Finish topics={data?.topics || []} />
+          <Finish
+            topics={data?.topics || []}
+            situationName={data?.situationName || ""}
+            $situationColor={situationColor as SituationColor}
+          />
         ) : (
           <TopicCards
             topics={data?.topics || []}
             onHasViewedAllCards={setHasViewedAllCards}
+            situationColor={situationColor as SituationColor}
+            situationName={data?.situationName || ""}
           />
         )}
       </S.Main>

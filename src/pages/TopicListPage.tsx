@@ -9,14 +9,17 @@ import { Situation } from "../types";
 function TopicListPage() {
   const { id: situation } = useParams();
   const { data } = useGetTopicList(situation as Situation);
-
   return (
     <>
       <Helmet>
         <title>{data.situationName} 토픽 | 말해머해</title>
       </Helmet>
       <Header title={data.situationName} hasHomeIcon={false} />
-      <TopicList topicList={data.topics} situationName={data.situationName} />
+      <TopicList
+        topicList={data.topics}
+        situationName={data.situationName}
+        situationColor={data.situationColor}
+      />
     </>
   );
 }

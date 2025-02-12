@@ -1,11 +1,13 @@
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 import { instance } from "../apis/axios";
-import { Topic } from "../types/topic";
+import { SituationColor, Topic } from "../types/topic";
 
 interface RandomTopicsResponse {
   topics: Topic[];
   page: number;
   totalPage: number;
+  situationName: string;
+  situationColor: SituationColor;
 }
 
 export const useRandomTopics = () => {

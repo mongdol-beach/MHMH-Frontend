@@ -33,15 +33,10 @@ function CardBack({ situationName, id, content, $situationColor }: CardProps) {
       <S.Card $situationColor={$situationColor}>
         <CardDotEffect $situationColor={$situationColor} />
         <S.Box>
-          <S.BackIcon $situationColor={$situationColor}>
-            <CardBackIcon $situationColor={$situationColor} />
-          </S.BackIcon>
           <S.SubTitle $situationColor={$situationColor}>
             No.
             <S.CardIndex $situationColor={$situationColor}>
-              {id}
-
-              <S.SituationNameTitle>#{situationName} 토픽</S.SituationNameTitle>
+              {id}&ensp;#{situationName} 토픽
             </S.CardIndex>
           </S.SubTitle>
           <S.Title>{content}</S.Title>
@@ -63,6 +58,9 @@ function CardBack({ situationName, id, content, $situationColor }: CardProps) {
             ))}
           </S.TipList>
         </S.Box>
+        <S.CardBackIcon>
+          <CardBackIcon $situationColor={$situationColor} />
+        </S.CardBackIcon>
       </S.Card>
     </S.CardWrap>
   );

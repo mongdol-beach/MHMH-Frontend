@@ -25,6 +25,11 @@ export const Box = styled.div`
   padding: 1rem;
   text-align: left;
   width: 100%;
+  height: 100%;
+  position: relative;
+  top: -27rem;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export const SubTitle = styled.p<CardStyleProps>`
@@ -53,12 +58,6 @@ export const CardIndex = styled.span<CardStyleProps>`
   gap: 0.5rem;
 `;
 
-export const SituationNameTitle = styled.p`
-  font-size: 0.875rem;
-  display: flex;
-  align-items: flex-end;
-`;
-
 export const Title = styled.p`
   margin-top: 0.25rem;
   color: ${(props) => props.theme.colors["-grayscale-800"]};
@@ -74,7 +73,7 @@ export const Title = styled.p`
   word-break: keep-all;
   width: 12rem;
   position: absolute;
-  top: 3rem;
+  top: 4rem;
   left: 40%;
   transform: translateX(-50%);
 `;
@@ -83,8 +82,10 @@ export const TipBox = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  margin: 0.5rem 0;
-  bottom: 18.5rem;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0.75rem 0;
 `;
 
 export const TipText = styled.p`
@@ -138,8 +139,7 @@ export const TipSubItem = styled.li`
   word-break: keep-all;
 `;
 
-export const BackIcon = styled.div<CardStyleProps>`
-  stroke: ${(props) => ensureHexColor(props.$situationColor?.mainCardColor)};
+export const CardBackIcon = styled.div`
   position: absolute;
   right: 0.88rem;
   top: 0.88rem;

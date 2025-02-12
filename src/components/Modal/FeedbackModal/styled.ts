@@ -1,7 +1,19 @@
 import styled from "styled-components";
 import FONT from "../../../styles/font";
 
-export const CloseIcon = styled.img<{ onClick: () => void }>`
+export const Content = styled.div`
+  background-color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  width: 93%;
+  position: absolute;
+  left: 50%;
+  top: 22%;
+  transform: translateX(-50%);
+`;
+
+
+export const CloseIcon = styled.img`
   position: absolute;
   top: 16px;
   right: 20px;

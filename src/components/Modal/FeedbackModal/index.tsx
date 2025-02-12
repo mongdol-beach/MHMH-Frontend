@@ -1,4 +1,3 @@
-import { HasCloseModal } from "../index";
 import * as S from "./styled";
 import Close from "@assets/icons/close.svg";
 import SosoOn from "@assets/icons/soso-on.svg";
@@ -10,6 +9,7 @@ import GoodOff from "@assets/icons/good-off.svg";
 import { useState } from "react";
 import { instance } from "../../../apis/axios";
 import toast from "react-hot-toast";
+import Modal from "..";
 
 interface FeedbackModalProps {
   isOpen: boolean;
@@ -85,7 +85,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
 
       await instance.post("/feedbacks", requestBody);
       handleCloseModal();
-    } catch (error) {
+    } catch {
       toast.error(" 의견 보내기 전송에 실패했습니다.");
     }
   };
@@ -101,8 +101,9 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
   };
 
   return (
-    <>
-      <HasCloseModal isOpen={isOpen} closeModal={handleCloseModal}>
+
+    <Modal isOpen={isOpen} closeModal={handleCloseModal}>
+      <S.Content>
         <S.CloseIcon src={Close} onClick={closeModal} />
         <S.ModalContainer onSubmit={handleSubmit}>
           <S.ModalTitle>
@@ -145,8 +146,9 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
           </S.TextAreaWrapper>
           <S.FeedBackBtn type="submit">의견 보내기</S.FeedBackBtn>
         </S.ModalContainer>
-      </HasCloseModal>
-    </>
+      </S.Content>
+
+    </Modal>
   );
 };
 

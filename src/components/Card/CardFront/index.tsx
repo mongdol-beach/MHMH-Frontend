@@ -5,14 +5,14 @@ import SmileIcon from "@assets/icons/smile.svg";
 import SemiCircleIcon from "@assets/icons/semi-circle.svg";
 import StartQuotes from "@assets/icons/quotes-start.svg";
 import EndQuotes from "@assets/icons/quotes-end.svg";
-import { CardProps } from "..";
 import CardBackgroundEffect from "../../../assets/icons/CardBackgroundEffect";
+import { CardProps } from "..";
 
 function CardFront({ situationName, id, content, $situationColor }: CardProps) {
   return (
     <S.CardWrap>
       <S.Card $situationColor={$situationColor}>
-        <CardBackgroundEffect $situationColor={$situationColor} />
+        <CardBackgroundEffect $color={$situationColor} />
         <S.NumberBox>
           <S.SemiCircleIcon
             src={SemiCircleIcon}

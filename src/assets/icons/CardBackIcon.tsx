@@ -1,10 +1,10 @@
 interface CardBackIconProps {
-  $situationColor: {
+  $color: {
     mainCardColor: string;
   };
 }
 
-const CardBackIcon: React.FC<CardBackIconProps> = ({ $situationColor }) => (
+const CardBackIcon: React.FC<CardBackIconProps> = ({ $color }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="41"
@@ -15,17 +15,12 @@ const CardBackIcon: React.FC<CardBackIconProps> = ({ $situationColor }) => (
     <g filter="url(#filter0_d_211_1479)">
       <path
         d="M5.64838 27.7052C5.05347 24.26 5.54621 20.6857 7.04435 17.579C8.54249 14.4722 10.9555 12.0208 13.8805 10.6338C16.8056 9.24693 20.0659 9.00834 23.1173 9.95794C26.1687 10.9075 28.8267 12.9879 30.6477 15.8518M30.6477 15.8518L22.4926 16.2681M30.6477 15.8518L30.484 7.11235"
-        stroke={$situationColor.mainCardColor}
+        stroke={$color.mainCardColor}
         strokeWidth="2.50909"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle
-        cx="27.5005"
-        cy="28.5"
-        r="4.5"
-        fill={$situationColor.mainCardColor}
-      />
+      <circle cx="27.5005" cy="28.5" r="4.5" fill={$color.mainCardColor} />
     </g>
     <defs>
       <filter

@@ -1,6 +1,6 @@
 import * as S from "./styled";
-import CardDotEffect from "../../../assets/icons/CardDotEffect";
-import TipTextIcon from "../../../assets/icons/TipTextIcon";
+import CardDotEffect from "../../../assets/icons/CardDotEffect.tsx";
+import TipTextIcon from "../../../assets/icons/TipTextIcon.tsx";
 import CardBackIcon from "../../../assets/icons/CardBackIcon";
 import { CardProps } from "..";
 
@@ -31,7 +31,7 @@ function CardBack({ situationName, id, content, $situationColor }: CardProps) {
   return (
     <S.CardWrap>
       <S.Card $situationColor={$situationColor}>
-        <CardDotEffect $situationColor={$situationColor} />
+        <CardDotEffect $color={$situationColor} />
         <S.Box>
           <S.SubTitle $situationColor={$situationColor}>
             No.
@@ -42,7 +42,7 @@ function CardBack({ situationName, id, content, $situationColor }: CardProps) {
           <S.Title>{content}</S.Title>
           <S.TipBox>
             <S.TipText>
-              <TipTextIcon $situationColor={$situationColor} />
+              <TipTextIcon $color={$situationColor} />
             </S.TipText>
             <S.Line $situationColor={$situationColor} />
           </S.TipBox>
@@ -59,7 +59,7 @@ function CardBack({ situationName, id, content, $situationColor }: CardProps) {
           </S.TipList>
         </S.Box>
         <S.CardBackIcon>
-          <CardBackIcon $situationColor={$situationColor} />
+          <CardBackIcon $color={$situationColor} />
         </S.CardBackIcon>
       </S.Card>
     </S.CardWrap>

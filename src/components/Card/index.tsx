@@ -8,12 +8,6 @@ export interface CardProps extends CardStyleProps {
   situationName: string;
   id: number;
   content: string;
-  $situationColor: {
-    mainCardColor: string;
-    backCardColor: string;
-    backgroundColor: string;
-    boldColor: string;
-  };
 }
 
 export function ensureHexColor(color: string): string {

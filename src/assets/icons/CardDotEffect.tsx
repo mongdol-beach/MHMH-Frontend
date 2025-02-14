@@ -1,10 +1,10 @@
 interface CardDotEffectProps {
-  $situationColor: {
+  $color: {
     mainCardColor: string;
   };
 }
 
-const CardDotEffect: React.FC<CardDotEffectProps> = ({ $situationColor }) => (
+const CardDotEffect: React.FC<CardDotEffectProps> = ({ $color }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="318"
@@ -15,7 +15,7 @@ const CardDotEffect: React.FC<CardDotEffectProps> = ({ $situationColor }) => (
     <g filter="url(#filter0_d_1198_5110)">
       <path
         d="M230 19H159H29C22.3726 19 17 24.3726 17 31V399C17 405.627 22.3726 411 29 411H289C295.627 411 301 405.627 301 399V215V89.56"
-        stroke={$situationColor?.mainCardColor}
+        stroke={$color?.mainCardColor}
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-dasharray="3 10"

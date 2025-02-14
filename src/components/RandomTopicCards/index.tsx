@@ -6,6 +6,7 @@ import useRandomTopics from "../../hooks/useRandomTopics";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PAGE_PATH from "../../constants/path";
+import { ensureHexColor } from "../Card";
 
 export interface RandomTopicCardsProps {
   onHasViewedAllCards?: (hasViewedAllCards: boolean) => void;
@@ -49,9 +50,15 @@ export default function RandomTopicCards({
         currentIndex={currentIndex}
         onSwipe={handleSwipe}
         $situationColor={{
-          mainCardColor: topics[currentIndex].situationColor.mainCardColor,
-          backCardColor: topics[currentIndex].situationColor.backCardColor,
-          boldColor: topics[currentIndex].situationColor.boldColor,
+          mainCardColor: ensureHexColor(
+            topics[currentIndex].situationColor.mainCardColor,
+          ),
+          backCardColor: ensureHexColor(
+            topics[currentIndex].situationColor.backCardColor,
+          ),
+          boldColor: ensureHexColor(
+            topics[currentIndex].situationColor.boldColor,
+          ),
           backgroundColor: "#ffff",
         }}
         situationName={topics[currentIndex].situationName}

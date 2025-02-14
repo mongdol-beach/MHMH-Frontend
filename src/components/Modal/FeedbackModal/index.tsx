@@ -85,8 +85,9 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
 
       await instance.post("/feedbacks", requestBody);
       handleCloseModal();
-    } catch {
-      toast.error(" 의견 보내기 전송에 실패했습니다.");
+    } catch (error) {
+      console.log(error)
+      toast.error("전송에 실패했습니다.");
     }
   };
 
@@ -102,9 +103,9 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
 
   return (
 
-    <Modal isOpen={isOpen} closeModal={handleCloseModal}>
+    <Modal isOpen={isOpen}>
       <S.Content>
-        <S.CloseIcon src={Close} onClick={closeModal} />
+        <S.CloseIcon src={Close} onClick={handleCloseModal} />
         <S.ModalContainer onSubmit={handleSubmit}>
           <S.ModalTitle>
             "말해머해"이용 후,

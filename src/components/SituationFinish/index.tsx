@@ -11,6 +11,8 @@ import { TopicTip } from "../../types/topic";
 import { KakaoShareOptions } from "../../types/kakao";
 import { Helmet } from 'react-helmet-async';
 
+const BASE_URL = "https://mh-mh.vercel.app";
+const KAKAOSHARE_URL = `${BASE_URL}/?utm_source=kakao&utm_medium=social&utm_campaign=share`;
 
 interface FinishProps {
   topics: {
@@ -26,9 +28,10 @@ const Finish: React.FC<FinishProps> = ({ topics, situationName }) => {
 
   const handleShare = async () => {
     try {
-      await navigator.clipboard.writeText("https://mh-mh.vercel.app/");
+      await navigator.clipboard.writeText(BASE_URL);
       toast.success("링크가 복사되었습니다.");
-    } catch {
+    } catch (error) {
+      console.log(error)
       toast.error("링크 복사에 실패했습니다.");
     }
   };
@@ -50,16 +53,16 @@ const Finish: React.FC<FinishProps> = ({ topics, situationName }) => {
         description: "대화 주제 추천 서비스, 말해머해를 체험해보세요!",
         imageUrl: "...",
         link: {
-          mobileWebUrl: "https://mh-mh.vercel.app/?utm_source=kakao&utm_medium=social&utm_campaign=share",
-          webUrl: "https://mh-mh.vercel.app/?utm_source=kakao&utm_medium=social&utm_campaign=share",
+          mobileWebUrl: KAKAOSHARE_URL,
+          webUrl: KAKAOSHARE_URL,
         },
       },
       buttons: [
         {
           title: "웹으로 보기",
           link: {
-            mobileWebUrl: "https://mh-mh.vercel.app/?utm_source=kakao&utm_medium=social&utm_campaign=share",
-            webUrl: "https://mh-mh.vercel.app/?utm_source=kakao&utm_medium=social&utm_campaign=share",
+            mobileWebUrl: KAKAOSHARE_URL,
+            webUrl: KAKAOSHARE_URL,
           },
         },
       ],

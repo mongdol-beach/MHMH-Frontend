@@ -39,18 +39,18 @@ export const ModalHeader = styled.div`
   padding-bottom: 0.5rem;
 `;
 
-export const ModalHeader_left = styled.div``;
+export const ModalHeaderLeft = styled.div``;
 
-export const ModalHeader_right = styled.div``;
+export const ModalHeaderRight = styled.div``;
 
-export const ModalHeader_title = styled.p`
+export const ModalHeaderTitle = styled.p`
   ${FONT.body16}
   line-height: 1.5;
   letter-spacing: -0.32px;
   color: ${(props) => props.theme.colors["--Primary-blue-500"]};
 `;
 
-export const ModalHeader_desc = styled.p`
+export const ModalHeaderDesc = styled.p`
   ${FONT.title20};
   letter-spacing: -0.4px;
   line-height: 1.5;
@@ -70,7 +70,7 @@ export const ModalContents = styled.div`
   padding-bottom: 0.5rem;
 `;
 
-export const ModalContents_metrics = styled.div`
+export const Metrics = styled.div`
   position: relative;
   overflow: hidden;
   display: flex;
@@ -84,14 +84,14 @@ export const ModalContents_metrics = styled.div`
   align-items: center;
 `;
 
-export const ModalContents_metrics_left = styled.div`
+export const MetricsLeft = styled.div`
   display: flex;
   align-items: flex-start;
   align-items: center;
   gap: 1rem;
 `;
 
-export const ModalContents_metrics_currentOrder = styled.p`
+export const MetricsCurrentOrder = styled.p`
   color: ${(props) => props.theme.colors["--card-color-beige"]};
   font-family: "esamanru OTF";
   font-size: 1.125rem;
@@ -103,7 +103,7 @@ export const ModalContents_metrics_currentOrder = styled.p`
   height: auto;
 `;
 
-export const ModalContents_metrics_topic = styled.p`
+export const MetricsTopic = styled.p`
   color: ${(props) => props.theme.colors["--card-color-beige"]};
   font-family: "esamanru OTF";
   font-size: 0.875rem;
@@ -114,7 +114,7 @@ export const ModalContents_metrics_topic = styled.p`
   width: 133px;
 `;
 
-export const ModalContents_metrics_right = styled.div`
+export const MetricsRight = styled.div`
   width: 33px;
   display: flex;
   flex-direction: column;
@@ -123,7 +123,7 @@ export const ModalContents_metrics_right = styled.div`
   z-index: 1;
 `;
 
-export const ModalContents_metrics_topicOrder = styled.p`
+export const MetricsTopicOrder = styled.p`
   color: ${(props) => props.theme.colors["--card-color-sky_b"]};
   font-family: Pretendard;
   font-size: 0.75rem;
@@ -132,7 +132,7 @@ export const ModalContents_metrics_topicOrder = styled.p`
   letter-spacing: -0.72px;
 `;
 
-export const ModalContents_bg = styled.div`
+export const ModalContentsBg = styled.div`
   width: 118px;
   height: 92px;
   transform: rotate(90deg);

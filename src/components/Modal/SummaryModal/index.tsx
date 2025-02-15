@@ -13,7 +13,7 @@ interface SummaryModalProps {
     isRecommend: boolean;
     tips: TopicTip[];
   }[];
-  situationName: string;
+  situationName?: string;
   situationColor: {
     boldColor: string;
     mainCardColor: string;

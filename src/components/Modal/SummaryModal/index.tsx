@@ -13,12 +13,21 @@ interface SummaryModalProps {
     isRecommend: boolean;
     tips: TopicTip[];
   }[];
+  situationName: string;
+  situationColor: {
+    boldColor: string;
+    mainCardColor: string;
+    backCardColor: string;
+    backgroundColor: string;
+  };
 }
 
 const SummaryModal: React.FC<SummaryModalProps> = ({
   isOpen,
   closeModal,
   topics,
+  situationName,
+  situationColor,
 }) => {
   return (
 
@@ -26,9 +35,11 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
       <S.Content>
         <S.CloseIcon src={Close} onClick={closeModal} />
         <S.ModalContainer>
-          <S.ModalHeader>
+        <S.ModalHeader $situationColor={situationColor}>
             <S.ModalHeaderLeft>
-              <S.ModalHeaderTitle>#소개팅_토픽</S.ModalHeaderTitle>
+            <S.ModalHeader_title $situationColor={situationColor}>
+              #{situationName}_토픽
+            </S.ModalHeader_title>
               <S.ModalHeaderDesc>
                 방금 이용한
                 <br />
@@ -41,7 +52,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
           </S.ModalHeader>
           <S.ModalContents>
             {topics.map((topic, idx) => (
-              <S.Metrics key={idx}>
+              <S.Metrics key={idx} $situationColor={situationColor}>
                 <S.MetricsLeft>
                   <S.MetricsCurrentOrder>
                     Q{idx + 1}
@@ -51,11 +62,11 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
                   </S.MetricsTopic>
                 </S.MetricsLeft>
                 <S.MetricsRight>
-                  <S.MetricsTopicOrder>
+                  <S.MetricsTopicOrder $situationColor={situationColor}>
                     No.{topic.id}
                   </S.MetricsTopicOrder>
                 </S.MetricsRight>
-                <S.ModalContentsBg />
+                <S.ModalContentsBg $situationColor={situationColor}/>
               </S.Metrics>
             ))}
           </S.ModalContents>

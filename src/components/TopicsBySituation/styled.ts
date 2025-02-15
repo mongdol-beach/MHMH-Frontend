@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import FONT from "../../styles/font";
+import { CardStyleProps } from "../Card/CardFront/styled";
+import { ensureHexColor } from "../Card";
 
-export const Main = styled.main`
-  background: ${(props) => props.theme.colors["--Primary-blue-100"]};
+export const Main = styled.main<CardStyleProps>`
+  background: ${(props) =>
+    ensureHexColor(props.$situationColor?.backgroundColor)};
   min-height: 100vh;
 `;
 

@@ -1,7 +1,7 @@
 import * as S from "./styled";
-import CardDotEffect from "@assets/icons/card-dot-effect.svg";
-import CardBackIcon from "@assets/icons/card-back.svg";
-import TipTextIcon from "@assets/icons/tip-text.svg";
+import CardDotEffect from "../../../assets/icons/CardDotEffect.tsx";
+import TipTextIcon from "../../../assets/icons/TipTextIcon.tsx";
+import CardBackIcon from "../../../assets/icons/CardBackIcon";
 import { CardProps } from "..";
 
 const TIPS = [
@@ -27,21 +27,24 @@ const TIPS = [
     ],
   },
 ] as const;
-
-function CardBack({ situationName, id, content }: CardProps) {
+function CardBack({ situationName, id, content, $situationColor }: CardProps) {
   return (
     <S.CardWrap>
-      <S.Card>
+      <S.Card $situationColor={$situationColor}>
+        <CardDotEffect $color={$situationColor} />
         <S.Box>
-          <S.SubTitle>
-            No. <S.CardIndex>{id}</S.CardIndex> {situationName}
+          <S.SubTitle $situationColor={$situationColor}>
+            No.
+            <S.CardIndex $situationColor={$situationColor}>
+              {id}&ensp;#{situationName} 토픽
+            </S.CardIndex>
           </S.SubTitle>
           <S.Title>{content}</S.Title>
           <S.TipBox>
             <S.TipText>
-              <img src={TipTextIcon} />
+              <TipTextIcon $color={$situationColor} />
             </S.TipText>
-            <S.Line />
+            <S.Line $situationColor={$situationColor} />
           </S.TipBox>
           <S.TipList>
             {TIPS.map((tip, idx) => (
@@ -55,8 +58,9 @@ function CardBack({ situationName, id, content }: CardProps) {
             ))}
           </S.TipList>
         </S.Box>
-        <S.CardDotEffect src={CardDotEffect} draggable={false} />
-        <S.CardBackIcon src={CardBackIcon} alt="카드 뒤집기" />
+        <S.CardBackIcon>
+          <CardBackIcon $color={$situationColor} />
+        </S.CardBackIcon>
       </S.Card>
     </S.CardWrap>
   );

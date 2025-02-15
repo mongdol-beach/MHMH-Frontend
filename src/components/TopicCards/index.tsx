@@ -8,9 +8,21 @@ import useTopicCardNavigation from "../../hooks/useTopicCardNavigation";
 interface TopicCardsProps {
   topics: Topic[];
   onHasViewedAllCards?: (hasViewedAllCards: boolean) => void;
+  situationColor: {
+    mainCardColor: string;
+    backCardColor: string;
+    backgroundColor: string;
+    boldColor: string;
+  };
+  situationName: string;
 }
 
-function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
+function TopicCards({
+  topics,
+  onHasViewedAllCards,
+  situationColor,
+  situationName,
+}: TopicCardsProps) {
   const { currentIndex, isLastSlide, visibleTopics, handleSwipe } =
     useTopicCardNavigation({
       topics,
@@ -35,7 +47,11 @@ function TopicCards({ topics, onHasViewedAllCards }: TopicCardsProps) {
             visibleTopics={visibleTopics}
             currentIndex={currentIndex}
             onSwipe={handleSwipe}
+            $situationColor={situationColor}
+            situationName={situationName}
           />
+
+
           <S.TopicNavigationControls>
             <S.LeftButtonWrapper>
               {currentIndex > 0 && (

@@ -5,7 +5,20 @@ import FONT from "../../../styles/font";
 import { ensureHexColor } from "../../Card";
 import { CardStyleProps } from "../../Card/CardFront/styled";
 
-export const CloseIcon = styled.img<{ onClick: () => void }>`
+export const Content = styled.div`
+  background-color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  top: 19%;
+  transform: translateX(-50%);
+`;
+
+
+
+export const CloseIcon = styled.img`
   position: absolute;
   top: 16px;
   right: 20px;
@@ -28,9 +41,9 @@ export const ModalHeader = styled.div<CardStyleProps>`
   padding-bottom: 0.5rem;
 `;
 
-export const ModalHeader_left = styled.div``;
+export const ModalHeaderLeft = styled.div``;
 
-export const ModalHeader_right = styled.div``;
+export const ModalHeaderRight = styled.div``;
 
 export const ModalHeader_title = styled.p<CardStyleProps>`
   ${FONT.body16}
@@ -40,7 +53,7 @@ export const ModalHeader_title = styled.p<CardStyleProps>`
     ensureHexColor($situationColor.mainCardColor)};
 `;
 
-export const ModalHeader_desc = styled.p`
+export const ModalHeaderDesc = styled.p`
   ${FONT.title20};
   letter-spacing: -0.4px;
   line-height: 1.5;
@@ -60,7 +73,7 @@ export const ModalContents = styled.div`
   padding-bottom: 0.5rem;
 `;
 
-export const ModalContents_metrics = styled.div<CardStyleProps>`
+export const Metrics = styled.div<CardStyleProps>`
   position: relative;
   overflow: hidden;
   display: flex;
@@ -75,14 +88,14 @@ export const ModalContents_metrics = styled.div<CardStyleProps>`
   align-items: center;
 `;
 
-export const ModalContents_metrics_left = styled.div`
+export const MetricsLeft = styled.div`
   display: flex;
   align-items: flex-start;
   align-items: center;
   gap: 1rem;
 `;
 
-export const ModalContents_metrics_currentOrder = styled.p`
+export const MetricsCurrentOrder = styled.p`
   color: ${(props) => props.theme.colors["--point-beige"]};
   font-family: "esamanru OTF";
   font-size: 1.125rem;
@@ -94,7 +107,7 @@ export const ModalContents_metrics_currentOrder = styled.p`
   height: auto;
 `;
 
-export const ModalContents_metrics_topic = styled.p`
+export const MetricsTopic = styled.p`
   color: ${(props) => props.theme.colors["--point-beige"]};
   font-family: "esamanru OTF";
   font-size: 0.875rem;
@@ -105,7 +118,7 @@ export const ModalContents_metrics_topic = styled.p`
   width: 133px;
 `;
 
-export const ModalContents_metrics_right = styled.div`
+export const MetricsRight = styled.div`
   width: 33px;
   display: flex;
   flex-direction: column;
@@ -114,7 +127,7 @@ export const ModalContents_metrics_right = styled.div`
   z-index: 1;
 `;
 
-export const ModalContents_metrics_topicOrder = styled.p<CardStyleProps>`
+export const MetricsTopicOrder = styled.p<CardStyleProps>`
   color: ${({ $situationColor }) =>
     ensureHexColor($situationColor.backCardColor)};
   font-family: Pretendard;
@@ -124,7 +137,7 @@ export const ModalContents_metrics_topicOrder = styled.p<CardStyleProps>`
   letter-spacing: -0.72px;
 `;
 
-export const ModalContents_bg = styled.div<CardStyleProps>`
+export const ModalContentsBg = styled.div<CardStyleProps>`
   width: 7.375rem;
   height: 5.75rem;
   transform: rotate(90deg);
@@ -155,3 +168,4 @@ export const LastTitle = styled.p`
   line-height: 130%; /* 1.1375rem */
   letter-spacing: -0.0175rem;
 `;
+

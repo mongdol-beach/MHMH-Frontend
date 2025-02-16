@@ -9,6 +9,7 @@ import {
 } from "../../hooks/getRandomBalance";
 import { useQueryClient } from "@tanstack/react-query";
 import Loading from "../Loading";
+import { Helmet } from "react-helmet-async";
 
 const BALANCE_GAME_MAX_NUM = 5;
 
@@ -72,6 +73,9 @@ const BalanceGame = () => {
 
   return (
     <>
+      <Helmet>
+        <title>밸런스게임 | 말해머해</title>
+      </Helmet>
       <Header />
       <S.Main>
         <S.ProgressBarBox>

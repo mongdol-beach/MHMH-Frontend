@@ -46,7 +46,7 @@ const TopicsBySituation = () => {
         {hasViewedAllCards ? (
           <Finish
             topics={data?.topics || []}
-            situationName={data?.situationName || ""}
+            situationName={situationName}
             $situationColor={situationColor as SituationColor}
           />
         ) : (

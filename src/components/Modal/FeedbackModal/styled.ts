@@ -1,7 +1,19 @@
 import styled from "styled-components";
 import FONT from "../../../styles/font";
 
-export const CloseIcon = styled.img<{ onClick: () => void }>`
+export const Content = styled.div`
+  background-color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  width: 93%;
+  position: absolute;
+  left: 50%;
+  top: 22%;
+  transform: translateX(-50%);
+`;
+
+
+export const CloseIcon = styled.img`
   position: absolute;
   top: 16px;
   right: 20px;
@@ -94,12 +106,17 @@ export const FeedBackBtn = styled.button`
   color: ${(props) => props.theme.colors["-grayscale-50"]};
   border-radius: 86px;
   margin: 1rem 0 1.5rem 0;
+  box-shadow: none;
 
-  &:hover {
-    box-shadow: inset 3px 4px 3px rgba(0, 0, 0, 0.3);
+  
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: inset 3px 4px 3px rgba(0, 0, 0, 0.3);
+    }
   }
 
   &:active {
     filter: brightness(0.8);
   }
+
 `;

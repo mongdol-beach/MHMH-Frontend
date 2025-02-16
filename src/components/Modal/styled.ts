@@ -27,32 +27,7 @@ export const Container = styled.div<{ $isOpen: boolean }>`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   animation: ${({ $isOpen }) => ($isOpen ? openEffect : closeEffect)} 0.25s ease;
+  z-index: 1;
 `;
 
-/* index.tsx*/
 
-export const ModalBg = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  max-width: 375px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-export const Content = styled.div`
-  background-color: white;
-  padding: 16px 20px;
-  border-radius: 8px;
-  width: 100%;
-  position: relative;
-`;

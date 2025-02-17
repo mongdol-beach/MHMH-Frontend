@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { CardStyleProps } from "../../Card/CardFront/styled";
 
 export const CardBox = styled.div`
   position: absolute;
@@ -7,22 +8,24 @@ export const CardBox = styled.div`
   transform: translateX(-50%);
 `;
 
-export const CloseButton = styled.button`
-  width: 20rem;
-  position: absolute;
-  padding: 1rem 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -72px;
-  border-radius: 12px;
-  background-color: ${(props) => props.theme.colors["--Primary-blue-300"]};
+export const CloseButton = styled.button<CardStyleProps>`
+  width: 4.3125rem;
+  height: 4.3125rem;
+  padding: 1.25rem;
   font-size: 1.25rem;
-  color: #fff;
   font-weight: 800;
   letter-spacing: 3px;
+  border-radius: 2.15625rem;
+  background-color: #fff;
+  box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
 
   &:hover {
     transition: 0.75s;
-    background-color: ${(props) => props.theme.colors["--Primary-blue-700"]};
   }
 `;
+
+export const Close = styled.img``;

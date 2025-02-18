@@ -12,12 +12,13 @@ import Loading from "../Loading";
 import AnimatedText from "../AnimatedText";
 import { Helmet } from "react-helmet-async";
 import AnimatedOptionPercentBackground from "../AnimatedOptionPercentBackground";
+import LoadingThreeDotsLottie from "../LoadingThreeDotsLottie";
 
 const BALANCE_GAME_MAX_NUM = 5;
 
 const BalanceGame = () => {
   const { data, isLoading } = useRandomBalance();
-  const { mutateAsync } = usePercentBalance();
+  const { mutateAsync, isPending } = usePercentBalance();
   const [num, setNum] = useState(0);
   const [selectedPercentage, setSelectedPercentage] =
     useState<SelectedPercentage | null>(null);
@@ -111,6 +112,7 @@ const BalanceGame = () => {
                   <AnimatedText isTriggerAnimation={clickedOption === "A"}>
                     {currentQuestion.optionA}
                   </AnimatedText>
+                  {isPending && <LoadingThreeDotsLottie />}
                   {selectedPercentage?.optionA !== undefined && (
                     <S.PercentText $isClicked={clickedOption === "A"}>
                       {`${selectedPercentage.optionA}%`}
@@ -132,6 +134,7 @@ const BalanceGame = () => {
                   <AnimatedText isTriggerAnimation={clickedOption === "B"}>
                     {currentQuestion.optionB}
                   </AnimatedText>
+                  {isPending && <LoadingThreeDotsLottie />}
                   {selectedPercentage?.optionB !== undefined && (
                     <S.PercentText $isClicked={clickedOption === "B"}>
                       {`${selectedPercentage.optionB}%`}

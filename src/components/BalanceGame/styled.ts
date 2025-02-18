@@ -1,6 +1,7 @@
 import styled, { DefaultTheme } from "styled-components";
 import { Link } from "react-router-dom";
 import FONT from "../../styles/font";
+import { motion } from "framer-motion";
 
 export const Main = styled.main``;
 
@@ -150,27 +151,6 @@ export const Option = styled.button<{
 
     return styles;
   }}
-`;
-
-export const OptionPercentBackground = styled.div<{
-  $percent: number | undefined;
-  $isVisible: boolean;
-  $isClicked: boolean;
-}>`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: ${({ $percent }) => `${$percent}%`};
-  background-color: ${({ $isClicked, theme }) =>
-    $isClicked
-      ? theme.colors["--card-color-blue-700"]
-      : theme.colors["-grayscale-100"]};
-  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
-  transition:
-    height 0.5s ease-out,
-    opacity 0.3s ease-in-out;
-  z-index: 0;
 `;
 
 export const PercentText = styled.p<{

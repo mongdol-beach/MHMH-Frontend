@@ -11,6 +11,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import Loading from "../Loading";
 import AnimatedText from "../AnimatedText";
 import { Helmet } from "react-helmet-async";
+import AnimatedOptionPercentBackground from "../AnimatedOptionPercentBackground";
 
 const BALANCE_GAME_MAX_NUM = 5;
 
@@ -42,7 +43,6 @@ const BalanceGame = () => {
 
   const handleSelectOption = async (option: string, id: number) => {
     if (clickedOption) return;
-
     setClickedOption(option);
     setIsOptionLocked(true);
     const data = await mutateAsync({ id, selectedOption: option });
@@ -97,15 +97,15 @@ const BalanceGame = () => {
                 </S.Description>
               </S.ProgressBox>
               <S.OptionBox>
+                {/* Option A */}
                 <S.Option
                   onClick={() => handleSelectOption("A", currentQuestion.id)}
                   $isClicked={clickedOption === "A"}
                   $isOtherClicked={clickedOption === "B"}
                   disabled={isOptionLocked}
                 >
-                  <S.OptionPercentBackground
-                    $percent={selectedPercentage?.optionA}
-                    $isVisible={!!selectedPercentage?.optionA}
+                  <AnimatedOptionPercentBackground
+                    percent={selectedPercentage?.optionA}
                     $isClicked={clickedOption === "A"}
                   />
                   <AnimatedText isTriggerAnimation={clickedOption === "A"}>
@@ -117,15 +117,16 @@ const BalanceGame = () => {
                     </S.PercentText>
                   )}
                 </S.Option>
+
+                {/* Option B */}
                 <S.Option
                   onClick={() => handleSelectOption("B", currentQuestion.id)}
                   $isClicked={clickedOption === "B"}
                   $isOtherClicked={clickedOption === "A"}
                   disabled={isOptionLocked}
                 >
-                  <S.OptionPercentBackground
-                    $percent={selectedPercentage?.optionB}
-                    $isVisible={!!selectedPercentage?.optionB}
+                  <AnimatedOptionPercentBackground
+                    percent={selectedPercentage?.optionB}
                     $isClicked={clickedOption === "B"}
                   />
                   <AnimatedText isTriggerAnimation={clickedOption === "B"}>
@@ -162,4 +163,5 @@ const BalanceGame = () => {
     </>
   );
 };
+
 export default BalanceGame;

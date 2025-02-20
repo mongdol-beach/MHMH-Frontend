@@ -1,7 +1,6 @@
 import styled, { DefaultTheme } from "styled-components";
 import { Link } from "react-router-dom";
 import FONT from "../../styles/font";
-import { motion } from "framer-motion";
 
 export const Main = styled.main``;
 

@@ -9,13 +9,16 @@ import {
 } from "../../hooks/getRandomBalance";
 import { useQueryClient } from "@tanstack/react-query";
 import Loading from "../Loading";
+import AnimatedText from "../AnimatedText";
 import { Helmet } from "react-helmet-async";
+import AnimatedOptionPercentBackground from "../AnimatedOptionPercentBackground";
+import LoadingThreeDotsLottie from "../LoadingThreeDotsLottie";
 
 const BALANCE_GAME_MAX_NUM = 5;
 
 const BalanceGame = () => {
   const { data, isLoading } = useRandomBalance();
-  const { mutateAsync } = usePercentBalance();
+  const { mutateAsync, isPending } = usePercentBalance();
   const [num, setNum] = useState(0);
   const [selectedPercentage, setSelectedPercentage] =
     useState<SelectedPercentage | null>(null);
@@ -41,7 +44,6 @@ const BalanceGame = () => {
 
   const handleSelectOption = async (option: string, id: number) => {
     if (clickedOption) return;
-
     setClickedOption(option);
     setIsOptionLocked(true);
     const data = await mutateAsync({ id, selectedOption: option });
@@ -82,40 +84,57 @@ const BalanceGame = () => {
           <S.ProgressBar>
             <S.ProgressFill $progressPercentage={progressPercentage} />
           </S.ProgressBar>
-          <S.ProgressBarCounter>
-            <S.CounterText>
-              {num + 1} / {BALANCE_GAME_MAX_NUM}
-            </S.CounterText>
-          </S.ProgressBarCounter>
         </S.ProgressBarBox>
         <S.DescriptionBox>
           {currentQuestion && (
             <>
-              <S.Description key={currentQuestion.id}>
-                {currentQuestion.description}
-              </S.Description>
+              <S.ProgressBox>
+                <S.CounterText>
+                  {num + 1}
+                  <S.CounterTotal>/ {BALANCE_GAME_MAX_NUM}</S.CounterTotal>
+                </S.CounterText>
+                <S.Description key={currentQuestion.id}>
+                  {currentQuestion.description}
+                </S.Description>
+              </S.ProgressBox>
               <S.OptionBox>
+                {/* Option A */}
                 <S.Option
                   onClick={() => handleSelectOption("A", currentQuestion.id)}
                   $isClicked={clickedOption === "A"}
                   $isOtherClicked={clickedOption === "B"}
                   disabled={isOptionLocked}
                 >
-                  {currentQuestion.optionA}
+                  <AnimatedOptionPercentBackground
+                    percent={selectedPercentage?.optionA}
+                    $isClicked={clickedOption === "A"}
+                  />
+                  <AnimatedText isTriggerAnimation={clickedOption === "A"}>
+                    {currentQuestion.optionA}
+                  </AnimatedText>
+                  {isPending && <LoadingThreeDotsLottie />}
                   {selectedPercentage?.optionA !== undefined && (
                     <S.PercentText $isClicked={clickedOption === "A"}>
                       {`${selectedPercentage.optionA}%`}
                     </S.PercentText>
                   )}
                 </S.Option>
-                <S.ComparisonText>VS</S.ComparisonText>
+
+                {/* Option B */}
                 <S.Option
                   onClick={() => handleSelectOption("B", currentQuestion.id)}
                   $isClicked={clickedOption === "B"}
                   $isOtherClicked={clickedOption === "A"}
                   disabled={isOptionLocked}
                 >
-                  {currentQuestion.optionB}
+                  <AnimatedOptionPercentBackground
+                    percent={selectedPercentage?.optionB}
+                    $isClicked={clickedOption === "B"}
+                  />
+                  <AnimatedText isTriggerAnimation={clickedOption === "B"}>
+                    {currentQuestion.optionB}
+                  </AnimatedText>
+                  {isPending && <LoadingThreeDotsLottie />}
                   {selectedPercentage?.optionB !== undefined && (
                     <S.PercentText $isClicked={clickedOption === "B"}>
                       {`${selectedPercentage.optionB}%`}
@@ -147,4 +166,5 @@ const BalanceGame = () => {
     </>
   );
 };
+
 export default BalanceGame;

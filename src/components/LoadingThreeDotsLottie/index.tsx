@@ -1,5 +1,5 @@
 import Lottie from "react-lottie";
-import LoadingThreeDots from "@assets/lottie/loading-three-dots.json";
+import LoadingThreeDots from "../../assets/lottie/loading-three-dots.json";
 
 interface LoadingThreeDotsLottieProps {
   height?: number;

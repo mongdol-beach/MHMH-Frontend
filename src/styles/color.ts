@@ -22,4 +22,6 @@ export const COLORS = {
   "-grayscale-200": "#c7c7c7",
   "-grayscale-100": "#e8e8e8",
   "-grayscale-50": "#f7f9fe",
+  "--purple-300": "#BCA9FF",
+  "--orange-300": "#FFAA98",
 } as const;

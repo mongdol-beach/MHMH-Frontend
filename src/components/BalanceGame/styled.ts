@@ -172,8 +172,9 @@ export const FinishBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 23.4375rem;
+  width: 100%;
   height: 12.3rem;
+  margin: 0 auto;
   background: ${(props) => props.theme.colors["--card-color-blue-100"]};
 `;
 

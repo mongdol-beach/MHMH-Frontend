@@ -1,30 +1,25 @@
-import { LinkProps } from "react-router-dom";
 import * as S from "./styled";
+import { Topic } from "..";
 
-interface MainLinkProps extends LinkProps {
-  title: string;
-  text: string;
-  lineBreakTitle?: string;
-  width: string;
-  height: string;
+interface MainLinkProps {
+  topic: Topic;
 }
 
-const MainLink = ({
-  to,
-  title,
-  lineBreakTitle,
-  text,
-  width,
-  height,
-}: MainLinkProps) => {
+const MainLink = ({ topic }: MainLinkProps) => {
+  const { to, bgColor, subTitle, title, lineBreakTitle, image, height } = topic;
   return (
-    <S.Link $width={width} $height={height} to={to}>
-      <S.Title>
-        {title}
-        <br />
-        {lineBreakTitle}
-      </S.Title>
-      <S.Text>{text}</S.Text>
+    <S.Link $height={height} to={to}>
+      <S.LinkBox>
+        <S.TitleBox>
+          <S.SubTitle $bgColor={bgColor}>{subTitle}</S.SubTitle>
+          <S.Title>
+            {title}
+            <br />
+            {lineBreakTitle}
+          </S.Title>
+        </S.TitleBox>
+        <S.Image src={image} alt="" />
+      </S.LinkBox>
     </S.Link>
   );
 };

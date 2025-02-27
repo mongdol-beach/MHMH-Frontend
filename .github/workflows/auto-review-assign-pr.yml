@@ -11,4 +11,4 @@ jobs:
       - uses: hkusu/review-assign-action@v1
         with:
           assignees: ${{ github.actor }} # assign - PR 만든 사람
-          reviewers: wo-o29, coffeeJMG, DHyeonJ, donghoon-song # 리뷰어 추가
+          reviewers: coffeeJMG, DHyeonJ, donghoon-song # 리뷰어 추가

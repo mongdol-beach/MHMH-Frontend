@@ -13,5 +13,6 @@ export const useTopicsBySituation = (situationId: string) => {
     queryKey: ["topicsBySituation", situationId],
     queryFn: () =>
       instance.get(`/topic/situation/${situationId}`).then((res) => res.data),
+    refetchOnWindowFocus: false,
   });
 };

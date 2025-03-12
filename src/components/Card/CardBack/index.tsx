@@ -33,12 +33,17 @@ function CardBack({ situationName, id, content, $situationColor }: CardProps) {
       <S.Card $situationColor={$situationColor}>
         <CardDotEffect $color={$situationColor} />
         <S.Box>
-          <S.SubTitle $situationColor={$situationColor}>
-            No.
-            <S.CardIndex $situationColor={$situationColor}>
-              {id}&ensp;#{situationName} 토픽
-            </S.CardIndex>
-          </S.SubTitle>
+          <S.TopicIndexInfoBox>
+            <S.CardIndexBox $situationColor={$situationColor}>
+              <S.SubTitle $situationColor={$situationColor}>No.</S.SubTitle>
+              <S.CardIndex $situationColor={$situationColor}>{id}</S.CardIndex>
+            </S.CardIndexBox>
+            <S.TopicBox>
+              <S.TopicTitle $situationColor={$situationColor}>
+                #{situationName} 토픽
+              </S.TopicTitle>
+            </S.TopicBox>
+          </S.TopicIndexInfoBox>
           <S.Title>{content}</S.Title>
           <S.TipBox>
             <S.TipText>

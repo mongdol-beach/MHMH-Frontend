@@ -39,9 +39,9 @@ export const InstructionPanelContent = styled(PanelContent)`
 
 export const MainContent = styled.main`
   background: ${(props) => props.theme.colors["--card-color-blue-100"]};
-  height: 100vh;
+  height: 100dvh;
   flex: 0 0 375px;
-  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
 `;
 

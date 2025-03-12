@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   width: 100%;
-  height: 100vh;
+  min-height: 100dvh;
 `;
 
 export const TitleBox = styled.div`
@@ -68,7 +68,7 @@ export const ContentBox = styled.div`
   padding: 0 1rem;
 
   @media screen and (min-width: 1024px) {
-    height: calc(100vh - 282px);
+    height: calc(100dvh - 282px);
   }
 `;
 

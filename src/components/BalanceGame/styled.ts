@@ -82,43 +82,6 @@ export const OptionBox = styled.div`
   align-items: center;
 `;
 
-// 상태 타입 정의
-// type ButtonState = "clicked" | "otherClicked" | "default";
-
-// 상태별 스타일 매핑
-// const getButtonStyles = (state: ButtonState, theme: DefaultTheme) => {
-//   const styles = {
-//     default: `
-//       background: ${theme.colors["-grayscale-50"]};
-//       color: ${theme.colors["-grayscale-800"]};
-
-//       &:hover {
-//         background: ${theme.colors["--Primary-blue-100"]};
-//         color: ${theme.colors["-grayscale-800"]};
-//         border-color: ${theme.colors["--Primary-blue-300"]};
-//       }
-
-//       &:active {
-//         background: ${theme.colors["--card-color-blue-300"]};
-//         color: ${theme.colors["-grayscale-800"]};
-//         box-shadow: "4px 4px 4px 0px rgba(0, 0, 0, 0.25)";
-//       }`,
-//     clicked: `
-//       background: ${theme.colors["--card-color-blue-300"]};
-//       color: ${theme.colors["--point-beige"]};
-//       border-color: ${theme.colors["--Primary-blue-500"]};
-//       box-shadow: "inset 4px 4px 4px rgba(0, 0, 0, 0.25)";
-//     `,
-//     otherClicked: `
-//       background: ${theme.colors["-grayscale-50"]};
-//       color: ${theme.colors["-grayscale-300"]};
-//       border-color: ${theme.colors["-grayscale-100"]};
-//     `,
-//   };
-
-//   return styles[state];
-// };
-
 export const Option = styled.button<{
   $isClicked: boolean;
   $isOtherClicked: boolean;
@@ -198,16 +161,6 @@ export const Option = styled.button<{
         : "4px 4px 4px 0px rgba(0, 0, 0, 0.25)"};
   }
 `;
-/* ${({ $isClicked, $isOtherClicked, theme }) => {
-  const state: ButtonState = $isClicked
-    ? "clicked"
-    : $isOtherClicked
-      ? "otherClicked"
-      : "default";
-  const styles = getButtonStyles(state, theme);
-
-  return styles;
-}} */
 
 export const PercentText = styled.p<{
   $isClicked: boolean;

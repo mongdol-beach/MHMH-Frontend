@@ -22,6 +22,7 @@ export const useRandomTopics = () => {
       return pagination.page + 1;
     },
     initialPageParam: 1,
+    refetchOnWindowFocus: false,
   });
 };
 

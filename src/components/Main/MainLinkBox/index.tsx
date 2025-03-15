@@ -1,50 +1,62 @@
 import * as S from "./styled";
 import MainLink from "./MainLink";
 import PAGE_PATH from "../../../constants/path";
+import { COLORS } from "../../../styles/color";
+import MainEffect1 from "@assets/icons/main-effect1.svg";
+import MainEffect2 from "@assets/icons/main-effect2.svg";
+import MainEffect3 from "@assets/icons/main-effect3.svg";
 
-const TOPICS = [
+export type ColorKey = keyof typeof COLORS;
+
+export interface Topic {
+  to: string;
+  bgColor: ColorKey;
+  subTitle: string;
+  title: string;
+  lineBreakTitle?: string;
+  image: string;
+  height: string;
+}
+
+const TOPICS: Topic[] = [
   {
     to: PAGE_PATH.TOPICS_RANDOM,
-    title: "랜덤 토픽",
-    lineBreakTitle: "추천",
-    width: "10.25",
+    bgColor: "--purple-300",
+    subTitle: "색다른 대화",
+    title: "랜덤",
+    lineBreakTitle: "토픽 추천",
+    image: MainEffect1,
     height: "10.25",
-    text: "예측할 수 없는 다양한 주제로 색다른 대화 만들기",
   },
   {
     to: PAGE_PATH.SITUATION,
-    title: "상황별 토픽",
-    lineBreakTitle: "추천",
-    width: "10.25",
+    bgColor: "--Primary-blue-300",
+    subTitle: "자연스러운 대화",
+    title: "상황별",
+    lineBreakTitle: "토픽 추천",
+    image: MainEffect2,
     height: "10.25",
-    text: "상황에 딱 맞는 맞춤 토픽으로 자연스러운 대화 만들기",
   },
   {
     to: PAGE_PATH["BALANCE-GAME"],
+    bgColor: "--orange-300",
+    subTitle: "재미있는 대화",
     title: "밸런스 게임",
-    width: "21.4375",
+    image: MainEffect3,
     height: "7.875",
-    text: "선택의 순간이 곧 대화의 시작! 흥미로운 게임으로 분위기 띄워 보기",
   },
 ];
 
 const MainLinkBox = () => {
   return (
     <S.LinkBox>
-      {TOPICS.map((topic, idx) => {
-        const { to, title, lineBreakTitle, text, width, height } = topic;
-        return (
-          <MainLink
-            key={idx}
-            to={to}
-            title={title}
-            lineBreakTitle={lineBreakTitle}
-            width={width}
-            height={height}
-            text={text}
-          />
-        );
-      })}
+      <S.LinkTop>
+        <MainLink topic={TOPICS[0]} />
+        <MainLink topic={TOPICS[1]} />
+      </S.LinkTop>
+      <S.LinkBottom>
+        <MainLink topic={TOPICS[2]} />
+      </S.LinkBottom>
     </S.LinkBox>
   );
 };

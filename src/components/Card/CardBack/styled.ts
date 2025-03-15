@@ -32,30 +32,57 @@ export const Box = styled.div`
   transform: translateX(-50%);
 `;
 
+export const TopicIndexInfoBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 2rem;
+  left: 30%;
+  transform: translateX(-30%);
+  width: 70%;
+`;
+
+export const CardIndexBox = styled.div<CardStyleProps>`
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+`;
+
 export const SubTitle = styled.p<CardStyleProps>`
+  display: flex;
+  align-items: flex-end;
   color: ${(props) => ensureHexColor(props.$situationColor?.mainCardColor)};
   font-family: "esamanru OTF";
   font-size: 0.75rem;
   line-height: 150%; /* 1.3125rem */
-  display: flex;
-  align-items: flex-end;
-  gap: 0.2rem;
-  position: absolute;
-  top: 2rem;
-  left: 30%;
-  transform: translateX(-50%);
 `;
 
 export const CardIndex = styled.span<CardStyleProps>`
+  display: flex;
+  align-items: center;
   color: ${(props) => ensureHexColor(props.$situationColor?.mainCardColor)};
   font-family: Pretendard;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 150%;
   letter-spacing: -0.0225rem;
+`;
+
+export const TopicBox = styled.div`
+  flex-grow: 1;
+  text-align: right;
+  margin-left: 0.5rem;
+`;
+
+export const TopicTitle = styled.span<CardStyleProps>`
   display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
+  align-items: center;
+  color: ${(props) => ensureHexColor(props.$situationColor?.mainCardColor)};
+  font-family: Pretendard;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.0225rem;
 `;
 
 export const Title = styled.p`

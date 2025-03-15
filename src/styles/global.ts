@@ -2,17 +2,31 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
-    font-family: 'RixYeoljeongdo';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/RixYeoljeongdo_Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'RixYeoljeongdo';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/RixYeoljeongdo_Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'esamanru OTF';
+  src: url('https://cdn.jsdelivr.net/gh/fontbee/font@main/Gonggames/GongGothicBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'esamanru OTF';
+  src: url('https://cdn.jsdelivr.net/gh/fontbee/font@main/Gonggames/GongGothicMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
 }
 
   @font-face {
-    font-family: 'esamanru OTF';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'esamanru OTF';
+  src: url('https://cdn.jsdelivr.net/gh/fontbee/font@main/Gonggames/GongGothicLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
   }
 
 html,

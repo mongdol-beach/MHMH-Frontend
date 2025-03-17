@@ -13,7 +13,8 @@ export const HorizonDiv = styled.div`
 
 export const EmptyCircleContainer = styled.div`
   position: relative;
-  margin: 5.375rem auto 1.5rem auto;
+  /* margin: 5.375rem auto 1.5rem auto; */
+  margin: 1.5rem auto;
   text-align: center;
   width: 9.375rem;
   height: 9.375rem;
@@ -99,7 +100,6 @@ export const SummaryBtn = styled(Button)`
   &:hover {
     box-shadow: inset 3px 4px 3px rgba(0, 0, 0, 0.3);
   }
-
   &:active {
     filter: brightness(0.8);
   }

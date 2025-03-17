@@ -7,7 +7,8 @@ export const Main = styled.main<CardStyleProps>`
   background: ${(props) =>
     ensureHexColor(props.$situationColor?.backgroundColor)};
   height: calc(100dvh - 53px);
-  overflow: hidden;
+  min-height: 100dvh;
+  border: 1px solid red;
   touch-action: none;
 `;
 

@@ -5,13 +5,13 @@ export const Content = styled.div`
   background-color: white;
   padding: 16px 20px;
   border-radius: 8px;
-  width: 93%;
+  width: 100%;
+  max-width: 375px;
   position: absolute;
   left: 50%;
   top: 22%;
   transform: translateX(-50%);
 `;
-
 
 export const CloseIcon = styled.img`
   position: absolute;
@@ -24,6 +24,8 @@ export const ModalContainer = styled.form`
   margin-top: 4rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ModalTitle = styled.p`
@@ -100,6 +102,7 @@ export const FeedBackBtn = styled.button`
   ${FONT.sub_title16}
   line-height: 1.5rem;
   letter-spacing: -0.02em;
+  width: 50%;
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
@@ -108,7 +111,6 @@ export const FeedBackBtn = styled.button`
   margin: 1rem 0 1.5rem 0;
   box-shadow: none;
 
-  
   @media (hover: hover) {
     &:hover {
       box-shadow: inset 3px 4px 3px rgba(0, 0, 0, 0.3);
@@ -118,5 +120,4 @@ export const FeedBackBtn = styled.button`
   &:active {
     filter: brightness(0.8);
   }
-
 `;

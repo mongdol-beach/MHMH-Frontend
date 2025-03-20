@@ -12,11 +12,9 @@ export const Content = styled.div`
   width: 90%;
   position: absolute;
   left: 50%;
-  top: 19%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
-
-
 
 export const CloseIcon = styled.img`
   position: absolute;
@@ -168,4 +166,3 @@ export const LastTitle = styled.p`
   line-height: 130%; /* 1.1375rem */
   letter-spacing: -0.0175rem;
 `;
-

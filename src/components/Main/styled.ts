@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100dvh;
 `;
 
 export const TitleBox = styled.div`

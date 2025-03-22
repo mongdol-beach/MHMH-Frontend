@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   width: 100%;
+  display: flex;
+  flex-direction: column;
   min-height: 100dvh;
 `;
 
@@ -66,10 +68,11 @@ export const ContentBox = styled.div`
   border-radius: 40% 40% 0 0;
   background: ${(props) => props.theme.colors["--Primary-blue-500"]};
   padding: 0 1rem;
+`;
 
-  @media screen and (min-width: 1024px) {
-    height: calc(100dvh - 282px);
-  }
+export const BackgroundLeft = styled.div`
+  flex-grow: 1;
+  background: ${(props) => props.theme.colors["--Primary-blue-500"]};
 `;
 
 export const Text = styled.p`

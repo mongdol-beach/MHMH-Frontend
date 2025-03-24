@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import FONT from "../../styles/font";
 
@@ -82,43 +82,6 @@ export const OptionBox = styled.div`
   align-items: center;
 `;
 
-// 상태 타입 정의
-type ButtonState = "clicked" | "otherClicked" | "default";
-
-// 상태별 스타일 매핑
-const getButtonStyles = (state: ButtonState, theme: DefaultTheme) => {
-  const styles = {
-    default: `
-      background: ${theme.colors["-grayscale-50"]};
-      color: ${theme.colors["-grayscale-800"]};
-      
-      &:hover {
-        background: ${theme.colors["--Primary-blue-100"]};
-        color: ${theme.colors["-grayscale-800"]};
-        border-color: ${theme.colors["--Primary-blue-300"]};
-      }
-      
-      &:active {
-        background: ${theme.colors["--card-color-blue-300"]};
-        color: ${theme.colors["-grayscale-800"]};
-        box-shadow: "4px 4px 4px 0px rgba(0, 0, 0, 0.25)";
-      }`,
-    clicked: `
-      background: ${theme.colors["--card-color-blue-300"]};
-      color: ${theme.colors["--point-beige"]};
-      border-color: ${theme.colors["--Primary-blue-500"]};
-      box-shadow: "inset 4px 4px 4px rgba(0, 0, 0, 0.25)";
-    `,
-    otherClicked: `
-      background: ${theme.colors["-grayscale-50"]};
-      color: ${theme.colors["-grayscale-300"]};
-      border-color: ${theme.colors["-grayscale-100"]};
-    `,
-  };
-
-  return styles[state];
-};
-
 export const Option = styled.button<{
   $isClicked: boolean;
   $isOtherClicked: boolean;
@@ -139,17 +102,64 @@ export const Option = styled.button<{
   word-break: keep-all;
   border-radius: 0.75rem;
   box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.25);
-
-  ${({ $isClicked, $isOtherClicked, theme }) => {
-    const state: ButtonState = $isClicked
-      ? "clicked"
+  background: ${({ $isClicked, $isOtherClicked, theme }) =>
+    $isClicked
+      ? theme.colors["--card-color-blue-300"]
       : $isOtherClicked
-        ? "otherClicked"
-        : "default";
-    const styles = getButtonStyles(state, theme);
-
-    return styles;
-  }}
+        ? theme.colors["-grayscale-50"]
+        : theme.colors["-grayscale-50"]};
+  color: ${({ $isClicked, $isOtherClicked, theme }) =>
+    $isClicked
+      ? theme.colors["--point-beige"]
+      : $isOtherClicked
+        ? theme.colors["-grayscale-300"]
+        : theme.colors["-grayscale-800"]};
+  border-color: ${({ $isClicked, $isOtherClicked, theme }) =>
+    $isClicked
+      ? theme.colors["--Primary-blue-500"]
+      : $isOtherClicked
+        ? theme.colors["-grayscale-100"]
+        : "none"};
+  @media (hover: hover) {
+    &:hover {
+      background: ${({ $isClicked, $isOtherClicked, theme }) =>
+        $isClicked
+          ? theme.colors["--card-color-blue-300"]
+          : $isOtherClicked
+            ? theme.colors["-grayscale-50"]
+            : theme.colors["--Primary-blue-100"]};
+      border-color: ${({ $isClicked, $isOtherClicked, theme }) =>
+        $isClicked
+          ? theme.colors["--Primary-blue-500"]
+          : $isOtherClicked
+            ? theme.colors["-grayscale-100"]
+            : theme.colors["--Primary-blue-300"]};
+      color: ${({ $isClicked, $isOtherClicked, theme }) =>
+        $isClicked
+          ? theme.colors["--point-beige"]
+          : $isOtherClicked
+            ? theme.colors["-grayscale-300"]
+            : theme.colors["-grayscale-800"]};
+    }
+  }
+  &:active {
+    background: ${({ $isClicked, $isOtherClicked, theme }) =>
+      $isClicked
+        ? theme.colors["--card-color-blue-300"]
+        : $isOtherClicked
+          ? theme.colors["-grayscale-50"]
+          : theme.colors["--card-color-blue-300"]};
+    color: ${({ $isClicked, $isOtherClicked, theme }) =>
+      $isClicked
+        ? theme.colors["--point-beige"]
+        : $isOtherClicked
+          ? theme.colors["-grayscale-300"]
+          : theme.colors["-grayscale-800"]};
+    box-shadow: ${({ $isClicked }) =>
+      $isClicked
+        ? "inset 4px 4px 4px rgba(0, 0, 0, 0.25)"
+        : "4px 4px 4px 0px rgba(0, 0, 0, 0.25)"};
+  }
 `;
 
 export const PercentText = styled.p<{

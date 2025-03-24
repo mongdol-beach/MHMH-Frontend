@@ -6,9 +6,10 @@ import { ensureHexColor } from "../Card";
 export const Main = styled.main<CardStyleProps>`
   background: ${(props) =>
     ensureHexColor(props.$situationColor?.backgroundColor)};
-  height: calc(100dvh - 53px);
-  overflow: hidden;
-  touch-action: none;
+  min-height: calc(100dvh + 53px);
+  height: auto;
+  overflow-y: auto;
+  touch-action: pan-y;
 `;
 
 export const SituationBox = styled.div`

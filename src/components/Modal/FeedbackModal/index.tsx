@@ -84,9 +84,11 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
       };
 
       await instance.post("/feedbacks", requestBody);
+      toast.success("후기가 전송되었습니다.");
+
       handleCloseModal();
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast.error("전송에 실패했습니다.");
     }
   };
@@ -102,7 +104,6 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
   };
 
   return (
-
     <Modal isOpen={isOpen}>
       <S.Content>
         <S.CloseIcon src={Close} onClick={handleCloseModal} />
@@ -148,7 +149,6 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
           <S.FeedBackBtn type="submit">의견 보내기</S.FeedBackBtn>
         </S.ModalContainer>
       </S.Content>
-
     </Modal>
   );
 };

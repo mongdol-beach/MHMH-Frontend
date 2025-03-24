@@ -35,6 +35,7 @@ const Main = () => {
           Copyright ©mongdol-beach. All rights reserved.
         </S.CopyRight>
       </S.ContentBox>
+      <S.BackgroundLeft />
       <FeedbackModal isOpen={isOpen} closeModal={closeModal}></FeedbackModal>
     </S.Container>
   );

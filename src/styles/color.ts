@@ -24,4 +24,5 @@ export const COLORS = {
   "-grayscale-50": "#f7f9fe",
   "--purple-300": "#BCA9FF",
   "--orange-300": "#FFAA98",
+  "--pink-300": "#FFB4D5",
 } as const;

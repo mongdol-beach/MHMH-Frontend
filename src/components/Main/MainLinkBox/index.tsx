@@ -40,7 +40,7 @@ const TOPICS: Topic[] = [
     height: "10.25",
   },
   {
-    to: PAGE_PATH.TOPICS_RANDOM,
+    to: PAGE_PATH.PERSON,
     bgColor: "--pink-300",
     subTitle: "알아가는 대화",
     title: "인물별 토픽",

@@ -67,7 +67,7 @@ export const ContentBox = styled.div`
   z-index: 1;
   border-radius: 40% 40% 0 0;
   background: ${(props) => props.theme.colors["--Primary-blue-500"]};
-  padding: 0 1rem;
+  padding: 0 1rem 5rem 1rem;
 `;
 
 export const BackgroundLeft = styled.div`

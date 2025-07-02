@@ -16,9 +16,9 @@ const CardDotEffect: React.FC<CardDotEffectProps> = ({ $color }) => (
       <path
         d="M230 19H159H29C22.3726 19 17 24.3726 17 31V399C17 405.627 22.3726 411 29 411H289C295.627 411 301 405.627 301 399V215V89.56"
         stroke={$color?.mainCardColor}
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-dasharray="3 10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeDasharray="3 10"
       />
     </g>
     <defs>
@@ -29,9 +29,9 @@ const CardDotEffect: React.FC<CardDotEffectProps> = ({ $color }) => (
         width="317"
         height="425"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"

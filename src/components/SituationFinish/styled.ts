@@ -79,6 +79,31 @@ export const HandleNextLink = styled(Link)`
   }
 `;
 
+
+export const HandleBackButton = styled.button`
+  border-radius: 5.375rem;
+  width: 100%;
+  padding: 0.75rem 0;
+  background-color: ${(props) => props.theme.colors["--grayscale-800"]};
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  align-items: center;
+  cursor: pointer;
+  border: none; // button 기본 스타일 제거
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    background-color: #000000;
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
+`;
+
+
 export const handleNextP = styled.p`
   ${FONT.sub_title16};
   color: ${(props) => props.theme.colors["-grayscale-50"]};

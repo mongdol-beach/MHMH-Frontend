@@ -11,6 +11,7 @@ import { TopicTip } from "../../types/topic";
 import { KakaoShareOptions } from "../../types/kakao";
 import { Helmet } from 'react-helmet-async';
 import { ensureHexColor } from "../Card";
+import { useNavigate } from "react-router-dom";
 const BASE_URL = "https://mh-mh.vercel.app";
 const KAKAOSHARE_URL = `${BASE_URL}/?utm_source=kakao&utm_medium=social&utm_campaign=share`;
 
@@ -35,6 +36,12 @@ const Finish: React.FC<FinishProps> = ({
   $situationColor,
 }) => {
   const { isOpen, openModal, closeModal } = useModal();
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1); // 한 단계 뒤로
+  };
+
   const handleShare = async () => {
     try {
       await navigator.clipboard.writeText(BASE_URL);
@@ -107,10 +114,10 @@ const Finish: React.FC<FinishProps> = ({
             <S.handleNextP>메인으로</S.handleNextP>
           </S.HandleNextLink>
 
-          <S.HandleNextLink to={"/situation"}>
+          <S.HandleBackButton onClick={handleGoBack}>
             <img src={Restart} alt="상황 별 주제 다시하기" />
             <S.handleNextP>다시하기</S.handleNextP>
-          </S.HandleNextLink>
+          </S.HandleBackButton>
         </S.HorizonDiv>
         <S.SummaryBtn onClick={openModal}>요약 보기</S.SummaryBtn>
       </S.ButtonContainer>

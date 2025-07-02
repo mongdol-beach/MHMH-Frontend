@@ -7,11 +7,10 @@ export const Link = styled(RouterLink)<{ $height: string }>`
   width: 100%;
   height: ${(props) => `${props.$height}rem`};
   padding: 0.75rem 0.62rem 0.75rem 0.75rem;
-  flex-direction: column;
-  justify-content: space-between;
   border-radius: 0.5rem;
   background-color: ${(props) => props.theme.colors["-grayscale-50"]};
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
+  position: relative;
 `;
 
 export const LinkBox = styled.div`
@@ -19,14 +18,22 @@ export const LinkBox = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  position: relative;
 `;
 
-export const TitleBox = styled.div`
+export const TitleBox = styled.div<{ $isBalance: boolean }>`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 0.5rem;
   height: 100%;
+
+  ${(props) =>
+    props.$isBalance
+      ? `
+   justify-content:center;
+  `
+      : `
+
+  `}
 `;
 
 export const SubTitle = styled.p<{ $bgColor: ColorKey }>`
@@ -50,11 +57,21 @@ export const Title = styled.p`
   letter-spacing: -0.0225rem;
 `;
 
-export const Image = styled.img`
+export const TopicImage = styled.img<{ $isBalance: boolean }>`
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0%;
-  width: 5.5rem;
-  height: 5.5rem;
+  ${(props) =>
+    props.$isBalance
+      ? `
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0%;
+    width: 3.6rem;
+    height: 3.6rem;
+  `
+      : `
+    bottom: 1%;
+    right: 5%;
+    width: 5rem;
+    height: 5rem;
+  `}
 `;

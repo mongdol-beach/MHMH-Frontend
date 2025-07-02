@@ -2,13 +2,8 @@ import * as S from "./styled";
 import BackgroundEffect from "@assets/icons/main-background-effect.svg";
 import MainLinkBox from "./MainLinkBox";
 import MainLogoIcon from "@assets/icons/main-logo.svg";
-import RightArrowIcon from "@assets/icons/right-arrow.svg";
-import FeedbackModal from "../Modal/FeedbackModal";
-import useModal from "../../hooks/useModal";
 
 const Main = () => {
-  const { isOpen, openModal, closeModal } = useModal();
-
   return (
     <S.Container>
       <S.TitleBox>
@@ -27,16 +22,11 @@ const Main = () => {
         </S.Text>
         <MainLinkBox />
         <S.HorizonLine />
-        <S.UserFeedbackButton type="button" onClick={openModal}>
-          사용 후기를 알려주세요!
-          <S.ArrowIcon src={RightArrowIcon} />
-        </S.UserFeedbackButton>
         <S.CopyRight>
           Copyright ©mongdol-beach. All rights reserved.
         </S.CopyRight>
       </S.ContentBox>
       <S.BackgroundLeft />
-      <FeedbackModal isOpen={isOpen} closeModal={closeModal}></FeedbackModal>
     </S.Container>
   );
 };

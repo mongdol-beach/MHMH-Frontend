@@ -8,6 +8,14 @@ export const getTopicList = async (
   return response.data;
 };
 
+export const getPersonTopicList = async (
+  situation: Situation,
+): Promise<TopicList> => {
+  const response = await instance.get(`/topic/situation/person/${situation}/all`);
+  return response.data;
+};
+
+
 export const getOAuthToken = async (
   platform: OAuthPlatform,
   code: string,

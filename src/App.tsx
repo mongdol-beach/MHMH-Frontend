@@ -12,6 +12,7 @@ import {
   SituationPage,
   TopicListPage,
   LoginPage,
+  PersonPage,
 } from "./pages/index";
 import { OverlayProvider } from "overlay-kit";
 import TopicsBySituationPage from "./pages/TopicsBySituationPage";
@@ -24,6 +25,8 @@ import TagManager from "react-gtm-module";
 import Toast from "./components/Toast";
 import { HelmetProvider } from "react-helmet-async";
 import OAuthRedirect from "./pages/login-redirect/oauth";
+import TopicsByPersonPage from "./pages/TopicsByPersonPage";
+import PersonTopicListPage from "./pages/PersonTopicListPage";
 
 function App() {
   const [queryClient] = useState(
@@ -63,6 +66,7 @@ function App() {
                     path={PAGE_PATH.SITUATION}
                     element={<SituationPage />}
                   />
+                  <Route path={PAGE_PATH.PERSON} element={<PersonPage />} />
                   <Route
                     path={PAGE_PATH.TOPIC_LIST}
                     element={
@@ -79,8 +83,27 @@ function App() {
                     }
                   />
                   <Route
+                    path={PAGE_PATH.PERSON_TOPIC_LIST}
+                    element={
+                      <Suspense
+                        fallback={
+                          <>
+                            <Header title="토픽 리스트 | 말해머해" />
+                            <Loading />
+                          </>
+                        }
+                      >
+                        <PersonTopicListPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
                     path={`${PAGE_PATH.TOPICS_BY_SITUATION}/:situationId`}
                     element={<TopicsBySituationPage />}
+                  />
+                  <Route
+                    path={`${PAGE_PATH.TOPICS_BY_PERSON}/:situationId`}
+                    element={<TopicsByPersonPage />}
                   />
                   <Route
                     path={PAGE_PATH.TOPICS_RANDOM}

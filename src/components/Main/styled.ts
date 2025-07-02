@@ -67,7 +67,7 @@ export const ContentBox = styled.div`
   z-index: 1;
   border-radius: 40% 40% 0 0;
   background: ${(props) => props.theme.colors["--Primary-blue-500"]};
-  padding: 0 1rem;
+  padding: 0 1rem 5rem 1rem;
 `;
 
 export const BackgroundLeft = styled.div`
@@ -102,25 +102,6 @@ export const HorizonLine = styled.hr`
   border: 1px solid ${(props) => props.theme.colors["--card-color-blue-100"]};
   border-width: 0.5px 0 0 0;
 `;
-
-export const UserFeedbackButton = styled.button`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 2.75rem;
-  padding: 0.5rem 0.88rem;
-  background: ${(props) => props.theme.colors["--Primary-blue-300"]};
-  border-radius: 8px;
-  margin-bottom: 4.38rem;
-  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
-  font-size: 0.875rem;
-  color: ${(props) => props.theme.colors["-grayscale-50"]};
-  line-height: 130%;
-  letter-spacing: -0.0175rem;
-`;
-
-export const ArrowIcon = styled.img``;
 
 export const CopyRight = styled.p`
   text-align: center;

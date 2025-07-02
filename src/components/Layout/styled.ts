@@ -124,7 +124,12 @@ export const InstructionItem = styled.li`
   color: ${(props) => props.theme.colors["--grayscale-800"]};
 `;
 
-export const InstructionDescription = styled(BrandDescription)`
-  margin-top: 0;
+// 수정된 코드
+export const InstructionDescription = styled.div`
+  font-size: 1.25rem;
+  line-height: 150%;
+  letter-spacing: -0.025rem;
   text-align: left;
+  color: ${(props) => props.theme.colors["--grayscale-800"]};
+  margin-top: 0;
 `;
